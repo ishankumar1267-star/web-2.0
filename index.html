@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels | Explore the World, One Journey at a Time</title>
+    <meta name="description" content="Premier travel agency offering curated holiday packages across India and abroad. Goa, Rajasthan, Kerala, Manali, Kashmir & more. IATA Certified & Ministry of Tourism Approved.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-inner">
+                <div class="announcement-left">
+                    <span class="announcement-badge">Notice</span>
+                    <span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span>
+                </div>
+                <div class="announcement-right">
+                    <a href="tel:+919876543210" class="announcement-link">
+                        <i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210
+                    </a>
+                    <a href="mailto:hello@wanderlusttravels.in" class="announcement-link">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Main Two-Tier Header ─── -->
+    <header class="header-wrapper">
+        <!-- Top Row: Logo, Search Pill, Login/Actions -->
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <!-- Brand Logo -->
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="header-actions">
+                        <a href="admin/login.html" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="enroll.html" class="btn-enroll-pill">
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row: Navigation Links -->
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link active">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ─── Hero Promotional Banner ─── -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-banner-card">
+                <div class="hero-grid">
+                    <!-- Left Content -->
+                    <div class="hero-text-content">
+                        <div class="hero-badge-pill">
+                            <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+                            <span>New Packages 2026-27</span>
+                        </div>
+                        <h1 class="hero-main-title">
+                            Discover India's Most <span class="hero-highlight">Beautiful</span> Destinations
+                        </h1>
+                        <div class="hero-tagline-bar">
+                            Premium Travel Experiences Across India
+                        </div>
+                        <p class="hero-desc">
+                            Explore Goa, Rajasthan, Kerala, Manali, Kashmir &amp; more with our expert-guided tours, luxury stays, and 100% customizable packages.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#popularCourses" class="btn-hero-cta">
+                                <span>Explore Packages</span>
+                                <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                            </a>
+                            <a href="enroll.html" class="btn-hero-outline">
+                                <i data-lucide="award" style="width:18px;height:18px;"></i>
+                                <span>Get Free Quote</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Content: Checklist Card -->
+                    <div class="hero-checklist-box">
+                        <div class="checklist-title">
+                            <i data-lucide="check-circle-2" style="color:var(--color-secondary);"></i>
+                            <span>Why Choose Wanderlust Travels?</span>
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>IATA Certified Agency</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>100% Customizable Tours</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>Expert Local Guides</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>Visa &amp; Documentation Help</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>24/7 Trip Support</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>Best Price Guarantee</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>Luxury &amp; Budget Options</span>
+                            </div>
+                            <div class="checklist-item">
+                                <span class="check-icon-circle">✓</span>
+                                <span>Group &amp; Solo Trips</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badges -->
+                        <div class="hero-floating-badge badge-top">
+                            <i data-lucide="users" style="color:var(--color-primary);width:18px;height:18px;"></i>
+                            <span>50,000+ Happy Travelers</span>
+                        </div>
+                        <div class="hero-floating-badge badge-bottom">
+                            <i data-lucide="star" style="color:#f59e0b;fill:#f59e0b;width:18px;height:18px;"></i>
+                            <span>4.9 / 5.0 Star Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Features Bar ─── -->
+    <section class="features-bar-section">
+        <div class="container">
+            <div class="features-dashed-pill">
+                <!-- Pillar 1 -->
+                <div class="feature-pillar-item">
+                    <div class="feature-pillar-icon" style="color:var(--color-primary);">
+                        <i data-lucide="map" style="width:38px;height:38px;"></i>
+                    </div>
+                    <h3 class="feature-pillar-title">Expert Guides</h3>
+                    <p class="feature-pillar-sub">Local Knowledge &amp; 10+ Years Experience</p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="feature-pillar-item">
+                    <div class="feature-pillar-icon" style="color:#ef4444;">
+                        <i data-lucide="clipboard-list" style="width:38px;height:38px;"></i>
+                    </div>
+                    <h3 class="feature-pillar-title">Custom Itineraries</h3>
+                    <p class="feature-pillar-sub">Tailored Plans for Every Traveler</p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="feature-pillar-item">
+                    <div class="feature-pillar-icon" style="color:#8b5cf6;">
+                        <i data-lucide="headphones" style="width:38px;height:38px;"></i>
+                    </div>
+                    <h3 class="feature-pillar-title">24/7 Support</h3>
+                    <p class="feature-pillar-sub">Help Anytime, Anywhere on Trip</p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="feature-pillar-item">
+                    <div class="feature-pillar-icon" style="color:#f59e0b;">
+                        <i data-lucide="tag" style="width:38px;height:38px;"></i>
+                    </div>
+                    <h3 class="feature-pillar-title">Best Value</h3>
+                    <p class="feature-pillar-sub">Unbeatable Prices &amp; Zero Hidden Costs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Explore Packages Section ─── -->
+    <section class="explore-courses-section">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Explore Packages</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Choose your perfect holiday category and discover curated travel experiences designed for every kind of traveler.</p>
+            </div>
+
+            <div class="explore-cards-grid">
+                <!-- Card 1 -->
+                <div class="explore-card">
+                    <div class="explore-card-top">
+                        <h3 class="explore-card-title">Beach &amp; Island Getaways</h3>
+                        <p class="explore-card-sub">Goa, Andaman &amp; Lakshadweep</p>
+                        <div class="explore-pills-row">
+                            <span class="explore-pill dark">Goa 4N/5D</span>
+                            <span class="explore-pill gray">Andaman</span>
+                            <span class="explore-pill gray">Lakshadweep</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&auto=format&fit=crop&q=80" alt="Beach Getaways" class="explore-card-illustration" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3076/3076404.png'">
+                    </div>
+                    <a href="services.html?cat=beach" class="explore-card-btn">Explore Packages</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="explore-card">
+                    <div class="explore-card-top">
+                        <h3 class="explore-card-title">Heritage &amp; Culture Tours</h3>
+                        <p class="explore-card-sub">Rajasthan, Agra &amp; Varanasi</p>
+                        <div class="explore-pills-row">
+                            <span class="explore-pill dark">Rajasthan</span>
+                            <span class="explore-pill gray">Golden Triangle</span>
+                            <span class="explore-pill gray">Varanasi</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&auto=format&fit=crop&q=80" alt="Heritage Tours" class="explore-card-illustration" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2830/2830305.png'">
+                    </div>
+                    <a href="services.html?cat=heritage" class="explore-card-btn">Explore Packages</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="explore-card">
+                    <div class="explore-card-top">
+                        <h3 class="explore-card-title">Adventure &amp; Treks</h3>
+                        <p class="explore-card-sub">Himalayan &amp; Outdoor Thrills</p>
+                        <div class="explore-pills-row">
+                            <span class="explore-pill dark">Manali Trek</span>
+                            <span class="explore-pill gray">Kedarnath</span>
+                            <span class="explore-pill gray">Spiti Valley</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&auto=format&fit=crop&q=80" alt="Adventure Treks" class="explore-card-illustration" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2010/2010990.png'">
+                    </div>
+                    <a href="services.html?cat=adventure" class="explore-card-btn">Explore Packages</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="explore-card">
+                    <div class="explore-card-top">
+                        <h3 class="explore-card-title">Hill Station Escapes</h3>
+                        <p class="explore-card-sub">Kashmir, Shimla &amp; Darjeeling</p>
+                        <div class="explore-pills-row">
+                            <span class="explore-pill dark">Kashmir</span>
+                            <span class="explore-pill gray">Shimla</span>
+                            <span class="explore-pill gray">Darjeeling</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=400&auto=format&fit=crop&q=80" alt="Hill Stations" class="explore-card-illustration" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1055/1055687.png'">
+                    </div>
+                    <a href="services.html?cat=hills" class="explore-card-btn">Explore Packages</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Our Popular Packages Section ─── -->
+    <section class="popular-courses-section" id="popularCourses">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Our Popular Packages</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Explore our most loved holiday packages handpicked for the best experiences, value, and memories.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="course-filter-tabs" id="courseFilterTabs">
+                <button class="course-tab-btn active" data-filter="all">All</button>
+                <button class="course-tab-btn" data-filter="beach">Beach &amp; Island</button>
+                <button class="course-tab-btn" data-filter="heritage">Heritage &amp; Culture</button>
+                <button class="course-tab-btn" data-filter="adventure">Adventure</button>
+                <button class="course-tab-btn" data-filter="hills">Hill Stations</button>
+            </div>
+
+            <!-- Package Grid -->
+            <div class="courses-grid-cards" id="coursesContainer">
+                <!-- Package Card 1: Goa Beach Holiday -->
+                <div class="gyan-course-card" data-category="beach" data-keywords="goa beach island holiday sand sea sun">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&auto=format&fit=crop&q=80" alt="Goa Beach Holiday" class="course-thumb-img">
+                        <span class="course-thumb-badge">Best Seller</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Goa Beach Holiday</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">4 Nights / 5 Days</span>
+                            <span class="badge-lang">Beach &amp; Island</span>
+                            <span class="badge-lang">All Inclusive</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹12,999</span>
+                                <span class="price-original">₹18,000</span>
+                            </div>
+                            <span class="discount-badge">28% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p1" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p1" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 2: Rajasthan Heritage Tour -->
+                <div class="gyan-course-card" data-category="heritage" data-keywords="rajasthan heritage tour palace desert jaipur jodhpur udaipur">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop&q=80" alt="Rajasthan Heritage Tour" class="course-thumb-img">
+                        <span class="course-thumb-badge">Most Popular</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Rajasthan Heritage Tour</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">6 Nights / 7 Days</span>
+                            <span class="badge-lang">Heritage &amp; Culture</span>
+                            <span class="badge-lang">Expert Guide</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹15,999</span>
+                                <span class="price-original">₹22,000</span>
+                            </div>
+                            <span class="discount-badge">27% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p2" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p2" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 3: Kerala Backwaters -->
+                <div class="gyan-course-card" data-category="beach" data-keywords="kerala backwaters houseboat alleppey munnar honeymoon">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=600&auto=format&fit=crop&q=80" alt="Kerala Backwaters" class="course-thumb-img">
+                        <span class="course-thumb-badge">Honeymoon Special</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Kerala Backwaters</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">5 Nights / 6 Days</span>
+                            <span class="badge-lang">Beach &amp; Island</span>
+                            <span class="badge-lang">Houseboat Stay</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹18,499</span>
+                                <span class="price-original">₹26,000</span>
+                            </div>
+                            <span class="discount-badge">29% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p3" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p3" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 4: Manali Snow Trek -->
+                <div class="gyan-course-card" data-category="adventure" data-keywords="manali snow trek adventure himalaya rohtang camping">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&auto=format&fit=crop&q=80" alt="Manali Snow Trek" class="course-thumb-img">
+                        <span class="course-thumb-badge">Adventure Pick</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Manali Snow Trek</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">3 Nights / 4 Days</span>
+                            <span class="badge-lang">Adventure</span>
+                            <span class="badge-lang">Camp Stay</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹9,999</span>
+                                <span class="price-original">₹14,000</span>
+                            </div>
+                            <span class="discount-badge">29% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p4" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p4" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 5: Kashmir Paradise -->
+                <div class="gyan-course-card" data-category="hills" data-keywords="kashmir paradise dal lake shikara srinagar gulmarg pahalgam">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&auto=format&fit=crop&q=80" alt="Kashmir Paradise" class="course-thumb-img">
+                        <span class="course-thumb-badge">Premium</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Kashmir Paradise</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">6 Nights / 7 Days</span>
+                            <span class="badge-lang">Hill Stations</span>
+                            <span class="badge-lang">Luxury Stay</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹22,999</span>
+                                <span class="price-original">₹32,000</span>
+                            </div>
+                            <span class="discount-badge">28% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p5" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p5" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Card 6: Spiti Valley Expedition -->
+                <div class="gyan-course-card" data-category="adventure" data-keywords="spiti valley expedition offbeat himachal kaza key monastery">
+                    <div class="course-thumb-box">
+                        <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=600&auto=format&fit=crop&q=80" alt="Spiti Valley Expedition" class="course-thumb-img">
+                        <span class="course-thumb-badge">Offbeat Gem</span>
+                    </div>
+                    <div class="course-card-content">
+                        <h3 class="course-card-title">Spiti Valley Expedition</h3>
+                        <div class="course-badges-row">
+                            <span class="badge-validity">7 Nights / 8 Days</span>
+                            <span class="badge-lang">Adventure</span>
+                            <span class="badge-lang">Offbeat Route</span>
+                        </div>
+                        <div class="course-price-row">
+                            <div class="price-left">
+                                <span class="price-current">₹13,499</span>
+                                <span class="price-original">₹19,000</span>
+                            </div>
+                            <span class="discount-badge">29% off</span>
+                        </div>
+                        <div class="course-card-buttons">
+                            <a href="services.html?pkg=p6" class="btn-card-explore">View Package</a>
+                            <a href="enroll.html?pkg=p6" class="btn-card-buy">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Packages Button -->
+            <div class="view-all-center-box">
+                <a href="courses.html" class="btn-view-all-courses">
+                    <span>View All Packages</span>
+                    <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Destination Categories Section ─── -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Tour Categories</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Browse packages by your preferred type of travel experience.</p>
+            </div>
+
+            <div class="category-grid">
+                <a href="courses.html?cat=beach" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="map" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">Beach &amp; Islands</h3>
+                    <p class="category-card-count">Goa, Andaman, Lakshadweep (6+ Packages)</p>
+                </a>
+
+                <a href="courses.html?cat=heritage" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="landmark" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">Heritage &amp; History</h3>
+                    <p class="category-card-count">Rajasthan, Agra, Varanasi (8+ Packages)</p>
+                </a>
+
+                <a href="courses.html?cat=adventure" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="zap" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">Adventure Sports</h3>
+                    <p class="category-card-count">Trekking, Camping, Rafting (5+ Packages)</p>
+                </a>
+
+                <a href="courses.html?cat=hills" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="mountain" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">Hill Stations</h3>
+                    <p class="category-card-count">Manali, Kashmir, Darjeeling (7+ Packages)</p>
+                </a>
+
+                <a href="courses.html?cat=international" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="plane" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">International Tours</h3>
+                    <p class="category-card-count">Thailand, Bali, Dubai, Singapore (4+ Packages)</p>
+                </a>
+
+                <a href="courses.html?cat=honeymoon" class="category-card">
+                    <div class="category-icon-badge">
+                        <i data-lucide="heart" style="width:34px;height:34px;"></i>
+                    </div>
+                    <h3 class="category-card-title">Honeymoon Special</h3>
+                    <p class="category-card-count">Romantic Destinations Curated (5+ Packages)</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Expert Travel Guides Section ─── -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Our Expert Travel Guides</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Meet our passionate travel experts dedicated to making your journey unforgettable.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Guide 1 -->
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Arjun Mehta" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Arjun Mehta</h3>
+                        <span class="team-exp-badge">12+ Years Experience</span>
+                        <p class="team-subject">CEO &amp; Senior Travel Consultant</p>
+                    </div>
+                </div>
+
+                <!-- Guide 2 -->
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Priya Sharma" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Priya Sharma</h3>
+                        <span class="team-exp-badge">8+ Years Experience</span>
+                        <p class="team-subject">Head of International Tours</p>
+                    </div>
+                </div>
+
+                <!-- Guide 3 -->
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80" alt="Rahul Singh" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Rahul Singh</h3>
+                        <span class="team-exp-badge">10+ Years Experience</span>
+                        <p class="team-subject">Adventure &amp; Trek Specialist</p>
+                    </div>
+                </div>
+
+                <!-- Guide 4 -->
+                <div class="team-card">
+                    <div class="team-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80" alt="Neha Gupta" class="team-img">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Neha Gupta</h3>
+                        <span class="team-exp-badge">7+ Years Experience</span>
+                        <p class="team-subject">Honeymoon &amp; Luxury Tour Expert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Social Channels Section ─── -->
+    <section class="social-channels-section">
+        <div class="container">
+            <div class="social-channels-grid">
+                <!-- Instagram -->
+                <div class="social-dashed-box">
+                    <div class="social-box-left">
+                        <div class="social-icon-box" style="background:rgba(225,48,108,0.1);color:#e1306c;">
+                            <i data-lucide="instagram"></i>
+                        </div>
+                        <span class="social-box-title">Instagram Page</span>
+                    </div>
+                    <a href="https://instagram.com" target="_blank" class="btn-social-subscribe">Follow</a>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="social-dashed-box">
+                    <div class="social-box-left">
+                        <div class="social-icon-box" style="background:rgba(37,211,102,0.1);color:#25d366;">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <span class="social-box-title">WhatsApp Support</span>
+                    </div>
+                    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" class="btn-social-subscribe">Chat Now</a>
+                </div>
+
+                <!-- YouTube -->
+                <div class="social-dashed-box">
+                    <div class="social-box-left">
+                        <div class="social-icon-box" style="background:rgba(239,68,68,0.1);color:#ef4444;">
+                            <i data-lucide="youtube"></i>
+                        </div>
+                        <span class="social-box-title">YouTube Channel</span>
+                    </div>
+                    <a href="https://youtube.com" target="_blank" class="btn-social-subscribe">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Customer Reviews Section ─── -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Customer Reviews</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Read what our happy travelers say about their journey experiences.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <h4 class="reviewer-name">Suresh Kumar</h4>
+                        <span class="review-time">4 days ago</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "Booked Goa trip with Wanderlust Travels. Amazing experience! Hotel was great, guides were helpful and everything was as promised. Best travel agency in Delhi!"
+                    </p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <h4 class="reviewer-name">Anjali Verma</h4>
+                        <span class="review-time">1 week ago</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "Went to Rajasthan with family. The heritage tour was beautifully planned. Every detail from hotel to transport was perfect. Highly recommend Wanderlust!"
+                    </p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-card-header">
+                        <h4 class="reviewer-name">Vikram Bhatia</h4>
+                        <span class="review-time">3 weeks ago</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "Did the Manali adventure trek package. Absolutely thrilling experience! The guides were professional and safety was top priority. Will book again!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Gallery Preview Section ─── -->
+    <section class="gallery-preview-section">
+        <div class="container">
+            <div class="section-heading-block">
+                <h2 class="section-title-main">Our Gallery</h2>
+                <div class="section-title-underline"></div>
+                <p class="section-subtitle-text">Glimpses of our beautiful destinations, happy travelers, and unforgettable journeys.</p>
+            </div>
+
+            <div class="gallery-grid-preview">
+                <div class="gallery-preview-item">
+                    <img src="uploads/lab1.jpg" alt="Goa Beach" class="gallery-preview-img" onerror="this.src='https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&auto=format&fit=crop&q=80'">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="uploads/lab2.jpg" alt="Rajasthan Heritage" class="gallery-preview-img" onerror="this.src='https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop&q=80'">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="uploads/lab3.jpg" alt="Kerala Backwaters" class="gallery-preview-img" onerror="this.src='https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=600&auto=format&fit=crop&q=80'">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="uploads/lab4.jpg" alt="Kashmir Valley" class="gallery-preview-img" onerror="this.src='https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&auto=format&fit=crop&q=80'">
+                </div>
+            </div>
+
+            <div class="view-all-center-box">
+                <a href="gallery.html" class="btn-view-all-courses">
+                    <span>VIEW ALL PHOTOS</span>
+                    <i data-lucide="image" style="width:18px;height:18px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Plan Your Dream Trip Section ─── -->
+    <section class="app-download-section">
+        <div class="container">
+            <div class="app-download-card">
+                <div class="app-info-left">
+                    <span class="app-sub-label">ONLINE TRIP PLANNING &amp; BOOKING</span>
+                    <h2 class="app-title">Book Your Perfect Holiday Package Online</h2>
+                    <p class="footer-desc" style="color:var(--color-text-mid);margin-bottom:24px;">
+                        Browse packages, customize your itinerary, get instant quotes, and book your dream holiday all from the comfort of your home.
+                    </p>
+                    <div class="app-badges-row">
+                        <a href="courses.html" class="store-badge-btn">
+                            <i data-lucide="map" style="width:26px;height:26px;"></i>
+                            <div>
+                                <span class="store-badge-text-small">Browse</span>
+                                <span class="store-badge-text-bold">Browse Packages</span>
+                            </div>
+                        </a>
+                        <a href="enroll.html" class="store-badge-btn">
+                            <i data-lucide="phone-call" style="width:26px;height:26px;"></i>
+                            <div>
+                                <span class="store-badge-text-small">Request</span>
+                                <span class="store-badge-text-bold">Get Free Quote</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="app-mockup-wrap">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8132/8132644.png" alt="Trip Planning" class="app-phone-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- Col 1: Agency Info -->
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Popular Tours -->
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html?pkg=p1">Goa Beach Holiday</a></li>
+                        <li><a href="services.html?pkg=p2">Rajasthan Heritage</a></li>
+                        <li><a href="services.html?pkg=p3">Kerala Backwaters</a></li>
+                        <li><a href="services.html?pkg=p4">Manali Snow Trek</a></li>
+                        <li><a href="services.html?pkg=p5">Kashmir Paradise</a></li>
+                        <li><a href="services.html?pkg=p6">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Hours -->
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="footer-bottom-bar">
+                <p>© 2026 Wanderlust Travels. All Rights Reserved.</p>
+                <p>IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── Floating WhatsApp Button ─── -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <!-- ─── Back To Top Button ─── -->
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="rr-bridge.js"></script>
+    <script src="rr-pages-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Header Sticky Nav Shadow
+        window.addEventListener('scroll', function() {
+            const stickyNav = document.getElementById('stickyNav');
+            const backToTop = document.getElementById('backToTopBtn');
+            if (window.scrollY > 80) {
+                if (stickyNav) stickyNav.classList.add('scrolled');
+                if (backToTop) backToTop.classList.add('visible');
+            } else {
+                if (stickyNav) stickyNav.classList.remove('scrolled');
+                if (backToTop) backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top click
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileBtn && mainNav) {
+            mobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mainNav.classList.toggle('mobile-active');
+            });
+            document.addEventListener('click', function(e) {
+                if (!mainNav.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    mainNav.classList.remove('mobile-active');
+                }
+            });
+        }
+
+        // Interactive Popular Packages Filter Tabs
+        const filterBtns = document.querySelectorAll('#courseFilterTabs .course-tab-btn');
+        const courseCards = document.querySelectorAll('#coursesContainer .gyan-course-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                courseCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-category');
+                    if (filter === 'all' || cardCat === filter) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.3s ease';
+                            card.style.opacity = '1';
+                        }, 20);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Header Search functionality
+        const searchInput = document.getElementById('headerSearchInput');
+        const searchBtn = document.getElementById('headerSearchBtn');
+        const categorySelect = document.getElementById('headerCategorySelect');
+
+        function performSearch() {
+            const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+            const cat = categorySelect ? categorySelect.value : 'all';
+
+            // Filter on current page cards
+            courseCards.forEach(card => {
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const cardCat = card.getAttribute('data-category') || '';
+                const title = card.querySelector('.course-card-title').textContent.toLowerCase();
+
+                const matchesCat = (cat === 'all' || cardCat === cat);
+                const matchesQuery = query === '' || keywords.includes(query) || title.includes(query);
+
+                if (matchesCat && matchesQuery) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Scroll to packages section
+            const coursesSection = document.getElementById('popularCourses');
+            if (coursesSection && query !== '') {
+                coursesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        if (searchBtn) searchBtn.addEventListener('click', performSearch);
+        if (searchInput) {
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') performSearch();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed! | Wanderlust Travels</title>
+    <meta name="description" content="Thank you for booking with Wanderlust Travels. Your tour reservation is confirmed.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── Confetti & Thank You Page ─── */
+        .thankyou-hero {
+            min-height: 100vh;
+            padding-top: 90px;
+            padding-bottom: 60px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #fff8f0 50%, #f0fdf4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .thankyou-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a237e' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Confetti particle */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confettiFall linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        @keyframes confettiFall {
+            0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+        }
+
+        /* Main card */
+        .ty-card {
+            background: white;
+            border-radius: 28px;
+            padding: 52px 48px;
+            max-width: 620px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(13,71,161,0.14);
+            border: 1.5px solid rgba(13,71,161,0.06);
+            position: relative;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+            margin: 20px;
+        }
+        @keyframes popIn {
+            from { opacity:0; transform: scale(0.85); }
+            to   { opacity:1; transform: scale(1); }
+        }
+
+        /* Success ring */
+        .success-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 32px rgba(34,197,94,0.4);
+            animation: pulseRing 2s infinite;
+            position: relative;
+        }
+        @keyframes pulseRing {
+            0%, 100% { box-shadow: 0 8px 32px rgba(34,197,94,0.4); }
+            50% { box-shadow: 0 8px 48px rgba(34,197,94,0.7); }
+        }
+
+        /* Detail rows */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 24px 0;
+            text-align: left;
+        }
+        @media (max-width: 500px) { .detail-grid { grid-template-columns: 1fr; } }
+        .detail-item {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 14px 16px;
+            border: 1px solid #e5e7eb;
+        }
+        .detail-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .detail-value { font-size: 0.9rem; font-weight: 800; color: var(--color-text-dark); }
+
+        /* Steps next */
+        .next-steps {
+            background: var(--color-primary-pale);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .next-step-item { display:flex; align-items:flex-start; gap:12px; margin-bottom:10px; }
+        .next-step-num { width:26px;height:26px;border-radius:50%;background:var(--color-primary);color:white;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px; }
+
+        .btn-action-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--color-primary); color: white;
+            padding: 12px 24px; border-radius: 12px;
+            font-weight: 700; font-size: 0.92rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .btn-action-primary:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
+        .btn-action-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: white; color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 12px 24px; border-radius: 12px;
+            font-weight: 700; font-size: 0.92rem;
+            text-decoration: none; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-action-outline:hover { background: var(--color-primary-pale); }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-inner">
+                <div class="announcement-left">
+                    <span class="announcement-badge">Notice</span>
+                    <span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span>
+                </div>
+                <div class="announcement-right">
+                    <a href="tel:+919876543210" class="announcement-link">
+                        <i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210
+                    </a>
+                    <a href="mailto:hello@wanderlusttravels.in" class="announcement-link">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Main Two-Tier Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="admin/login.html" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="enroll.html" class="btn-enroll-pill">
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <div class="thankyou-hero">
+        <div class="ty-card">
+            <!-- Success Icon -->
+            <div class="success-ring">
+                <i data-lucide="check" style="width:52px;height:52px;color:white;stroke-width:3;"></i>
+            </div>
+
+            <div style="display:inline-block;background:#dcfce7;color:#166534;padding:6px 18px;border-radius:99px;font-size:0.78rem;font-weight:800;letter-spacing:0.5px;margin-bottom:16px;">
+                🎉 TOUR RESERVATION CONFIRMED
+            </div>
+
+            <h1 style="font-size:2rem;color:var(--color-primary);margin-bottom:8px;font-family:var(--font-heading);" id="tyName">Have a Wonderful Journey!</h1>
+            <p style="color:#6b7280;font-size:1rem;margin-bottom:0;">Your holiday booking request has been confirmed. Our personal travel concierge will reach out to you within <strong>24 hours</strong> with your confirmed vouchers.</p>
+
+            <!-- Booking Details -->
+            <div class="detail-grid" id="detailGrid">
+                <div class="detail-item">
+                    <div class="detail-label">Booking ID</div>
+                    <div class="detail-value" id="dTxn">—</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Payment Method</div>
+                    <div class="detail-value" id="dMethod">—</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Tour Destination</div>
+                    <div class="detail-value" id="dCourse">—</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Travel Style</div>
+                    <div class="detail-value" id="dMode">—</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Amount Paid / Deposit</div>
+                    <div class="detail-value" style="color:var(--color-secondary);" id="dFee">—</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Booking Timestamp</div>
+                    <div class="detail-value" id="dTime" style="font-size:0.78rem;">—</div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <div style="font-weight:800;color:var(--color-primary);margin-bottom:12px;font-size:0.9rem;">📋 What Happens Next?</div>
+                <div class="next-step-item">
+                    <div class="next-step-num">1</div>
+                    <div style="font-size:0.85rem;color:var(--color-text-mid);">Your dedicated <strong>Travel Concierge</strong> will call you to finalize dates and flight times</div>
+                </div>
+                <div class="next-step-item">
+                    <div class="next-step-num">2</div>
+                    <div style="font-size:0.85rem;color:var(--color-text-mid);">You will receive your <strong>hotel vouchers, cab details &amp; day-by-day itinerary</strong> via WhatsApp &amp; Email</div>
+                </div>
+                <div class="next-step-item" style="margin-bottom:0;">
+                    <div class="next-step-num">3</div>
+                    <div style="font-size:0.85rem;color:var(--color-text-mid);">Pack your bags and get ready for an unforgettable journey! ✈️</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;">
+                <a href="index.html" class="btn-action-primary">
+                    <i data-lucide="home" style="width:16px;height:16px;"></i> Go to Home
+                </a>
+                <a href="courses.html" class="btn-action-outline">
+                    <i data-lucide="compass" style="width:16px;height:16px;"></i> Explore More Tours
+                </a>
+                <button onclick="window.print()" class="btn-action-outline">
+                    <i data-lucide="printer" style="width:16px;height:16px;"></i> Print Receipt
+                </button>
+            </div>
+
+            <!-- Contact -->
+            <div style="background:#fff8f0;border-radius:12px;padding:14px;border:1px solid rgba(255,193,7,0.2);">
+                <div style="font-size:0.82rem;color:#92400e;font-weight:700;">Need Immediate Assistance?</div>
+                <div style="font-size:0.82rem;color:#78350f;margin-top:4px;">
+                    📞 <a href="tel:+919876543210" style="color:var(--color-primary);font-weight:700;">+91 98765 43210</a> &nbsp;|&nbsp;
+                    💬 <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20have%20a%20question%20about%20my%20booking." target="_blank" style="color:#22c55e;font-weight:700;">WhatsApp Support</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html?cat=beach">Goa Beach Holiday</a></li>
+                        <li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li>
+                        <li><a href="services.html?cat=beach">Kerala Backwaters</a></li>
+                        <li><a href="services.html?cat=adventure">Manali Snow Trek</a></li>
+                        <li><a href="services.html?cat=hills">Kashmir Paradise</a></li>
+                        <li><a href="services.html?cat=adventure">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>© 2026 Wanderlust Travels. All Rights Reserved.</p>
+                <p>IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="rr-bridge.js"></script>
+    <script>
+        lucide.createIcons();
+
+        let data = {};
+        try {
+            data = JSON.parse(localStorage.getItem('wt_last_booking') || '{}');
+        } catch(e){}
+
+        if (data.name) {
+            document.getElementById('tyName').textContent = '🎉 Happy Journey, ' + data.name.split(' ')[0] + '!';
+        }
+        document.getElementById('dTxn').textContent    = data.txnId    || ('WT' + Date.now().toString().slice(-8));
+        document.getElementById('dMethod').textContent = data.method   || 'Online Booking';
+        document.getElementById('dCourse').textContent = data.destination || data.course || 'Goa Beach Holiday';
+        document.getElementById('dMode').textContent   = data.mode     || 'Family/Group';
+        document.getElementById('dFee').textContent    = data.fee      || '₹2,500';
+        document.getElementById('dTime').textContent   = data.timestamp|| new Date().toLocaleString('en-IN');
+
+        const colors = ['#0d47a1','#ffc107','#16a34a','#0d47a1','#ffd700','#1565c0'];
+        function spawnConfetti() {
+            for (let i = 0; i < 80; i++) {
+                const el = document.createElement('div');
+                el.className = 'confetti-piece';
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.background = colors[Math.floor(Math.random() * colors.length)];
+                el.style.width = (Math.random() * 8 + 6) + 'px';
+                el.style.height = (Math.random() * 8 + 6) + 'px';
+                el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                el.style.animationDelay    = (Math.random() * 2) + 's';
+                document.body.appendChild(el);
+                el.addEventListener('animationend', () => el.remove());
+            }
+        }
+        spawnConfetti();
+        setTimeout(spawnConfetti, 2500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tour Package | Wanderlust Travels</title>
+    <meta name="description" content="Book your dream tour package with Wanderlust Travels. Packages for Goa, Rajasthan, Kerala, Manali, Kashmir, Spiti, and international destinations.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── Hero Banner ── */
+        .courses-banner {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #0f172a;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&auto=format&fit=crop&q=80');
+            padding: 72px 0 66px;
+            color: #ffffff;
+            text-align: center;
+        }
+        .banner-left h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+        .banner-left ul {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .banner-left ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .banner-left ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ── Main 2-Panel Section (gb-section & gb-container) ── */
+        .gb-section {
+            background: #f1f4f8;
+            padding: 70px 0 80px;
+        }
+        .gb-container {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 36px;
+            max-width: 1140px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        /* Left Dark Info Panel */
+        .gb-info-panel {
+            background: #1e293b;
+            color: #ffffff;
+            border-radius: 28px;
+            padding: 44px 38px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 22px;
+        }
+        .gb-info-panel h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .gb-info-panel .desc {
+            color: #94a3b8;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .gb-contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gb-contact-card:last-child {
+            border-bottom: none;
+        }
+        .gb-icon-bg {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #29384d;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+        .gb-contact-card:hover .gb-icon-bg {
+            background: var(--color-primary);
+            transform: scale(1.08);
+        }
+        .gb-contact-text h4, .gb-contact-text .label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin: 0 0 4px;
+            display: block;
+        }
+        .gb-contact-text .val {
+            font-size: 0.92rem;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* Right Form Panel */
+        .gb-form-panel {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 44px 40px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .gb-label-top {
+            display: inline-block;
+            background: rgba(13, 71, 161, 0.08);
+            color: var(--color-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .gb-form-panel h2 {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 8px;
+        }
+        .gb-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+        .gb-input-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .gb-field-label {
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #334155;
+        }
+        .gb-field {
+            width: 100%;
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.92rem;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .gb-field:focus {
+            border-color: var(--color-primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.12);
+        }
+        .gb-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .gb-mode-options {
+            display: flex;
+            gap: 12px;
+        }
+        .gb-mode-pill {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.86rem;
+            font-weight: 600;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+        .gb-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.25);
+        }
+        .gb-submit:hover {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(13, 71, 161, 0.35);
+        }
+        .gb-privacy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* ── App / Brochure Download Section ── */
+        .app-section {
+            background: #ffffff;
+            padding: 72px 0;
+            border-top: 1px solid #e2e8f0;
+        }
+        .app-section-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        .app-sub-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.15);
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+        }
+        .app-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+        .app-download-btn:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.25);
+        }
+        .app-download-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: 12px 22px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+        .app-download-btn-secondary:hover {
+            background: var(--color-primary-pale);
+            transform: translateY(-2px);
+        }
+
+        /* ── Map Section ── */
+        .gb-map-section {
+            background: #f8fafc;
+            padding: 60px 0 70px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .vom-map-wrapper {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            min-height: 420px;
+            margin: 0 auto;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #E5E4EE;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .vom-backdrop-map {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            filter: grayscale(100%) brightness(1.1);
+        }
+        .vom-pill-btn {
+            position: relative;
+            z-index: 10;
+            width: 190px;
+            height: 54px;
+            border-radius: 27px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #E5E4EE;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .vom-pill-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 18px;
+        }
+        .vom-map-icon { width: 20px; height: 20px; color: #6A6973; }
+        .vom-pill-text { font-size: 18px; font-weight: 600; color: #3D3C43; font-family: var(--font-heading); }
+        .vom-expanded-map {
+            display: none;
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+        .vom-expanded-map.active { display: block; }
+        .vom-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 30;
+            background: white;
+            border: 1px solid #e2e8f0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .vom-filter-layer { position: absolute; inset: 0; }
+        .vom-filter-layer iframe { width: 100%; height: 100%; border: 0; }
+        .vom-bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            inset-x: 0;
+            z-index: 30;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+        }
+
+        /* ── FAQ Section ── */
+        .faq-item { border-bottom: 1px solid rgba(13,71,161,0.08); padding: 20px 0; }
+        .faq-question { font-weight: 700; font-size: 1rem; color: var(--color-text-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { margin-top: 12px; font-size: 0.95rem; color: var(--color-text-mid); display: none; line-height: 1.65; }
+        .faq-answer.open { display: block; }
+
+        /* ── Payment Choice Modal ── */
+        #paymentModal {
+            display: none;
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(13,13,43,0.7);
+            backdrop-filter: blur(6px);
+            align-items: center; justify-content: center;
+        }
+        #paymentModal.open { display: flex; }
+        .pay-modal-box {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 36px;
+            max-width: 520px; width: 92%;
+            box-shadow: 0 24px 80px rgba(13,71,161,0.25);
+            text-align: center;
+        }
+        .pay-icon { font-size: 3.5rem; margin-bottom: 12px; }
+        .pay-modal-title { font-size: 1.5rem; font-weight: 800; color: #0a1628; margin-bottom: 8px; }
+        .pay-modal-sub { font-size: 0.95rem; color: #6b7280; margin-bottom: 28px; line-height: 1.6; }
+        .pay-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        .pay-choice-btn {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 8px; padding: 20px 16px;
+            border-radius: 16px; border: 2px solid #e5e7eb;
+            cursor: pointer; font-family: inherit; font-weight: 700;
+            font-size: 0.95rem; transition: all 0.25s; background: white;
+        }
+        .pay-choice-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .pay-now-btn { border-color: var(--color-accent); color: var(--color-accent); }
+        .pay-now-btn:hover { background: var(--color-accent); color: white; }
+        .pay-later-btn { border-color: var(--color-primary); color: var(--color-primary); }
+        .pay-later-btn:hover { background: var(--color-primary); color: white; }
+        .pay-note { font-size: 0.78rem; color: #9ca3af; margin-top: 4px; }
+
+        @media (max-width: 900px) {
+            .gb-container, .app-section-grid { grid-template-columns: 1fr; gap: 32px; }
+            .gb-info-panel, .gb-form-panel { padding: 32px 24px; }
+            .gb-row-2 { grid-template-columns: 1fr; gap: 14px; }
+        }
+        @media (max-width: 520px) {
+            .pay-choice-grid { grid-template-columns: 1fr; }
+            .pay-modal-box { padding: 28px 18px; }
+            .gb-form-panel { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-inner">
+                <div class="announcement-left">
+                    <span class="announcement-badge">Notice</span>
+                    <span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span>
+                </div>
+                <div class="announcement-right">
+                    <a href="tel:+919876543210" class="announcement-link">
+                        <i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210
+                    </a>
+                    <a href="mailto:hello@wanderlusttravels.in" class="announcement-link">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Main Two-Tier Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="admin/login.html" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="enroll.html" class="btn-enroll-pill">
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <div class="courses-banner">
+        <div class="container">
+            <div class="banner-left">
+                <h1>Online Tour Booking &amp; Reservation</h1>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li style="color:var(--color-accent,#ff6b35);">Book Tour</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Main 2-Panel Section ── -->
+    <section class="gb-section">
+        <div class="gb-container">
+            <!-- Left Info Panel -->
+            <div class="gb-info-panel">
+                <div>
+                    <span style="display:inline-block;background:rgba(255,107,53,0.18);color:#ff8c5a;font-weight:700;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:9999px;margin-bottom:12px;">Trip Desk</span>
+                    <h2>Plan Your Holiday With Experts</h2>
+                    <p class="desc">
+                        Have queries about hotel categories, travel dates, or custom itineraries? Our travel specialists are available 24/7 to craft your perfect vacation.
+                    </p>
+                </div>
+
+                <div class="gb-contact-card">
+                    <div class="gb-icon-bg">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="gb-contact-text">
+                        <span class="label">OFFICE LOCATION</span>
+                        <div class="val">12, Travel Tower, Connaught Place, New Delhi 110001</div>
+                    </div>
+                </div>
+
+                <div class="gb-contact-card">
+                    <div class="gb-icon-bg">
+                        <i data-lucide="phone-call"></i>
+                    </div>
+                    <div class="gb-contact-text">
+                        <span class="label">CALL TOUR SPECIALIST</span>
+                        <div class="val"><a href="tel:+919876543210" style="color:inherit;text-decoration:none;">+91 98765 43210</a></div>
+                    </div>
+                </div>
+
+                <div class="gb-contact-card">
+                    <div class="gb-icon-bg">
+                        <i data-lucide="message-circle"></i>
+                    </div>
+                    <div class="gb-contact-text">
+                        <span class="label">WHATSAPP SUPPORT</span>
+                        <div class="val"><a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20book%20a%20tour%20package." target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:700;">Chat on WhatsApp &rarr;</a></div>
+                    </div>
+                </div>
+
+                <div class="gb-contact-card">
+                    <div class="gb-icon-bg">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="gb-contact-text">
+                        <span class="label">EMAIL INQUIRIES</span>
+                        <div class="val"><a href="mailto:hello@wanderlusttravels.in" style="color:inherit;text-decoration:none;">hello@wanderlusttravels.in</a></div>
+                    </div>
+                </div>
+
+                <!-- Traveler Guarantee -->
+                <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 20px 22px; margin-top: 8px;">
+                    <h4 style="color:#ffffff;font-size:0.95rem;margin:0 0 10px;font-weight:700;display:flex;align-items:center;gap:8px;">
+                        <i data-lucide="shield-check" style="width:18px;height:18px;color:#10b981;"></i> Wanderlust Traveler Guarantee
+                    </h4>
+                    <div style="display:flex;flex-direction:column;gap:8px;font-size:0.86rem;color:#cbd5e1;">
+                        <div style="display:flex;align-items:center;gap:8px;"><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> IATA Certified &amp; Ministry of Tourism Approved</div>
+                        <div style="display:flex;align-items:center;gap:8px;"><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> 100% Customizable Itineraries &amp; Luxury Stays</div>
+                        <div style="display:flex;align-items:center;gap:8px;"><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> 24/7 Dedicated On-Trip Support &amp; Local Guides</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Panel -->
+            <div class="gb-form-panel">
+                <span class="gb-label-top">Holiday Season 2026-27</span>
+                <h2>Book Your Tour Package</h2>
+                <p class="desc" style="color:#64748b;font-size:0.95rem;margin:0 0 24px;line-height:1.6;">
+                    Reserve your holiday package today. Fill your travel details below to get an instant quote and confirmed itinerary.
+                </p>
+
+                <!-- Success Banner -->
+                <div id="enrollSuccess" style="display:none;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid #10b981;border-radius:20px;padding:28px 24px;text-align:center;margin-bottom:24px;">
+                    <div style="font-size:3rem;margin-bottom:8px;">🎉</div>
+                    <h3 style="color:#065f46;font-size:1.3rem;margin-bottom:8px;">Booking Request Received!</h3>
+                    <p style="color:#047857;font-size:0.92rem;margin:0;">Our travel expert will contact you within 24 hours with your customized itinerary. Thank you for choosing Wanderlust Travels!</p>
+                </div>
+
+                <form id="booking-form" class="tour-booking-form">
+                    <div class="gb-row-2">
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Lead Traveler Full Name *</label>
+                            <input type="text" id="enroll_name" class="gb-field" placeholder="Full name" required>
+                        </div>
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Number of Travelers *</label>
+                            <select id="enroll_travelers" class="gb-field" required>
+                                <option value="">Select Count</option>
+                                <option>1 Person (Solo Traveler)</option>
+                                <option>2 Persons (Couple)</option>
+                                <option>3–4 Persons (Small Family)</option>
+                                <option>5–10 Persons (Group Tour)</option>
+                                <option>10+ Persons (Corporate / Large Group)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="gb-row-2">
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Tentative Travel Date *</label>
+                            <input type="date" id="enroll_travel_date" class="gb-field" required>
+                        </div>
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Duration Preference *</label>
+                            <select id="enroll_duration" class="gb-field" required>
+                                <option value="">Select Duration</option>
+                                <option>Weekend Trip (2–3 Days)</option>
+                                <option>Short Holiday (4–5 Days)</option>
+                                <option>One Week Tour (6–7 Days)</option>
+                                <option>Extended Trip (8–12 Days)</option>
+                                <option>Custom Duration</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="gb-row-2">
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Mobile Number *</label>
+                            <input type="tel" id="enroll_mobile" class="gb-field" placeholder="+91 98765 43210" required>
+                        </div>
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Email Address *</label>
+                            <input type="email" id="enroll_email" class="gb-field" placeholder="yourname@gmail.com" required>
+                        </div>
+                    </div>
+
+                    <div class="gb-input-row">
+                        <label class="gb-field-label">Departure City *</label>
+                        <input type="text" id="enroll_departure" class="gb-field" placeholder="e.g. Delhi, Mumbai, Bengaluru, etc." required>
+                    </div>
+
+                    <div class="gb-row-2">
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Destination of Interest *</label>
+                            <select class="gb-field" id="courseSelect" required>
+                                <option value="">Select Package</option>
+                                <option>Goa Beach Holiday (4N/5D) – ₹12,999</option>
+                                <option>Rajasthan Heritage Tour (6N/7D) – ₹15,999</option>
+                                <option>Kerala Backwaters &amp; Hill Tour (5N/6D) – ₹18,499</option>
+                                <option>Manali Snow &amp; Adventure Trek (3N/4D) – ₹9,999</option>
+                                <option>Kashmir Paradise Explorer (6N/7D) – ₹22,999</option>
+                                <option>Spiti Valley Offbeat Expedition (7N/8D) – ₹13,499</option>
+                                <option>Thailand Delight Tour (5N/6D) – ₹35,999</option>
+                                <option>Bali Dream Vacation (6N/7D) – ₹42,999</option>
+                                <option>Dubai Spectacular Tour (4N/5D) – ₹49,999</option>
+                                <option>Other / Custom Tailored Package</option>
+                            </select>
+                        </div>
+                        <div class="gb-input-row">
+                            <label class="gb-field-label">Accommodation Style *</label>
+                            <select id="enroll_hotel_style" class="gb-field" required>
+                                <option value="">Select Hotel Category</option>
+                                <option>Standard / 3-Star Comfort</option>
+                                <option>Deluxe / 4-Star Premium</option>
+                                <option>Luxury / 5-Star &amp; Heritage Stays</option>
+                                <option>Budget / Homestays &amp; Camps</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="gb-input-row">
+                        <label class="gb-field-label">Trip Type *</label>
+                        <div class="gb-mode-options">
+                            <label class="gb-mode-pill" id="offlineLabel">
+                                <input type="radio" name="courseMode" value="Family/Group" id="modeOffline" required style="accent-color:var(--color-primary);width:18px;height:18px;">
+                                <span>👨‍👩‍👦 Family / Group</span>
+                            </label>
+                            <label class="gb-mode-pill" id="onlineLabel">
+                                <input type="radio" name="courseMode" value="Honeymoon/Couple" id="modeOnline" style="accent-color:var(--color-accent);width:18px;height:18px;">
+                                <span>💑 Couple / Honeymoon</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="gb-input-row">
+                        <label class="gb-field-label">Special Requests / Preferences (Optional)</label>
+                        <textarea id="enroll_message" class="gb-field gb-textarea" placeholder="Tell us about special meal requirements, sightseeing preferences, flight assistance, or budget range..."></textarea>
+                    </div>
+
+                    <div style="margin-top:6px;">
+                        <button type="submit" id="enrollSubmitBtn" class="gb-submit">
+                            <span id="enrollBtnText">Proceed to Confirm Booking &rarr;</span>
+                        </button>
+                        <div class="gb-privacy">
+                            <i data-lucide="lock" style="width:14px;height:14px;color:#10b981;"></i>
+                            <span>100% Secure &amp; Confidential &bull; Free cancellation available on select packages</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brochure Download Section -->
+    <section class="app-section">
+        <div class="app-section-grid">
+            <div class="app-text-col">
+                <span class="app-sub-badge">Free Tour Catalog</span>
+                <h2 style="font-family:var(--font-heading);font-size:clamp(1.8rem, 3.2vw, 2.3rem);font-weight:800;color:#0f172a;margin-bottom:12px;line-height:1.25;">Download Official Holiday Brochure &amp; Itineraries 2026-27</h2>
+                <p style="color:#64748b;font-size:0.98rem;line-height:1.7;max-width:520px;margin-bottom:24px;">
+                    Get comprehensive daily itineraries, hotel pictures, sightseeing inclusions, and group tour discounts directly on your phone.
+                </p>
+                <div style="display:flex;gap:14px;flex-wrap:wrap;">
+                    <a href="courses.html" class="app-download-btn">
+                        <i data-lucide="compass" style="width:20px;height:20px;"></i>
+                        <span>Explore All Destinations</span>
+                    </a>
+                    <a href="tel:+919876543210" class="app-download-btn-secondary">
+                        <i data-lucide="phone-call" style="width:18px;height:18px;"></i>
+                        <span>Talk to Holiday Planner</span>
+                    </a>
+                </div>
+            </div>
+            <div class="app-image-wrap">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80" alt="Wanderlust Travels Holiday Catalog" style="object-fit:cover;height:240px;width:100%;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Location (ViewOnMap) -->
+    <section class="gb-map-section">
+        <div class="container text-center" style="margin-bottom: 28px;">
+            <span class="app-sub-badge" style="background:rgba(13,71,161,0.08);color:var(--color-primary);font-weight:700;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:9999px;">Office Location</span>
+            <h2 style="font-family:var(--font-heading);font-size:clamp(1.7rem, 3vw, 2.2rem);font-weight:800;color:#0f172a;margin:8px 0;">Visit Our Delhi Office</h2>
+            <p style="color:#64748b;font-size:0.95rem;max-width:560px;margin:0 auto;">12, Travel Tower, Connaught Place, New Delhi 110001</p>
+        </div>
+
+        <div class="vom-map-wrapper" id="vomEnrollWrapper">
+            <div class="vom-backdrop-map"></div>
+
+            <div class="vom-pill-btn" onclick="toggleViewOnMap('vomEnrollWrapper', true)">
+                <div class="vom-pill-bg"></div>
+                <div class="vom-pill-content">
+                    <svg class="vom-map-icon" viewBox="0 0 576 512" fill="currentColor">
+                        <path d="M384 476.1L192 421.2l0-385.3L384 90.8l0 385.3zm32-1.2l0-386.5L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3l0 334.8c0 9.8-6 18.6-15.1 22.3L416 474.9zM15.1 95.1L160 37.2l0 386.5L32.9 474.5C17.1 480.8 0 469.2 0 452.2L0 117.4c0-9.8 6-18.6 15.1-22.3z"/>
+                    </svg>
+                    <span class="vom-pill-text">View on Map</span>
+                </div>
+            </div>
+
+            <div class="vom-expanded-map">
+                <button type="button" class="vom-close-btn" onclick="toggleViewOnMap('vomEnrollWrapper', false)" aria-label="Close Map">
+                    <i data-lucide="x" style="width:22px;height:22px;stroke-width:2.5;"></i>
+                </button>
+                <div class="vom-filter-layer">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Connaught%20Place%2C%20New%20Delhi%20110001&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        title="Google Map" 
+                        allowfullscreen 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="vom-bottom-overlay">
+                    <div>
+                        <span style="font-size:0.72rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;display:block;">Travel Desk</span>
+                        <h4 style="font-size:0.88rem;font-weight:600;margin:0;">12, Travel Tower, Connaught Place, New Delhi</h4>
+                    </div>
+                    <a href="https://maps.google.com/?q=Connaught+Place,+New+Delhi+110001" target="_blank" style="background:#0d47a1;color:#ffffff;padding:8px 16px;border-radius:9999px;font-size:0.82rem;font-weight:700;text-decoration:none;" rel="noopener noreferrer">
+                        <span>Get Directions</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-pale" style="padding:60px 0;background:#ffffff;">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align:center;margin-bottom:36px;">
+                <span class="app-sub-badge">Booking FAQs</span>
+                <h2 style="font-family:var(--font-heading);font-size:2rem;font-weight:800;color:#0f172a;margin:8px 0;">Frequently Asked Questions</h2>
+            </div>
+            <div id="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How does the tour booking process work?
+                        <i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+                    </div>
+                    <div class="faq-answer">Submit this online reservation form. Our destination specialist will contact you with a detailed itinerary, hotel options, and price breakdown. Once you approve, you can pay a token deposit to confirm your booking.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Can I customize the itinerary and hotel categories?
+                        <i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+                    </div>
+                    <div class="faq-answer">Yes, absolutely! 100% of our packages can be tailored to your dates, pace, hotel choices, and specific sightseeing desires.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What payment methods do you accept?
+                        <i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+                    </div>
+                    <div class="faq-answer">We accept UPI (GPay, PhonePe, Paytm), Net Banking, Debit/Credit Cards, and direct bank transfers. You can also pay at our Delhi office.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is your cancellation and refund policy?
+                        <i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+                    </div>
+                    <div class="faq-answer">We offer flexible cancellation policies. Depending on the destination and hotel terms, full or partial refunds are provided for cancellations made well ahead of the travel date.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html?cat=beach">Goa Beach Holiday</a></li>
+                        <li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li>
+                        <li><a href="services.html?cat=beach">Kerala Backwaters</a></li>
+                        <li><a href="services.html?cat=adventure">Manali Snow Trek</a></li>
+                        <li><a href="services.html?cat=hills">Kashmir Paradise</a></li>
+                        <li><a href="services.html?cat=adventure">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>© 2026 Wanderlust Travels. All Rights Reserved.</p>
+                <p>IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <!-- ── Payment Choice Modal ── -->
+    <div id="paymentModal">
+        <div class="pay-modal-box">
+            <div class="pay-icon">✈️</div>
+            <h3 class="pay-modal-title">Booking Request Received!</h3>
+            <p class="pay-modal-sub" id="payModalTravelerName">
+                Hi! Your tour reservation has been received. Would you like to pay the advance deposit now or pay after discussing with our holiday expert?
+            </p>
+            <div class="pay-choice-grid">
+                <button type="button" class="pay-choice-btn pay-now-btn" onclick="goToPayment()">
+                    <span class="pay-emoji">💳</span>
+                    <span>Pay Deposit Now</span>
+                    <span class="pay-note">Instant receipt &amp; confirm booking</span>
+                </button>
+                <button type="button" class="pay-choice-btn pay-later-btn" onclick="payLater()">
+                    <span class="pay-emoji">⏳</span>
+                    <span>Pay Later</span>
+                    <span class="pay-note">Pay after itinerary consultation</span>
+                </button>
+            </div>
+            <button type="button" onclick="payLater()" style="background:none;border:none;color:#94a3b8;font-size:0.85rem;cursor:pointer;text-decoration:underline;margin-top:10px;">
+                Skip payment for now &bull; Finish booking
+            </button>
+        </div>
+    </div>
+
+    <script src="rr-bridge.js"></script><script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        var _checkoutParams = null;
+
+        // Auto-select course from URL params if present
+        var urlParams = new URLSearchParams(window.location.search);
+        var courseParam = urlParams.get('course') || urlParams.get('pkg');
+        if (courseParam) {
+            var select = document.getElementById('courseSelect');
+            for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].text.toLowerCase().includes(courseParam.toLowerCase()) || 
+                    (courseParam === 'c1' && select.options[i].text.includes('Goa')) ||
+                    (courseParam === 'c2' && select.options[i].text.includes('Rajasthan')) ||
+                    (courseParam === 'c3' && select.options[i].text.includes('Kerala')) ||
+                    (courseParam === 'c4' && select.options[i].text.includes('Manali')) ||
+                    (courseParam === 'c5' && select.options[i].text.includes('Kashmir')) ||
+                    (courseParam === 'c6' && select.options[i].text.includes('Spiti'))) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        document.querySelectorAll('input[name="courseMode"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('offlineLabel').style.borderColor = '#e5e7eb';
+                document.getElementById('offlineLabel').style.background  = 'white';
+                document.getElementById('onlineLabel').style.borderColor  = '#e5e7eb';
+                document.getElementById('onlineLabel').style.background   = 'white';
+                if (this.value.includes('Family')) {
+                    document.getElementById('offlineLabel').style.borderColor = 'var(--color-primary)';
+                    document.getElementById('offlineLabel').style.background  = 'var(--color-primary-pale,#e8eaf6)';
+                } else {
+                    document.getElementById('onlineLabel').style.borderColor = 'var(--color-accent)';
+                    document.getElementById('onlineLabel').style.background  = '#fff3e0';
+                }
+            });
+        });
+
+        const tourBookingForm = document.getElementById('booking-form') || document.getElementById('enrollment-form');
+        if (tourBookingForm) tourBookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            var name       = (document.getElementById('enroll_name').value || '').trim();
+            var travelers  = (document.getElementById('enroll_travelers').value || '');
+            var travelDate = (document.getElementById('enroll_travel_date').value || '');
+            var duration   = (document.getElementById('enroll_duration').value || '');
+            var mobile     = (document.getElementById('enroll_mobile').value || '').trim();
+            var email      = (document.getElementById('enroll_email').value || '').trim();
+            var departure  = (document.getElementById('enroll_departure').value || '').trim();
+            var destination= document.getElementById('courseSelect').value;
+            var hotelStyle = (document.getElementById('enroll_hotel_style').value || '');
+            var modeEl     = document.querySelector('input[name="courseMode"]:checked');
+            var message    = (document.getElementById('enroll_message').value || '').trim();
+
+            if (!modeEl) {
+                alert('Please select Trip Type');
+                return;
+            }
+
+            var btn  = document.getElementById('enrollSubmitBtn');
+            var btnT = document.getElementById('enrollBtnText');
+            btn.disabled = true;
+            btnT.textContent = '⏳ Submitting your reservation...';
+
+            var now     = new Date();
+            var dateStr = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            var timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+            var detailParts = [];
+            if (travelers)  detailParts.push('Travelers: ' + travelers);
+            if (travelDate) detailParts.push('Date: ' + travelDate);
+            if (duration)   detailParts.push('Duration: ' + duration);
+            if (departure)  detailParts.push('From: ' + departure);
+            if (hotelStyle) detailParts.push('Hotel: ' + hotelStyle);
+            if (modeEl)     detailParts.push('Trip Type: ' + modeEl.value);
+            if (message)    detailParts.push('Notes: ' + message);
+
+            var enquiry = {
+                id:        Date.now().toString(),
+                name:      name,
+                phone:     mobile,
+                email:     email,
+                course:    destination || 'Custom Tour',
+                message:   detailParts.join(' | '),
+                status:    'Pending',
+                date:      dateStr,
+                time:      timeStr,
+                timestamp: now.toISOString(),
+                source:    'Tour Booking Form'
+            };
+
+            try {
+                var getRes  = await fetch('./api.php?action=get&key=wt_enquiries&_=' + Date.now());
+                var getText = await getRes.text();
+                var existing = [];
+                if (getText && getText !== 'null') {
+                    try { existing = JSON.parse(getText); } catch(err) { existing = []; }
+                }
+
+                existing.unshift(enquiry);
+
+                await fetch('./api.php?action=set_public&key=wt_enquiries', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify(existing)
+                });
+            } catch (err) {
+                console.error('[Booking] API error:', err);
+            }
+
+            _checkoutParams = new URLSearchParams({
+                name:        name,
+                mobile:      mobile,
+                destination: destination,
+                mode:        modeEl.value
+            });
+
+            btn.disabled = false;
+            btnT.textContent = '✅ Submit Application →';
+
+            document.getElementById('payModalTravelerName').innerHTML =
+                'Hi <strong>' + name + '</strong>! Your booking inquiry for <strong>' + (destination || 'your tour package') + '</strong> has been received.' +
+                '<br>Would you like to pay the advance reservation deposit now or pay after speaking with our holiday consultant?';
+            document.getElementById('paymentModal').style.display = 'flex';
+        });
+
+        window.goToPayment = function() {
+            document.getElementById('paymentModal').style.display = 'none';
+            if (_checkoutParams) {
+                window.location.href = 'checkout.html?' + _checkoutParams.toString();
+            }
+        };
+
+        window.payLater = function() {
+            document.getElementById('paymentModal').style.display = 'none';
+            var successEl = document.getElementById('enrollSuccess');
+            successEl.style.display = 'block';
+            if (tourBookingForm) tourBookingForm.style.display = 'none';
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        function toggleFAQ(el) {
+            var answer = el.nextElementSibling;
+            answer.classList.toggle('open');
+        }
+
+        function toggleViewOnMap(containerId, open) {
+            var root = document.getElementById(containerId);
+            if (!root) return;
+            var pill = root.querySelector('.vom-pill-btn');
+            var mapBox = root.querySelector('.vom-expanded-map');
+            if (!pill || !mapBox) return;
+
+            if (open) {
+                pill.style.display = 'none';
+                mapBox.classList.add('active');
+                lucide.createIcons();
+            } else {
+                mapBox.classList.remove('active');
+                pill.style.display = 'inline-flex';
+            }
+        }
+    </script>
+</body>
+</html>

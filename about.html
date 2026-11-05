@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Wanderlust Travels</title>
+    <meta name="description" content="Learn about Wanderlust Travels - New Delhi's premier travel agency with IATA certification, Ministry of Tourism approval, and 50,000+ happy travelers since 2014.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .about-intro-section{padding:64px 0;background:#fff}
+        .about-intro-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:center}
+        .about-intro-logo-box{display:flex;flex-direction:column;align-items:center;gap:20px}
+        .about-logo-circle{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-primary-light) 60%,#42a5f5 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(13,71,161,.25);position:relative}
+        .about-logo-circle::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px dashed rgba(13,71,161,.2);animation:spin-slow 20s linear infinite}
+        @keyframes spin-slow{to{transform:rotate(360deg)}}
+        .logo-rr{font-family:var(--font-heading);font-size:3.2rem;font-weight:900;color:white;line-height:1}
+        .logo-tagline-text{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:2px;text-transform:uppercase}
+        .about-estd-badge{display:inline-flex;align-items:center;gap:8px;background:var(--color-primary-pale);color:var(--color-primary);font-weight:700;font-size:.9rem;padding:8px 20px;border-radius:var(--radius-pill);border:1.5px solid rgba(13,71,161,.15)}
+        .section-eyebrow{display:inline-block;font-size:.78rem;font-weight:700;color:var(--color-primary);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+        .about-intro-text h1{font-family:var(--font-heading);font-size:2.2rem;font-weight:800;color:var(--color-text-dark);line-height:1.3;margin-bottom:18px}
+        .about-intro-text h1 span{color:var(--color-primary)}
+        .about-intro-text p{color:var(--color-text-mid);line-height:1.85;margin-bottom:14px;font-size:1rem}
+        .stats-bar{background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 100%);padding:40px 0}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+        .stat-item{text-align:center;padding:20px;position:relative}
+        .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.2)}
+        .stat-num{font-family:var(--font-heading);font-size:2.6rem;font-weight:900;color:var(--color-accent);line-height:1}
+        .stat-label{font-size:.85rem;color:rgba(255,255,255,.8);margin-top:6px;font-weight:500}
+        .vision-section{padding:80px 0;background:#f7f9fc}
+        .vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .vision-image-wrap{display:flex;align-items:center;justify-content:center}
+        .vision-image-wrap img{width:100%;max-width:440px;border-radius:20px;filter:drop-shadow(0 10px 40px rgba(13,71,161,.15));transition:transform .4s ease}
+        .vision-image-wrap img:hover{transform:scale(1.03)}
+        .about-eyebrow{font-size:.78rem;font-weight:700;color:var(--color-primary);text-transform:uppercase;letter-spacing:2.5px;display:block;margin-bottom:14px}
+        .vision-content h2{font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--color-text-dark);margin-bottom:20px;line-height:1.3}
+        .vision-content h2 strong{color:var(--color-primary)}
+        .vision-content p{color:var(--color-text-mid);line-height:1.85;font-size:1rem;margin-bottom:14px}
+        .vision-highlight-box{margin-top:28px;background:white;border-left:4px solid var(--color-primary);border-radius:0 12px 12px 0;padding:20px 24px;box-shadow:var(--shadow-card)}
+        .vision-highlight-box p{font-size:1.05rem;font-weight:600;color:var(--color-primary);margin-bottom:6px}
+        .vision-highlight-box small{color:var(--color-text-light);font-style:italic;font-size:.92rem}
+        .mission-section{padding:80px 0;background:#fff}
+        .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .mission-eyebrow{font-size:.78rem;font-weight:700;color:var(--color-accent-dark);text-transform:uppercase;letter-spacing:2.5px;display:block;margin-bottom:14px}
+        .mission-content h2{font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--color-text-dark);margin-bottom:20px;line-height:1.3}
+        .mission-content p{color:var(--color-text-mid);line-height:1.85;font-size:1rem;margin-bottom:14px}
+        .mission-quote{margin-top:24px;padding:20px 24px;background:linear-gradient(135deg,#fff8e1,#fff3cd);border-radius:12px;border-left:4px solid var(--color-accent)}
+        .mission-quote p{font-weight:600;color:var(--color-text-dark);font-size:1rem;margin-bottom:8px}
+        .mission-quote small{color:var(--color-text-light);font-style:italic}
+        .mission-image-wrap{display:flex;align-items:center;justify-content:center}
+        .mission-image-wrap img{width:100%;max-width:400px;border-radius:50%;filter:drop-shadow(0 10px 40px rgba(255,193,7,.3));transition:transform .4s ease}
+        .mission-image-wrap img:hover{transform:rotate(5deg) scale(1.04)}
+        .team-section{padding:80px 0;background:#f7f9fc}
+        .section-header-center{text-align:center;margin-bottom:56px}
+        .section-header-center h2{font-family:var(--font-heading);font-size:2.2rem;font-weight:800;color:var(--color-text-dark);margin-bottom:14px}
+        .section-header-center p{color:var(--color-text-light);max-width:560px;margin:0 auto}
+        .section-underline{width:60px;height:4px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));border-radius:4px;margin:16px auto 0}
+        /* ── Team5 Expandable Member Strip (Interactive Flex Accordion) ── */
+        .team5-container {
+            display: flex;
+            height: 400px;
+            gap: 10px;
+            width: 100%;
+            margin-top: 24px;
+        }
+        .team5-strip {
+            position: relative;
+            min-width: 0;
+            flex: 1;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: flex 500ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+        }
+        /* Default active strip when user is not actively hovering another strip */
+        .team5-strip.active {
+            flex: 3.2;
+            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.25);
+        }
+        /* When cursor is hovering inside the container, active strip resets unless it is the hovered one */
+        .team5-container:hover .team5-strip {
+            flex: 1;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+        .team5-container:hover .team5-strip:hover {
+            flex: 3.2;
+            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.25);
+        }
+
+        /* Image grayscale to color transition */
+        .team5-img {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 500ms ease, transform 600ms ease;
+        }
+        .team5-strip.active .team5-img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .team5-container:hover .team5-strip .team5-img {
+            filter: grayscale(100%);
+            transform: scale(1);
+        }
+        .team5-container:hover .team5-strip:hover .team5-img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        /* Overlay gradient */
+        .team5-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(9, 14, 26, 0.92) 0%, rgba(9, 14, 26, 0.35) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 350ms ease;
+        }
+        .team5-strip.active .team5-overlay {
+            opacity: 1;
+        }
+        .team5-container:hover .team5-strip .team5-overlay {
+            opacity: 0;
+        }
+        .team5-container:hover .team5-strip:hover .team5-overlay {
+            opacity: 1;
+        }
+
+        /* Information panel slide-up */
+        .team5-info {
+            position: absolute;
+            inset-x: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 24px;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1) 100ms;
+            z-index: 2;
+        }
+        .team5-strip.active .team5-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .team5-container:hover .team5-strip .team5-info {
+            opacity: 0;
+            transform: translateY(14px);
+        }
+        .team5-container:hover .team5-strip:hover .team5-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team5-badge {
+            width: fit-content;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            line-height: 1.2;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+        .team5-name {
+            font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.25;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .team5-socials {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .team5-social-btn {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .team5-social-btn:hover {
+            background: #ffffff;
+            color: #0f172a;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 900px) {
+            .team5-container {
+                height: 360px;
+                gap: 6px;
+            }
+        }
+        @media (max-width: 680px) {
+            .team5-container {
+                height: 340px;
+                gap: 6px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .team5-container::-webkit-scrollbar {
+                display: none;
+            }
+            .team5-strip {
+                min-width: 48px;
+            }
+            .team5-strip.active,
+            .team5-container:hover .team5-strip:hover {
+                min-width: 200px;
+                flex: 3;
+            }
+            .team5-info {
+                padding: 14px 12px;
+                gap: 6px;
+            }
+            .team5-name {
+                font-size: 1.15rem;
+            }
+        }
+        .values-section{padding:80px 0;background:white}
+        .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+        .value-card-gb{background:#f7f9fc;border-radius:18px;padding:36px 24px;text-align:center;transition:all .3s ease;border:1.5px solid transparent}
+        .value-card-gb:hover{background:white;border-color:var(--color-primary-pale);box-shadow:0 12px 36px rgba(13,71,161,.1);transform:translateY(-6px)}
+        .value-icon-gb{width:72px;height:72px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;transition:transform .3s}
+        .value-card-gb:hover .value-icon-gb{transform:rotate(-5deg) scale(1.08)}
+        .value-card-gb h3{font-size:1.1rem;font-weight:700;color:var(--color-text-dark);margin-bottom:10px}
+        .value-card-gb p{font-size:.88rem;color:var(--color-text-light);line-height:1.65}
+        .timeline-section{padding:80px 0;background:#f7f9fc}
+        .timeline-list{max-width:780px;margin:0 auto;position:relative}
+        .timeline-list::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--color-primary),var(--color-accent));opacity:.25}
+        .tl-item{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:start;margin-bottom:40px}
+        .tl-left{text-align:right}
+        .tl-right{text-align:left}
+        .tl-dot{width:20px;height:20px;border-radius:50%;background:var(--color-primary);border:3px solid white;box-shadow:0 0 0 3px var(--color-primary);flex-shrink:0;margin-top:4px}
+        .tl-year{font-family:var(--font-heading);font-size:1.1rem;font-weight:800;color:var(--color-accent-dark)}
+        .tl-title{font-weight:700;color:var(--color-text-dark);font-size:.98rem;margin-top:4px}
+        .tl-desc{font-size:.88rem;color:var(--color-text-light);margin-top:6px;line-height:1.6}
+        .affiliations-section{padding:80px 0;background:white}
+        .affiliations-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+        .affil-item{display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .3s}
+        .affil-item:hover{transform:translateY(-6px)}
+        .affil-icon-box{width:80px;height:80px;border-radius:16px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-card);border:1.5px solid var(--color-border)}
+        .affil-item span{font-size:.85rem;font-weight:700;color:var(--color-text-mid);text-align:center}
+        .about-cta-banner{padding:72px 0;background:linear-gradient(135deg,#e8f0fe 0%,#f3e8ff 50%,#e8f0fe 100%);position:relative;overflow:hidden}
+        .about-cta-inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+        .about-cta-text h2{font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--color-text-dark);margin-bottom:12px}
+        .about-cta-text p{color:var(--color-text-mid);font-size:1rem;line-height:1.7;max-width:560px}
+        .about-cta-actions{display:flex;flex-direction:column;gap:14px;min-width:200px}
+        .btn-cta-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--color-primary);color:white;font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:var(--radius-pill);text-decoration:none;transition:all .3s ease;box-shadow:0 6px 20px rgba(13,71,161,.3)}
+        .btn-cta-primary:hover{background:var(--color-primary-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(13,71,161,.4)}
+        .btn-cta-secondary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:white;color:var(--color-primary);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:var(--radius-pill);text-decoration:none;transition:all .3s ease;border:2px solid var(--color-primary)}
+        .btn-cta-secondary:hover{background:var(--color-primary-pale);transform:translateY(-2px)}
+        @media(max-width:1024px){.team-cards-grid,.values-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){
+            .about-intro-grid,.vision-grid,.mission-grid,.about-cta-inner{grid-template-columns:1fr;text-align:center}
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
+            .team-cards-grid,.values-grid{grid-template-columns:1fr 1fr}
+            .about-logo-circle{margin:0 auto}
+            .vision-image-wrap img,.mission-image-wrap img{max-width:300px}
+            .timeline-list::before{display:none}
+            .tl-item{grid-template-columns:1fr;gap:8px;text-align:left}
+            .tl-dot{display:none}
+        }
+        @media(max-width:480px){.team-cards-grid,.values-grid{grid-template-columns:1fr}.affiliations-row{gap:24px}}
+    </style>
+</head>
+<body>
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar"><div class="container"><div class="announcement-inner"><div class="announcement-left"><span class="announcement-badge">Notice</span><span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span></div><div class="announcement-right"><a href="tel:+919876543210" class="announcement-link"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210</a><a href="mailto:hello@wanderlusttravels.in" class="announcement-link"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in</a></div></div></div></div>
+
+    <!-- ─── Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row"><div class="container"><div class="header-top-inner">
+            <a href="index.html" class="site-logo"><div class="logo-badge"><span class="logo-badge-icon">WT</span><span class="logo-badge-sub">TRAVELS</span></div><div class="logo-text-group"><span class="logo-title">Wanderlust</span><span class="logo-subtitle">Travels &amp; Tourism</span></div></a>
+            <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions"><a href="admin/login.html" class="btn-login-pill"><i data-lucide="user" style="width:16px;height:16px;"></i><span>Login</span></a><a href="enroll.html" class="btn-enroll-pill"><i data-lucide="map-pin" style="width:16px;height:16px;"></i><span>Book Now</span></a><button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu"><i data-lucide="menu" style="width:26px;height:26px;"></i></button></div>
+        </div></div></div>
+        <div class="header-nav-row" id="stickyNav"><div class="container"><div class="nav-inner"><nav class="main-nav" id="mainNav"><a href="index.html" class="nav-item-link">Home</a><a href="about.html" class="nav-item-link active">About Us</a><a href="courses.html" class="nav-item-link">Destinations</a><a href="services.html" class="nav-item-link">Tour Packages</a><a href="gallery.html" class="nav-item-link">Gallery</a><a href="blog.html" class="nav-item-link">Travel Blog</a><a href="contact.html" class="nav-item-link">Contact Us</a></nav></div></div></div>
+    </header>
+
+    <!-- ─── About Intro Section ─── -->
+    <section class="about-intro-section">
+        <div class="container">
+            <div class="about-intro-grid">
+                <div class="about-intro-logo-box">
+                    <div class="about-logo-circle"><span class="logo-rr">WT</span><span class="logo-tagline-text">TRAVELS</span></div>
+                    <div class="about-estd-badge"><i data-lucide="calendar" style="width:16px;height:16px;"></i> Established 2014</div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--color-text-light);background:#f1f5f9;padding:6px 14px;border-radius:20px;"><i data-lucide="shield-check" style="width:14px;height:14px;color:var(--color-secondary);"></i> IATA Certified</span>
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--color-text-light);background:#f1f5f9;padding:6px 14px;border-radius:20px;"><i data-lucide="landmark" style="width:14px;height:14px;color:var(--color-primary);"></i> Ministry Approved</span>
+                    </div>
+                </div>
+                <div class="about-intro-text">
+                    <span class="section-eyebrow">About Us</span>
+                    <h1>Wanderlust <span>Travels &amp; Tourism</span></h1>
+                    <p>Wanderlust Travels is a premier travel agency located in New Delhi, India. Established in 2014, we have been on a mission to make quality travel experiences accessible to every traveler regardless of their budget.</p>
+                    <p>We offer curated domestic and international tour packages, honeymoon specials, adventure treks, and group tours. Our experienced travel consultants, strong hotel partnerships, and customer-first approach have helped 50,000+ travelers explore their dream destinations.</p>
+                    <p>With IATA certification and recognition by the Ministry of Tourism, Government of India, our services are trusted by travelers across the country.</p>
+                    <p>Whether you are a solo traveler, couple, or family group, <strong>Wanderlust Travels has the perfect package for you.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Stats Bar ─── -->
+    <div class="stats-bar"><div class="container"><div class="stats-grid">
+        <div class="stat-item"><div class="stat-num">50,000+</div><div class="stat-label">Travelers Served</div></div>
+        <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Years of Excellence</div></div>
+        <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+        <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Destinations</div></div>
+    </div></div></div>
+
+    <!-- ─── Vision Section ─── -->
+    <section class="vision-section"><div class="container"><div class="vision-grid">
+        <div class="vision-image-wrap"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop&q=80" alt="Our Vision - Travel the World"></div>
+        <div class="vision-content">
+            <span class="about-eyebrow">Our Vision</span>
+            <h2>To Make <strong>World-Class Travel</strong> Accessible to All</h2>
+            <p>To become India's most trusted travel partner where every traveler leaves with beautiful memories, authentic experiences, and the confidence to explore more.</p>
+            <p>We envision a world where travel is not a luxury but a transformative experience available to everyone. Adventure is the great equalizer, and we are committed to bringing the world to every traveler.</p>
+            <div class="vision-highlight-box">
+                <p>"Empowering every traveler to explore the world fearlessly."</p>
+                <small>Vision Statement, Wanderlust Travels</small>
+            </div>
+        </div>
+    </div></div></section>
+
+    <!-- ─── Mission Section ─── -->
+    <section class="mission-section"><div class="container"><div class="mission-grid">
+        <div class="mission-content">
+            <span class="mission-eyebrow">Our Mission</span>
+            <h2>Affordable, Curated, Unforgettable Travel Experiences</h2>
+            <p>Wanderlust Travels is on a mission to ensure that every Indian traveler has access to quality tour packages, expert guidance, and memorable holiday experiences.</p>
+            <p>We strive to provide carefully curated itineraries, expert local guides, 24/7 support, and transparent pricing — all at rates that are accessible to everyone.</p>
+            <div class="mission-quote">
+                <p>"Har Indian ki wish hai duniya dekhna. Hum woh sapna poora karte hain."</p>
+                <small>Wanderlust Travels ka Mission</small>
+            </div>
+        </div>
+        <div class="mission-image-wrap"><img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&auto=format&fit=crop&q=80" alt="Our Mission - Happy Travelers"></div>
+    </div></div></section>
+
+    <!-- ─── Meet Our Travel Experts (Team5 Expandable Strip Style) ─── -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="about-eyebrow">Our Team</span>
+                <h2>Meet Our Travel Experts</h2>
+                <p>Six passionate travel consultants. One mission. Making your journey extraordinary.</p>
+                <div class="section-underline"></div>
+            </div>
+
+            <!-- Team5 Flex Strip Accordion Container -->
+            <div class="team5-container" id="team5StripContainer">
+
+                <!-- Member 1: Arjun Mehta -->
+                <div class="team5-strip active" data-id="arjun-mehta">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop" alt="Portrait of Arjun Mehta" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">Founding Partner</span>
+                        <h3 class="team5-name">Arjun Mehta</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Arjun Mehta on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Arjun Mehta on Twitter" target="_blank" rel="noopener noreferrer">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 2: Priya Sharma -->
+                <div class="team5-strip" data-id="priya-sharma">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Portrait of Priya Sharma" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">International Tours Head</span>
+                        <h3 class="team5-name">Priya Sharma</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Priya Sharma on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Priya Sharma on Twitter" target="_blank" rel="noopener noreferrer">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 3: Neha Kapoor -->
+                <div class="team5-strip" data-id="neha-kapoor">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" alt="Portrait of Neha Kapoor" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">Creative Director</span>
+                        <h3 class="team5-name">Neha Kapoor</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Neha Kapoor on Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.312 23.27 23.27 0 00-4.887-.665c-.066-.31-.14-.62-.224-.925a17.27 17.27 0 003.181-3.722zm-4.394-1.393c.123.475.23.957.322 1.442-2.387.808-4.57 2.01-6.425 3.535A8.528 8.528 0 0112 3.5c.783 0 1.536.108 2.211.217zm-4.444.608a19.49 19.49 0 015.65-3.08A8.528 8.528 0 005.15 7.433c1.455-1.554 3.029-2.585 4.617-2.608zm-5.22 3.882c1.82-1.517 3.963-2.698 6.305-3.486.079.289.15.58.213.873-2.317 1.492-4.298 3.487-5.811 5.865a8.455 8.455 0 01-.707-3.252zm1.272 5.02c1.464-2.28 3.364-4.205 5.602-5.65.234.908.406 1.84.512 2.788-3.328 1.258-5.748 3.42-6.114 2.862zm2.08 3.543c.895-1.577 2.65-3.25 5.253-4.328.375 2.378.435 4.795.178 7.158a8.536 8.536 0 01-5.431-2.83zm7.042 3.123c.24-2.193.184-4.436-.164-6.643a21.75 21.75 0 014.542.617 8.53 8.53 0 01-4.378 6.026z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Neha Kapoor on Twitter" target="_blank" rel="noopener noreferrer">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 4: Rahul Singh -->
+                <div class="team5-strip" data-id="rahul-singh">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" alt="Portrait of Rahul Singh" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">Adventure Specialist</span>
+                        <h3 class="team5-name">Rahul Singh</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Rahul Singh on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Rahul Singh on Website" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 5: Sofia Gupta -->
+                <div class="team5-strip" data-id="sofia-gupta">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Portrait of Sofia Gupta" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">Luxury Tours Expert</span>
+                        <h3 class="team5-name">Sofia Gupta</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Sofia Gupta on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Sofia Gupta on Twitter" target="_blank" rel="noopener noreferrer">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 6: Vikram Kumar -->
+                <div class="team5-strip" data-id="vikram-kumar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop" alt="Portrait of Vikram Kumar" class="team5-img" loading="lazy">
+                    <div class="team5-overlay"></div>
+                    <div class="team5-info">
+                        <span class="team5-badge">Operations Head</span>
+                        <h3 class="team5-name">Vikram Kumar</h3>
+                        <div class="team5-socials">
+                            <a href="#" class="team5-social-btn" aria-label="Vikram Kumar on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#" class="team5-social-btn" aria-label="Vikram Kumar on Twitter" target="_blank" rel="noopener noreferrer">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Core Values Section ─── -->
+    <section class="values-section"><div class="container">
+        <div class="section-header-center"><span class="about-eyebrow">What We Stand For</span><h2>Our Core Values</h2><div class="section-underline"></div></div>
+        <div class="values-grid">
+            <div class="value-card-gb"><div class="value-icon-gb" style="background:linear-gradient(135deg,var(--color-accent),#ffb300);"><i data-lucide="star" style="width:32px;height:32px;color:white;"></i></div><h3>Excellence</h3><p>We never compromise on quality from itinerary planning to on-ground support.</p></div>
+            <div class="value-card-gb"><div class="value-icon-gb" style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light));"><i data-lucide="users" style="width:32px;height:32px;color:white;"></i></div><h3>Inclusivity</h3><p>Travel for all — we offer budget to luxury options for every type of traveler.</p></div>
+            <div class="value-card-gb"><div class="value-icon-gb" style="background:linear-gradient(135deg,var(--color-secondary),var(--color-secondary-light));"><i data-lucide="zap" style="width:32px;height:32px;color:white;"></i></div><h3>Innovation</h3><p>Continuously curating new destinations and experiences to keep travel exciting.</p></div>
+            <div class="value-card-gb"><div class="value-icon-gb" style="background:linear-gradient(135deg,#e91e63,#f06292);"><i data-lucide="heart" style="width:32px;height:32px;color:white;"></i></div><h3>Traveler-First</h3><p>Every decision is guided by what is best for our travelers' safety, comfort, and joy.</p></div>
+        </div>
+    </div></section>
+
+    <!-- ─── Timeline Section ─── -->
+    <section class="timeline-section"><div class="container">
+        <div class="section-header-center"><span class="about-eyebrow">Our Journey</span><h2>A Decade of Excellence</h2><div class="section-underline"></div></div>
+        <div class="timeline-list">
+            <div class="tl-item"><div class="tl-left"><div class="tl-year">2014</div><div class="tl-title">Foundation</div><div class="tl-desc">Wanderlust Travels was established in New Delhi with a small team of passionate travel enthusiasts.</div></div><div class="tl-dot"></div><div class="tl-right"></div></div>
+            <div class="tl-item"><div class="tl-left"></div><div class="tl-dot" style="background:var(--color-accent);box-shadow:0 0 0 3px var(--color-accent);"></div><div class="tl-right"><div class="tl-year">2016</div><div class="tl-title">Ministry of Tourism Recognition</div><div class="tl-desc">Received official recognition from the Ministry of Tourism, Government of India.</div></div></div>
+            <div class="tl-item"><div class="tl-left"><div class="tl-year">2019</div><div class="tl-title">IATA Certification</div><div class="tl-desc">Achieved IATA certification, enabling us to offer international air ticketing and global packages.</div></div><div class="tl-dot" style="background:var(--color-secondary);box-shadow:0 0 0 3px var(--color-secondary);"></div><div class="tl-right"></div></div>
+            <div class="tl-item"><div class="tl-left"></div><div class="tl-dot" style="background:#9c27b0;box-shadow:0 0 0 3px #9c27b0;"></div><div class="tl-right"><div class="tl-year">2022</div><div class="tl-title">New Destinations Added</div><div class="tl-desc">Expanded to international destinations including Thailand, Bali, Dubai, and Singapore.</div></div></div>
+            <div class="tl-item"><div class="tl-left"><div class="tl-year">2026</div><div class="tl-title">50,000+ Happy Travelers</div><div class="tl-desc">Celebrated serving over 50,000 travelers with a 98% customer satisfaction rate.</div></div><div class="tl-dot" style="background:#e91e63;box-shadow:0 0 0 3px #e91e63;"></div><div class="tl-right"></div></div>
+        </div>
+    </div></section>
+
+    <!-- ─── Affiliations Section ─── -->
+    <section class="affiliations-section"><div class="container">
+        <div class="section-header-center"><span class="about-eyebrow">Recognized By</span><h2>Our Affiliations &amp; Recognitions</h2><div class="section-underline"></div></div>
+        <div class="affiliations-row">
+            <div class="affil-item"><div class="affil-icon-box" style="background:var(--color-primary-pale);"><i data-lucide="landmark" style="width:38px;height:38px;color:var(--color-primary);"></i></div><span>Govt. of India<br>(Ministry of Tourism)</span></div>
+            <div class="affil-item"><div class="affil-icon-box" style="background:#fff8e1;"><i data-lucide="building" style="width:38px;height:38px;color:var(--color-accent-dark);"></i></div><span>IATA<br>Certified</span></div>
+            <div class="affil-item"><div class="affil-icon-box" style="background:#e8f5e9;"><i data-lucide="globe" style="width:38px;height:38px;color:var(--color-secondary);"></i></div><span>TAAI<br>Member</span></div>
+            <div class="affil-item"><div class="affil-icon-box" style="background:#fce4ec;"><i data-lucide="shield-check" style="width:38px;height:38px;color:#e91e63;"></i></div><span>ISO 9001:2015<br>Certified</span></div>
+            <div class="affil-item"><div class="affil-icon-box" style="background:#ede7f6;"><i data-lucide="award" style="width:38px;height:38px;color:#7b1fa2;"></i></div><span>Incredible India<br>Partner</span></div>
+        </div>
+    </div></section>
+
+    <!-- ─── CTA Banner ─── -->
+    <section class="about-cta-banner"><div class="container"><div class="about-cta-inner">
+        <div class="about-cta-text"><h2>Ready to Plan Your Dream Holiday?</h2><p>Join 50,000+ travelers who have explored the world with Wanderlust Travels. Browse our packages and book your perfect getaway today.</p></div>
+        <div class="about-cta-actions"><a href="enroll.html" class="btn-cta-primary"><i data-lucide="map-pin" style="width:18px;height:18px;"></i> Book Now</a><a href="contact.html" class="btn-cta-secondary"><i data-lucide="phone" style="width:18px;height:18px;"></i> Contact Us</a></div>
+    </div></div></section>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main"><div class="container">
+        <div class="footer-columns">
+            <div><h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4><p class="footer-desc">Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.</p><div class="footer-social-links"><a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a><a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a></div></div>
+            <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links-list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="courses.html">Destinations</a></li><li><a href="services.html">Tour Packages</a></li><li><a href="gallery.html">Photo Gallery</a></li><li><a href="blog.html">Travel Blog</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+            <div><h4 class="footer-col-title">Popular Tours</h4><ul class="footer-links-list"><li><a href="services.html?pkg=p1">Goa Beach Holiday</a></li><li><a href="services.html?pkg=p2">Rajasthan Heritage</a></li><li><a href="services.html?pkg=p3">Kerala Backwaters</a></li><li><a href="services.html?pkg=p4">Manali Snow Trek</a></li><li><a href="services.html?pkg=p5">Kashmir Paradise</a></li><li><a href="services.html?pkg=p6">Spiti Valley</a></li></ul></div>
+            <div><h4 class="footer-col-title">Contact &amp; Location</h4><div class="footer-contact-item"><i data-lucide="map-pin"></i><span>12, Travel Tower, Connaught Place, New Delhi 110001</span></div><div class="footer-contact-item"><i data-lucide="phone"></i><span>+91 98765 43210</span></div><div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@wanderlusttravels.in</span></div><div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 9:00 AM – 8:00 PM</span></div></div>
+        </div>
+        <div class="footer-bottom-bar"><p>© 2026 Wanderlust Travels. All Rights Reserved.</p><p>IATA Certified Travel Agency | New Delhi, India</p></div>
+    </div></footer>
+
+    <!-- ─── Floating WhatsApp Button ─── -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support"><i data-lucide="message-circle" style="width:30px;height:30px;"></i></a>
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i data-lucide="chevron-up" style="width:24px;height:24px;"></i></div>
+
+    <script src="rr-bridge.js"></script><script src="rr-pages-data.js"></script><script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Team5 interactive accordion handling
+        const teamStrips = document.querySelectorAll('.team5-strip');
+        teamStrips.forEach(strip => {
+            strip.addEventListener('click', (e) => {
+                if (e.target.closest('.team5-social-btn')) return;
+                teamStrips.forEach(s => s.classList.remove('active'));
+                strip.classList.add('active');
+            });
+            strip.addEventListener('mouseenter', () => {
+                teamStrips.forEach(s => s.classList.remove('active'));
+                strip.classList.add('active');
+            });
+        });
+
+        // Smooth scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.tl-item, .team5-container, .value-card-gb').forEach(el => {
+            el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

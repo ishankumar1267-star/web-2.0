@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Packages | Wanderlust Travels</title>
+    <meta name="description" content="Wanderlust Travels offers curated tour packages across India and abroad — Goa, Rajasthan, Kerala, Manali, Kashmir, Spiti, Thailand, Bali and more. IATA Certified Travel Agency, New Delhi.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ═══ Tour Packages Page High-End Styling ═══ */
+
+        /* Hero Banner */
+        .services-banner {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #0f172a;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.90)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&auto=format&fit=crop&q=80');
+            padding: 72px 0 66px;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+        }
+        .services-banner-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .services-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 53, 0.18);
+            color: #ff8c5a;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 107, 53, 0.35);
+        }
+        .services-banner h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3.1rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 14px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .services-banner p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            margin: 0 auto 20px;
+            max-width: 680px;
+        }
+        .services-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+        .services-breadcrumb a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .services-breadcrumb a:hover {
+            color: var(--color-accent, #ff6b35);
+        }
+
+        /* ─── Trust & Advantage Pillars Ribbon ─── */
+        .trust-ribbon-section {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 38px 0;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+        }
+        .trust-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .trust-card:hover {
+            transform: translateY(-4px);
+            background: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+        }
+        .trust-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #ffffff;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .trust-text h4 {
+            font-family: var(--font-heading);
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 3px;
+        }
+        .trust-text p {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ─── Services Main Section ─── */
+        .services-section {
+            background: #f8fafc;
+            padding: 68px 0 88px;
+        }
+        .section-header-block {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 40px;
+        }
+        .section-tag-pill {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+        .section-header-block h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+        .section-header-block p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Filter Pills */
+        .service-filter-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 44px;
+        }
+        .srv-filter-btn {
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 9px 22px;
+            border-radius: 9999px;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .srv-filter-btn:hover {
+            border-color: #cbd5e1;
+            color: #0f172a;
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+        .srv-filter-btn.active {
+            background: #252528;
+            border-color: #252528;
+            color: #EDEDEC;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        }
+
+        /* ─── Premium Service Cards Grid ─── */
+        .services-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 30px;
+        }
+
+        .service-card-modern {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1.5px solid #e2e8f0;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .service-card-modern:hover {
+            transform: translateY(-8px);
+            border-color: #bfdbfe;
+            box-shadow: 0 20px 40px rgba(13, 71, 161, 0.12);
+        }
+
+        .card-top-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+        .card-category-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .card-fast-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 4px 10px;
+            border-radius: 9999px;
+        }
+
+        .card-icon-container {
+            width: 66px;
+            height: 66px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.85rem;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        .service-card-modern:hover .card-icon-container {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .service-card-modern h3 {
+            font-family: var(--font-heading);
+            font-size: 1.32rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 10px;
+            line-height: 1.3;
+        }
+        .service-card-modern p.srv-desc {
+            font-size: 0.92rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 20px;
+            min-height: 48px;
+        }
+
+        .srv-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+        .srv-feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            line-height: 1.45;
+        }
+        .srv-check-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: #16a34a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .card-actions-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .btn-srv-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 9999px;
+            background: #25d366;
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+        }
+        .btn-srv-whatsapp:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+        }
+
+        /* ─── Quick Quote & Consultation Panel ─── */
+        .consultation-section {
+            background: #ffffff;
+            padding: 80px 0;
+            border-top: 1px solid #e2e8f0;
+        }
+        .consultation-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0d47a1 100%);
+            border-radius: 28px;
+            padding: 56px 48px;
+            color: #ffffff;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .consultation-card::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .consultation-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .consultation-left h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 14px;
+            line-height: 1.25;
+        }
+        .consultation-left p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.65;
+            margin: 0 0 28px;
+        }
+        .consult-perks {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .consult-perk-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        .consult-perk-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff8c5a;
+            flex-shrink: 0;
+        }
+
+        .consultation-form-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 34px 30px;
+            color: #0f172a;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+        }
+        .consultation-form-box h4 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0 0 6px;
+            color: #0f172a;
+        }
+        .consultation-form-box p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0 0 20px;
+        }
+        .form-input-group {
+            margin-bottom: 16px;
+        }
+        .form-input-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-field-input, .form-field-select, .form-field-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: #0f172a;
+            background: #f8fafc;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+        .form-field-input:focus, .form-field-select:focus, .form-field-textarea:focus {
+            border-color: #0d47a1;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.12);
+        }
+        .btn-submit-consult {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 9999px;
+            border: none;
+            background: #0d47a1;
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 0.98rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(13, 71, 161, 0.35);
+        }
+        .btn-submit-consult:hover {
+            background: #0a367c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(13, 71, 161, 0.45);
+        }
+
+        /* ─── How It Works / Process ─── */
+        .process-section {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+        .process-grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 26px;
+            position: relative;
+        }
+        .process-step-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1.5px solid #e2e8f0;
+            padding: 34px 26px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .process-step-card:hover {
+            transform: translateY(-6px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+        .process-step-num {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: #eff6ff;
+            color: #0d47a1;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 1.5px solid #bfdbfe;
+        }
+        .process-step-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+        .process-step-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ─── Responsive Media Queries ─── */
+        @media (max-width: 992px) {
+            .consultation-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .consultation-card {
+                padding: 40px 28px;
+            }
+        }
+        @media (max-width: 640px) {
+            .services-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-banner {
+                padding: 56px 0 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ Announcement Bar ═══ -->
+    <div class="announcement-bar"><div class="container"><div class="announcement-inner"><div class="announcement-left"><span class="announcement-badge">New!</span><span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span></div><div class="announcement-right"><a href="tel:+919876543210" class="announcement-link"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210</a><a href="mailto:hello@wanderlusttravels.in" class="announcement-link"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in</a></div></div></div></div>
+
+    <!-- ═══ Header ═══ -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="#" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="contact.html" class="btn-enroll-pill">
+                            <i data-lucide="map" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav Row -->
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link active">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ Page Hero Banner ═══ -->
+    <section class="services-banner">
+        <div class="container">
+            <div class="services-banner-inner">
+                <span class="services-hero-badge">
+                    <i data-lucide="compass" style="width:14px;height:14px;"></i> Handcrafted Experiences
+                </span>
+                <h1>Explore Our Curated Tour Packages</h1>
+                <p>
+                    From serene beaches to thrilling mountains — find your perfect holiday.
+                </p>
+                <ul class="services-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li style="color:var(--color-accent,#ff6b35);">Tour Packages</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Trust & Advantage Ribbon ═══ -->
+    <section class="trust-ribbon-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon-box" style="background:linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i data-lucide="award" style="width:22px;height:22px;"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>IATA Certified</h4>
+                        <p>Ministry of Tourism approved agency you can trust.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon-box" style="background:linear-gradient(135deg, #10b981, #059669);">
+                        <i data-lucide="badge-indian-rupee" style="width:22px;height:22px;"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>Best Price Guarantee</h4>
+                        <p>Transparent pricing with no hidden charges.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon-box" style="background:linear-gradient(135deg, #0d47a1, #1e40af);">
+                        <i data-lucide="users" style="width:22px;height:22px;"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>50,000+ Travelers</h4>
+                        <p>A decade of crafting unforgettable memories.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon-box" style="background:linear-gradient(135deg, #25d366, #128c7e);">
+                        <i data-lucide="message-circle" style="width:22px;height:22px;"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>24/7 Travel Support</h4>
+                        <p>Dedicated support team available round the clock.</p>
+                    </div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon-box" style="background:linear-gradient(135deg, #8b5cf6, #6d28d9);">
+                        <i data-lucide="shield-check" style="width:22px;height:22px;"></i>
+                    </div>
+                    <div class="trust-text">
+                        <h4>100% Safe Travel</h4>
+                        <p>Fully insured trips with verified local partners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Main Tour Packages Grid Section ═══ -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header-block">
+                <span class="section-tag-pill">What We Offer</span>
+                <h2>Handpicked Holiday Packages</h2>
+                <p>
+                    Browse our handcrafted tour packages below. Click any card to get a quote from our travel experts on WhatsApp.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="service-filter-nav">
+                <button class="srv-filter-btn active" data-filter="all">
+                    <i data-lucide="layout-grid" style="width:16px;height:16px;"></i> All
+                </button>
+                <button class="srv-filter-btn" data-filter="beach">
+                    <i data-lucide="waves" style="width:16px;height:16px;"></i> Beach &amp; Island
+                </button>
+                <button class="srv-filter-btn" data-filter="heritage">
+                    <i data-lucide="landmark" style="width:16px;height:16px;"></i> Heritage &amp; Culture
+                </button>
+                <button class="srv-filter-btn" data-filter="adventure">
+                    <i data-lucide="tent" style="width:16px;height:16px;"></i> Adventure
+                </button>
+                <button class="srv-filter-btn" data-filter="hills">
+                    <i data-lucide="mountain" style="width:16px;height:16px;"></i> Hill Stations
+                </button>
+                <button class="srv-filter-btn" data-filter="international">
+                    <i data-lucide="globe" style="width:16px;height:16px;"></i> International
+                </button>
+            </div>
+
+            <!-- Tour Package Cards Grid -->
+            <div class="services-cards-grid" id="packagesGrid">
+
+                <!-- Goa Beach Holiday -->
+                <div class="service-card-modern" data-category="beach">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Beach &amp; Island</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 4N / 5D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #eff6ff, #dbeafe);">
+                        <span style="font-size:1.8rem;">🏖️</span>
+                    </div>
+                    <h3>Goa Beach Holiday</h3>
+                    <p class="srv-desc">Sun, sand, and surf — experience Goa's iconic beaches, vibrant nightlife, water sports, and seafood delights in this ultimate beach escape.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Beach Resort Stay</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Water Sports (Parasailing, Jet Ski)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>North &amp; South Goa City Tour</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Airport / Railway Transfer</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;12,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Rajasthan Heritage Tour -->
+                <div class="service-card-modern" data-category="heritage">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Heritage &amp; Culture</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 6N / 7D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #fff7ed, #ffedd5);">
+                        <span style="font-size:1.8rem;">🏯</span>
+                    </div>
+                    <h3>Rajasthan Heritage Tour</h3>
+                    <p class="srv-desc">Journey through the royal land of Jaipur, Jodhpur, Udaipur, and Jaisalmer — palaces, forts, desert safaris, and vibrant folk culture.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Heritage Hotel Stay</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Desert Safari (Camel &amp; Jeep)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Cultural Shows &amp; Folk Performances</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Expert Local Guide</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;15,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kerala Backwaters -->
+                <div class="service-card-modern" data-category="beach">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Beach &amp; Island</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 5N / 6D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                        <span style="font-size:1.8rem;">🌴</span>
+                    </div>
+                    <h3>Kerala Backwaters</h3>
+                    <p class="srv-desc">Experience God's Own Country — misty hills of Munnar, serene backwaters of Alleppey, and the golden beaches of Kovalam with Ayurveda wellness.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Houseboat Stay (Alleppey)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Ayurveda Spa &amp; Wellness</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Munnar Hill Trek &amp; Tea Garden</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Kovalam Beach Excursion</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;18,499</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Manali Snow Trek -->
+                <div class="service-card-modern" data-category="adventure">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Adventure</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 3N / 4D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #ecfeff, #cffafe);">
+                        <span style="font-size:1.8rem;">🏔️</span>
+                    </div>
+                    <h3>Manali Snow Trek</h3>
+                    <p class="srv-desc">Conquer the snow-clad peaks of Solang Valley and Rohtang Pass, raft the Beas River, and unwind around a bonfire at Old Manali camp.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Snow Activities (Skiing, Snowboarding)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Beas River Rafting</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Camp Stay &amp; Bonfire Night</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Rohtang Pass Excursion</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;9,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kashmir Paradise -->
+                <div class="service-card-modern" data-category="hills">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Hill Stations</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 6N / 7D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #f5f3ff, #ede9fe);">
+                        <span style="font-size:1.8rem;">🌸</span>
+                    </div>
+                    <h3>Kashmir Paradise</h3>
+                    <p class="srv-desc">Discover heaven on Earth — Dal Lake shikara rides in Srinagar, gondola cable cars in Gulmarg, meadows of Pahalgam, and glaciers of Sonmarg.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Dal Lake Houseboat Stay</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Shikara Ride on Dal Lake</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Gondola Cable Car (Gulmarg)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Mughal Garden Tours</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;22,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Spiti Valley Expedition -->
+                <div class="service-card-modern" data-category="adventure">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">Adventure</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 7N / 8D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #fefce8, #fef08a);">
+                        <span style="font-size:1.8rem;">⛺</span>
+                    </div>
+                    <h3>Spiti Valley Expedition</h3>
+                    <p class="srv-desc">An offbeat Himalayan odyssey through Kaza, the ancient Key Monastery, Chandratal Lake, and remote high-altitude villages in the cold desert.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Offbeat Camping (Chandratal &amp; Kaza)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Key Monastery &amp; Kibber Tour</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>High Altitude Trek (4,500m+)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>4WD Expedition Vehicle</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;13,499</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Thailand Delight -->
+                <div class="service-card-modern" data-category="international">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">International</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 5N / 6D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #fdf2f8, #fce7f3);">
+                        <span style="font-size:1.8rem;">🇹🇭</span>
+                    </div>
+                    <h3>Thailand Delight</h3>
+                    <p class="srv-desc">Explore the buzz of Bangkok, chill at Pattaya's beaches, and discover Phuket's paradise islands — temples, night markets, and tropical island hopping.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Island Hopping (Phi Phi &amp; James Bond)</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Grand Palace &amp; Temple Tours</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Authentic Street Food Tour</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Pattaya &amp; Phuket Night Markets</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;35,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bali Dream Holiday -->
+                <div class="service-card-modern" data-category="international">
+                    <div class="card-top-strip">
+                        <span class="card-category-tag">International</span>
+                        <span class="card-fast-badge">
+                            <i data-lucide="calendar" style="width:12px;height:12px;"></i> 6N / 7D
+                        </span>
+                    </div>
+                    <div class="card-icon-container" style="background:linear-gradient(135deg, #eff6ff, #dbeafe);">
+                        <span style="font-size:1.8rem;">🇮🇩</span>
+                    </div>
+                    <h3>Bali Dream Holiday</h3>
+                    <p class="srv-desc">Immerse in Bali's magical blend of emerald rice terraces, ancient temples, chic beach clubs of Seminyak, and luxury spa resorts in Nusa Dua.</p>
+                    <ul class="srv-feature-list">
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Ubud Rice Terraces &amp; Jungle Walk</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Tanah Lot &amp; Uluwatu Temple Visit</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Seminyak Beach Club Access</span>
+                        </li>
+                        <li>
+                            <span class="srv-check-icon"><i data-lucide="check" style="width:12px;height:12px;"></i></span>
+                            <span>Traditional Balinese Spa</span>
+                        </li>
+                    </ul>
+                    <div style="margin-bottom:20px;">
+                        <span style="font-size:1.35rem;font-weight:800;color:#0d47a1;font-family:var(--font-heading);">&#8377;42,999</span>
+                        <span style="font-size:0.85rem;color:#64748b;"> / person</span>
+                    </div>
+                    <div class="card-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." target="_blank" rel="noopener noreferrer" class="btn-srv-whatsapp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Quick Quote & Consultation Section ═══ -->
+    <section class="consultation-section">
+        <div class="container">
+            <div class="consultation-card">
+                <div class="consultation-grid">
+                    <div class="consultation-left">
+                        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:9999px;font-size:0.82rem;font-weight:700;color:#ff8c5a;margin-bottom:14px;text-transform:uppercase;">
+                            <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Free Travel Consultation
+                        </span>
+                        <h3>Have a Custom Trip in Mind? Let's Plan It Together.</h3>
+                        <p>
+                            Share your travel dates, destinations, and budget with our expert travel planners and get a personalised itinerary with the best deals within 30 minutes.
+                        </p>
+                        <div class="consult-perks">
+                            <div class="consult-perk-item">
+                                <div class="consult-perk-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></div>
+                                <span>No hidden costs &bull; 100% transparent pricing</span>
+                            </div>
+                            <div class="consult-perk-item">
+                                <div class="consult-perk-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></div>
+                                <span>Customised group &amp; honeymoon packages available</span>
+                            </div>
+                            <div class="consult-perk-item">
+                                <div class="consult-perk-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></div>
+                                <span>Visa assistance, flights &amp; hotel bookings included</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-box">
+                        <h4>Get an Instant Quote</h4>
+                        <p>Fill in brief details and we'll connect on WhatsApp:</p>
+
+                        <form id="quoteQuickForm" onsubmit="event.preventDefault(); submitQuoteToWhatsApp();">
+                            <div class="form-input-group">
+                                <label for="quoteName">Full Name</label>
+                                <input type="text" id="quoteName" class="form-field-input" placeholder="e.g. Rahul Sharma" required>
+                            </div>
+                            <div class="form-input-group">
+                                <label for="quotePhone">Phone / WhatsApp Number</label>
+                                <input type="tel" id="quotePhone" class="form-field-input" placeholder="e.g. +91 98765 43210" required>
+                            </div>
+                            <div class="form-input-group">
+                                <label for="quoteService">Select Package</label>
+                                <select id="quoteService" class="form-field-select" required>
+                                    <option value="" disabled selected>Choose a Package</option>
+                                    <option value="Goa Beach Holiday">Goa Beach Holiday (4N/5D)</option>
+                                    <option value="Rajasthan Heritage Tour">Rajasthan Heritage Tour (6N/7D)</option>
+                                    <option value="Kerala Backwaters">Kerala Backwaters (5N/6D)</option>
+                                    <option value="Manali Snow Trek">Manali Snow Trek (3N/4D)</option>
+                                    <option value="Kashmir Paradise">Kashmir Paradise (6N/7D)</option>
+                                    <option value="Spiti Valley Expedition">Spiti Valley Expedition (7N/8D)</option>
+                                    <option value="Thailand Delight">Thailand Delight (5N/6D)</option>
+                                    <option value="Bali Dream Holiday">Bali Dream Holiday (6N/7D)</option>
+                                    <option value="Custom Package">Custom Package</option>
+                                </select>
+                            </div>
+                            <div class="form-input-group">
+                                <label for="quoteDetails">Travel Notes (Optional)</label>
+                                <textarea id="quoteDetails" class="form-field-textarea" rows="2" placeholder="Group size, travel dates, special requests..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit-consult">
+                                <i data-lucide="send" style="width:16px;height:16px;"></i> Send Inquiry on WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Process Section (How It Works) ═══ -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header-block">
+                <span class="section-tag-pill">Simple & Easy</span>
+                <h2>How To Book With Us</h2>
+                <p>From inquiry to departure — a seamless 4-step booking experience designed for your comfort.</p>
+            </div>
+
+            <div class="process-grid-cards">
+                <div class="process-step-card">
+                    <div class="process-step-num">01</div>
+                    <h4>1. Share Your Preferences</h4>
+                    <p>Tell us your destination, travel dates, group size, and budget via WhatsApp or our contact form.</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-num">02</div>
+                    <h4>2. Receive Custom Itinerary</h4>
+                    <p>Our experts craft a personalised itinerary with hotels, sightseeing, and transfers within 30 minutes.</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-num">03</div>
+                    <h4>3. Confirm &amp; Book</h4>
+                    <p>Review and confirm your itinerary. Secure your booking with a small advance and enjoy flexible payment options.</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="process-step-num">04</div>
+                    <h4>4. Travel &amp; Enjoy</h4>
+                    <p>Our 24/7 travel support team accompanies you throughout your journey for a worry-free experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent,#ff6b35);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html">Goa Beach Holiday</a></li>
+                        <li><a href="services.html">Rajasthan Heritage</a></li>
+                        <li><a href="services.html">Kerala Backwaters</a></li>
+                        <li><a href="services.html">Manali Snow Trek</a></li>
+                        <li><a href="services.html">Kashmir Paradise</a></li>
+                        <li><a href="services.html">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 Wanderlust Travels. All Rights Reserved. | IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Filter button logic
+        document.querySelectorAll('.srv-filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.srv-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                var filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.service-card-modern').forEach(function(card) {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // WhatsApp Quote Form
+        function submitQuoteToWhatsApp() {
+            var name = document.getElementById('quoteName').value.trim();
+            var phone = document.getElementById('quotePhone').value.trim();
+            var pkg = document.getElementById('quoteService').value;
+            var details = document.getElementById('quoteDetails').value.trim();
+
+            if (!name || !phone || !pkg) {
+                alert('Please enter your Name, Phone Number, and select a Package.');
+                return;
+            }
+
+            var msg = 'Hello%20Wanderlust%20Travels!%0A%0A' +
+                      '*New%20Tour%20Package%20Inquiry:*%0A' +
+                      '%F0%9F%91%A4%20*Name:*%20' + encodeURIComponent(name) + '%0A' +
+                      '%F0%9F%93%9E%20*Phone/WhatsApp:*%20' + encodeURIComponent(phone) + '%0A' +
+                      '%F0%9F%8C%8D%20*Package:*%20' + encodeURIComponent(pkg) + '%0A' +
+                      (details ? '%F0%9F%93%9D%20*Notes:*%20' + encodeURIComponent(details) + '%0A' : '') +
+                      '%0APlease%20share%20the%20itinerary%20and%20pricing%20details.';
+
+            window.open('https://wa.me/919876543210?text=' + msg, '_blank');
+        }
+
+        // Sticky nav & Back to Top
+        window.addEventListener('scroll', function() {
+            var stickyNav = document.getElementById('stickyNav');
+            var backToTop = document.getElementById('backToTopBtn');
+            if (window.scrollY > 80) {
+                if (stickyNav) stickyNav.classList.add('scrolled');
+                if (backToTop) backToTop.classList.add('visible');
+            } else {
+                if (stickyNav) stickyNav.classList.remove('scrolled');
+                if (backToTop) backToTop.classList.remove('visible');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

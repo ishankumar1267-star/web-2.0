@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Destinations | Wanderlust Travels</title>
+    <meta name="description" content="Explore breathtaking travel destinations across India and the world with Wanderlust Travels — Goa, Rajasthan, Kerala, Manali, Kashmir, Spiti, Thailand, Bali and more. IATA Certified, New Delhi.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ─── Destinations Page Extra Styles ─── */
+        .dest-card-price-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0d47a1, #1e40af);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.88rem;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            margin-bottom: 8px;
+        }
+        .dest-highlight-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 12px;
+        }
+        .dest-highlight-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar"><div class="container"><div class="announcement-inner"><div class="announcement-left"><span class="announcement-badge">New!</span><span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span></div><div class="announcement-right"><a href="tel:+919876543210" class="announcement-link"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210</a><a href="mailto:hello@wanderlusttravels.in" class="announcement-link"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in</a></div></div></div></div>
+
+    <!-- ─── Main Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="#" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="contact.html" class="btn-enroll-pill">
+                            <i data-lucide="map" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link active">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ─── Page Hero Banner ─── -->
+    <section class="page-hero" style="background-image: linear-gradient(rgba(15,23,42,0.82), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&auto=format&fit=crop&q=80'); background-size:cover; background-position:center;">
+        <div class="container">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.18);padding:6px 16px;border-radius:9999px;font-size:0.85rem;font-weight:700;color:var(--color-accent);margin-bottom:12px;text-transform:uppercase;">
+                <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Handpicked Destinations
+            </div>
+            <h1>Explore Destinations</h1>
+            <p><a href="index.html">Home</a> &bull; Explore Destinations</p>
+            <p style="color:rgba(255,255,255,0.82);font-size:1.05rem;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">Discover breathtaking places across India and the world</p>
+        </div>
+    </section>
+
+    <!-- ─── Destinations Grid & Filter Section ─── -->
+    <section class="section" style="padding:40px 0 80px;">
+        <div class="container">
+            <!-- Filter Pills -->
+            <div class="course-filter-tabs" id="destinationsFilterGroup">
+                <button class="course-tab-btn active" data-filter="all">All Destinations</button>
+                <button class="course-tab-btn" data-filter="beach">Beach &amp; Island</button>
+                <button class="course-tab-btn" data-filter="heritage">Heritage &amp; Culture</button>
+                <button class="course-tab-btn" data-filter="adventure">Adventure</button>
+                <button class="course-tab-btn" data-filter="hills">Hill Stations</button>
+                <button class="course-tab-btn" data-filter="international">International</button>
+            </div>
+
+            <!-- Destinations Grid -->
+            <div class="courses-grid-cards" id="destinationsGrid">
+                <!-- Destination cards will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Featured Offer Banner ─── -->
+    <section class="app-download-section">
+        <div class="container">
+            <div class="app-download-card" style="background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%); color:white;">
+                <div class="app-info-left">
+                    <span class="app-sub-label" style="color:var(--color-accent);">EXCLUSIVE 2026-27 PACKAGES</span>
+                    <h2 class="app-title" style="color:white;">Early Bird Discounts &amp; Group Tour Deals</h2>
+                    <p style="color:rgba(255,255,255,0.9);margin-bottom:24px;font-size:1.05rem;">
+                        Book any tour package for 2026-27 today and get up to 15% off on group bookings of 6+ travelers. Free visa assistance &amp; travel insurance included on select international packages.
+                    </p>
+                    <a href="contact.html" class="btn-hero-cta">
+                        <span>Book Now &amp; Save</span>
+                        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                    </a>
+                </div>
+                <div class="app-mockup-wrap">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" alt="Travel Deals" style="max-height:220px;filter:drop-shadow(0 15px 30px rgba(0,0,0,0.3));">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html">Goa Beach Holiday</a></li>
+                        <li><a href="services.html">Rajasthan Heritage</a></li>
+                        <li><a href="services.html">Kerala Backwaters</a></li>
+                        <li><a href="services.html">Manali Snow Trek</a></li>
+                        <li><a href="services.html">Kashmir Paradise</a></li>
+                        <li><a href="services.html">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 Wanderlust Travels. All Rights Reserved. | IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        var DESTINATIONS = [
+            {
+                id: 'd1',
+                category: 'beach',
+                tag: 'Popular',
+                image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&auto=format&fit=crop&q=80',
+                title: 'Goa',
+                subtitle: 'Beach Paradise',
+                duration: '4N / 5D',
+                bestTime: 'Nov – Mar',
+                desc: 'Golden beaches, vibrant nightlife, Portuguese heritage, water sports, and fresh seafood — Goa is the ultimate coastal escape for every kind of traveler.',
+                highlights: ['Baga & Calangute Beach', 'Water Sports', 'Old Goa Churches', 'Nightlife & Shacks'],
+                price: '₹12,999',
+                origPrice: '₹15,999',
+                disc: '18%'
+            },
+            {
+                id: 'd2',
+                category: 'heritage',
+                tag: 'Top Rated',
+                image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop&q=80',
+                title: 'Rajasthan',
+                subtitle: 'Royal Heritage',
+                duration: '6N / 7D',
+                bestTime: 'Oct – Mar',
+                desc: 'Majestic forts and palaces, camel safaris in the Thar Desert, royal heritage hotels, and kaleidoscopic bazaars across Jaipur, Jodhpur, Udaipur, and Jaisalmer.',
+                highlights: ['Amber Fort Jaipur', 'Mehrangarh Fort', 'Lake Pichola Udaipur', 'Desert Safari'],
+                price: '₹15,999',
+                origPrice: '₹19,999',
+                disc: '20%'
+            },
+            {
+                id: 'd3',
+                category: 'beach',
+                tag: 'Must Visit',
+                image: 'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=600&auto=format&fit=crop&q=80',
+                title: 'Kerala',
+                subtitle: "God's Own Country",
+                duration: '5N / 6D',
+                bestTime: 'Sep – Mar',
+                desc: 'Drift through the tranquil backwaters on a houseboat, explore misty Munnar tea gardens, rejuvenate with Ayurveda, and unwind on pristine Kovalam beaches.',
+                highlights: ['Alleppey Houseboat', 'Munnar Tea Gardens', 'Ayurveda Spa', 'Kovalam Beach'],
+                price: '₹18,499',
+                origPrice: '₹22,999',
+                disc: '19%'
+            },
+            {
+                id: 'd4',
+                category: 'adventure',
+                tag: 'Thrilling',
+                image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&auto=format&fit=crop&q=80',
+                title: 'Manali',
+                subtitle: 'Snow & Adventure',
+                duration: '3N / 4D',
+                bestTime: 'Dec – Feb (Snow) | Apr – Jun',
+                desc: 'Snow-capped peaks, adventure sports on Solang Valley, thrilling Rohtang Pass drive, river rafting on the Beas, and cozy camp bonfires in the crisp Himalayan air.',
+                highlights: ['Solang Valley Snow', 'Rohtang Pass', 'Beas River Rafting', 'Old Manali'],
+                price: '₹9,999',
+                origPrice: '₹12,999',
+                disc: '23%'
+            },
+            {
+                id: 'd5',
+                category: 'hills',
+                tag: 'Heaven on Earth',
+                image: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&auto=format&fit=crop&q=80',
+                title: 'Kashmir',
+                subtitle: 'Paradise Valley',
+                duration: '6N / 7D',
+                bestTime: 'Apr – Oct',
+                desc: "Dal Lake shikara rides, Mughal gardens in Srinagar, Gulmarg's gondola rides, lush meadows of Pahalgam, and the glaciers of Sonmarg — truly heaven on earth.",
+                highlights: ['Dal Lake Houseboat', 'Gulmarg Gondola', 'Pahalgam Meadows', 'Sonmarg Glacier'],
+                price: '₹22,999',
+                origPrice: '₹27,999',
+                disc: '17%'
+            },
+            {
+                id: 'd6',
+                category: 'adventure',
+                tag: 'Offbeat',
+                image: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=600&auto=format&fit=crop&q=80',
+                title: 'Spiti Valley',
+                subtitle: 'Cold Desert Odyssey',
+                duration: '7N / 8D',
+                bestTime: 'Jun – Sep',
+                desc: 'Explore the surreal cold desert landscape of Spiti — ancient Key Monastery, the stunning Chandratal Lake, remote villages of Kaza and Kibber, and high-altitude treks.',
+                highlights: ['Key Monastery', 'Chandratal Lake', 'Kaza & Kibber', 'High Altitude Trek'],
+                price: '₹13,499',
+                origPrice: '₹16,999',
+                disc: '20%'
+            },
+            {
+                id: 'd7',
+                category: 'international',
+                tag: 'International',
+                image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&auto=format&fit=crop&q=80',
+                title: 'Thailand',
+                subtitle: 'Bangkok · Pattaya · Phuket',
+                duration: '5N / 6D',
+                bestTime: 'Nov – Apr',
+                desc: 'The Land of Smiles — explore Bangkok temples, Pattaya beaches, Phuket island hopping, floating markets, night markets, and exotic Thai cuisine.',
+                highlights: ['Grand Palace Bangkok', 'Phi Phi Island', 'Phuket Nightlife', 'Floating Market'],
+                price: '₹35,999',
+                origPrice: '₹42,999',
+                disc: '16%'
+            },
+            {
+                id: 'd8',
+                category: 'international',
+                tag: 'International',
+                image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=80',
+                title: 'Bali',
+                subtitle: 'Island of Gods',
+                duration: '6N / 7D',
+                bestTime: 'Apr – Oct',
+                desc: "Bali's lush rice terraces in Ubud, sacred Tanah Lot temple, chic beach clubs of Seminyak, luxury spas in Nusa Dua, and a vibrant arts scene make it truly magical.",
+                highlights: ['Ubud Rice Terraces', 'Tanah Lot Temple', 'Seminyak Beach Club', 'Balinese Spa'],
+                price: '₹42,999',
+                origPrice: '₹51,999',
+                disc: '17%'
+            },
+            {
+                id: 'd9',
+                category: 'hills',
+                tag: 'Scenic',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop&q=80',
+                title: 'Darjeeling',
+                subtitle: 'Queen of Hills',
+                duration: '3N / 4D',
+                bestTime: 'Mar – May | Sep – Nov',
+                desc: 'Sunrise over Kanchenjunga at Tiger Hill, toy train rides through mist-covered tea gardens, Buddhist monasteries, and the charm of colonial-era hill station.',
+                highlights: ['Tiger Hill Sunrise', 'Toy Train (UNESCO)', 'Batasia Loop', 'Tea Garden Tour'],
+                price: '₹8,499',
+                origPrice: '₹10,999',
+                disc: '22%'
+            },
+            {
+                id: 'd10',
+                category: 'heritage',
+                tag: 'UNESCO Site',
+                image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&auto=format&fit=crop&q=80',
+                title: 'Agra & Taj Mahal',
+                subtitle: 'Wonder of the World',
+                duration: '2N / 3D',
+                bestTime: 'Oct – Mar',
+                desc: 'Witness the eternal beauty of the Taj Mahal at sunrise, explore the mighty Agra Fort and Fatehpur Sikri, and immerse in Mughal era history and architecture.',
+                highlights: ['Taj Mahal (Sunrise)', 'Agra Fort', 'Fatehpur Sikri', 'Mehtab Bagh'],
+                price: '₹6,999',
+                origPrice: '₹8,999',
+                disc: '22%'
+            },
+            {
+                id: 'd11',
+                category: 'international',
+                tag: 'International',
+                image: 'https://images.unsplash.com/photo-1523978591478-c753949ff840?w=600&auto=format&fit=crop&q=80',
+                title: 'Dubai',
+                subtitle: 'City of Wonders',
+                duration: '4N / 5D',
+                bestTime: 'Nov – Mar',
+                desc: "The dazzling skyline of Burj Khalifa, desert dune bashing, Dubai Mall, Palm Jumeirah beaches, souk shopping, and world-class dining in the City of Gold.",
+                highlights: ['Burj Khalifa (124F)', 'Desert Safari', 'Dubai Mall & Aquarium', 'Palm Jumeirah'],
+                price: '₹49,999',
+                origPrice: '₹59,999',
+                disc: '16%'
+            },
+            {
+                id: 'd12',
+                category: 'beach',
+                tag: 'Tropical',
+                image: 'https://images.unsplash.com/photo-1602002418082-dd4a3f5b31b4?w=600&auto=format&fit=crop&q=80',
+                title: 'Andaman Islands',
+                subtitle: 'Emerald Archipelago',
+                duration: '5N / 6D',
+                bestTime: 'Nov – May',
+                desc: 'Crystal-clear turquoise waters, pristine white-sand beaches, vibrant coral reefs for snorkeling, sea-walking at Elephant Beach, and historic Cellular Jail.',
+                highlights: ['Radhanagar Beach', 'Scuba Diving', 'Cellular Jail', 'Sea Walk & Snorkeling'],
+                price: '₹19,999',
+                origPrice: '₹24,999',
+                disc: '20%'
+            }
+        ];
+
+        function renderDestinations(filterCat, searchQuery) {
+            filterCat = filterCat || 'all';
+            searchQuery = (searchQuery || '').toLowerCase();
+            var grid = document.getElementById('destinationsGrid');
+            grid.innerHTML = '';
+            var found = 0;
+
+            DESTINATIONS.forEach(function(d) {
+                var matchesCat = filterCat === 'all' || d.category === filterCat;
+                var matchesSearch = searchQuery === '' ||
+                    d.title.toLowerCase().indexOf(searchQuery) > -1 ||
+                    d.subtitle.toLowerCase().indexOf(searchQuery) > -1 ||
+                    d.desc.toLowerCase().indexOf(searchQuery) > -1 ||
+                    (d.highlights && d.highlights.join(' ').toLowerCase().indexOf(searchQuery) > -1);
+
+                if (!matchesCat || !matchesSearch) return;
+                found++;
+
+                var highlightHtml = (d.highlights || []).map(function(h) {
+                    return '<span class="dest-highlight-tag">' + h + '</span>';
+                }).join('');
+
+                var cardHtml = '<div class="gyan-course-card" data-category="' + d.category + '">' +
+                    '<div class="course-thumb-box">' +
+                        '<img src="' + d.image + '" alt="' + d.title + '" class="course-thumb-img" loading="lazy">' +
+                        '<span class="course-thumb-badge">' + d.tag + '</span>' +
+                    '</div>' +
+                    '<div class="course-card-content">' +
+                        '<h3 class="course-card-title">' + d.title + ' — ' + d.subtitle + '</h3>' +
+                        '<div class="course-badges-row">' +
+                            '<span class="badge-validity"><i data-lucide="calendar" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:3px;"></i> ' + d.duration + '</span>' +
+                            '<span class="badge-lang"><i data-lucide="sun" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:3px;"></i> Best: ' + d.bestTime + '</span>' +
+                        '</div>' +
+                        '<p style="font-size:0.86rem;color:var(--color-text-light);margin-bottom:10px;line-height:1.55;">' + d.desc.slice(0, 120) + '...</p>' +
+                        '<div class="dest-highlight-row">' + highlightHtml + '</div>' +
+                        '<div class="course-price-row">' +
+                            '<div class="price-left">' +
+                                '<span class="price-current">' + d.price + '</span>' +
+                                '<span class="price-original">' + d.origPrice + '</span>' +
+                            '</div>' +
+                            '<span class="discount-badge">Save ' + d.disc + '</span>' +
+                        '</div>' +
+                        '<div class="course-card-buttons">' +
+                            '<a href="services.html" class="btn-card-explore">View Details</a>' +
+                            '<a href="contact.html" class="btn-card-buy">Book Now</a>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+
+                grid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+
+            if (found === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--color-text-muted);font-size:1.1rem;">No destinations found matching your criteria. <a href="contact.html" style="color:#0d47a1;">Contact us</a> for custom tours.</div>';
+            }
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Sticky nav & Back to Top
+            window.addEventListener('scroll', function() {
+                var stickyNav = document.getElementById('stickyNav');
+                var backToTop = document.getElementById('backToTopBtn');
+                if (window.scrollY > 80) {
+                    if (stickyNav) stickyNav.classList.add('scrolled');
+                    if (backToTop) backToTop.classList.add('visible');
+                } else {
+                    if (stickyNav) stickyNav.classList.remove('scrolled');
+                    if (backToTop) backToTop.classList.remove('visible');
+                }
+            });
+
+            var backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Mobile menu toggle
+            var mobileBtn = document.getElementById('mobileMenuBtn');
+            var mainNav = document.getElementById('mainNav');
+            if (mobileBtn && mainNav) {
+                mobileBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('mobile-active');
+                });
+                document.addEventListener('click', function(e) {
+                    if (!mainNav.contains(e.target) && !mobileBtn.contains(e.target)) {
+                        mainNav.classList.remove('mobile-active');
+                    }
+                });
+            }
+
+            // URL query params
+            var urlParams = new URLSearchParams(window.location.search);
+            var initialCat = urlParams.get('cat') || 'all';
+
+            // Set active tab from URL
+            var filterBtns = document.querySelectorAll('#destinationsFilterGroup .course-tab-btn');
+            filterBtns.forEach(function(btn) {
+                if (btn.getAttribute('data-filter') === initialCat) {
+                    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                }
+            });
+
+            renderDestinations(initialCat, '');
+
+            // Filter button clicks
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    var cat = this.getAttribute('data-filter');
+                    var search = (document.getElementById('pageSearchInput') ? document.getElementById('pageSearchInput').value : '').trim();
+                    renderDestinations(cat, search);
+                });
+            });
+
+            // Header search integration
+            var searchInput = document.getElementById('pageSearchInput');
+            var searchBtn = document.getElementById('pageSearchBtn');
+            var catSelect = document.getElementById('pageCategorySelect');
+
+            function handleSearch() {
+                var query = searchInput ? searchInput.value.trim() : '';
+                var selectedCat = catSelect ? catSelect.value : 'all';
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                filterBtns.forEach(function(btn) {
+                    if (btn.getAttribute('data-filter') === selectedCat) btn.classList.add('active');
+                });
+                renderDestinations(selectedCat, query);
+            }
+
+            if (searchBtn) searchBtn.addEventListener('click', handleSearch);
+            if (searchInput) searchInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSearch(); });
+            if (catSelect) catSelect.addEventListener('change', handleSearch);
+        });
+    </script>
+</body>
+</html>

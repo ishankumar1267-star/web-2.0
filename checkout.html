@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Tour Checkout | Wanderlust Travels</title>
+    <meta name="description"
+        content="Complete your tour booking advance payment at Wanderlust Travels. 100% secure checkout with UPI, Card, Net Banking.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── Checkout Page Styles ─────────────────── */
+        .checkout-wrap {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 36px;
+            max-width: 1080px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        @media (max-width: 540px) {
+            .upi-app-grid { grid-template-columns: repeat(2, 1fr); }
+            .checkout-steps { flex-direction: column; gap: 8px; }
+            .step-line { display: none; }
+            .pay-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+            .pay-tab { padding: 12px 8px; font-size: 0.8rem; }
+            .summary-card { padding: 20px 16px; }
+        }
+        @media (max-width: 400px) {
+            .card-row { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 860px) {
+            .checkout-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Payment Method Tabs */
+        .pay-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .pay-tab {
+            flex: 1;
+            min-width: 100px;
+            border: 2px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 16px 12px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+            background: white;
+            color: var(--color-text-mid);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pay-tab .tab-icon {
+            font-size: 1.8rem;
+        }
+
+        .pay-tab:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .pay-tab.active {
+            border-color: var(--color-primary);
+            background: var(--color-primary-pale);
+            color: var(--color-primary);
+            box-shadow: 0 4px 16px rgba(13, 71, 161, 0.12);
+        }
+
+        .pay-tab.hidden-tab {
+            display: none;
+        }
+
+        /* Panel */
+        .pay-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .pay-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* UPI */
+        .upi-app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .upi-app {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 14px 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text-mid);
+            transition: all 0.2s;
+        }
+
+        .upi-app .upi-logo {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .upi-app:hover,
+        .upi-app.selected {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: #fff3e0;
+        }
+
+        /* Order Summary card */
+        .summary-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 24px rgba(13, 71, 161, 0.1);
+            border: 1.5px solid #e5e7eb;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.9rem;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--color-primary);
+        }
+
+        /* Steps */
+        .checkout-steps {
+            display: flex;
+            gap: 0;
+            margin-bottom: 36px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .step-item.done .step-num {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .step-item.active .step-num {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .step-item.pending .step-num {
+            background: #e5e7eb;
+            color: #9ca3af;
+        }
+
+        .step-item.done .step-label {
+            color: var(--color-secondary);
+        }
+
+        .step-item.active .step-label {
+            color: var(--color-accent);
+        }
+
+        .step-item.pending .step-label {
+            color: #9ca3af;
+        }
+
+        .step-line {
+            height: 2px;
+            background: #e5e7eb;
+            flex: 1;
+            margin: 0 4px;
+        }
+
+        .step-line.done {
+            background: var(--color-secondary);
+        }
+
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #6b7280;
+        }
+
+        /* Input styles */
+        .pay-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .pay-input:focus {
+            border-color: var(--color-accent);
+        }
+
+        .pay-label {
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+            display: block;
+            color: var(--color-text-dark);
+        }
+
+        .pay-group {
+            margin-bottom: 16px;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* Pay button */
+        .pay-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+            box-shadow: 0 6px 24px rgba(13, 71, 161, 0.3);
+        }
+
+        .pay-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(13, 71, 161, 0.4);
+        }
+
+        .pay-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-inner">
+                <div class="announcement-left">
+                    <span class="announcement-badge">Notice</span>
+                    <span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved
+                        Agency</span>
+                </div>
+                <div class="announcement-right">
+                    <a href="tel:+919876543210" class="announcement-link">
+                        <i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210
+                    </a>
+                    <a href="mailto:hello@wanderlusttravels.in" class="announcement-link">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Main Two-Tier Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn"
+                                aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox"
+                                data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all"
+                                        data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday
+                                                packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach"
+                                        data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure"
+                                        data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage"
+                                        data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi
+                                            </p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills"
+                                        data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international"
+                                        data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput"
+                            placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="admin/login.html" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="enroll.html" class="btn-enroll-pill">
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle"
+                            onclick="document.getElementById('mainNav').classList.toggle('mobile-active')"
+                            aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero"
+        style="padding: var(--space-2xl) 0;background:linear-gradient(135deg,var(--color-primary-dark),var(--color-primary));color:white;text-align:center;">
+        <div class="container">
+            <span class="tag"
+                style="background:rgba(255,255,255,0.2);color:white;display:inline-block;padding:6px 16px;border-radius:9999px;font-weight:700;font-size:0.82rem;margin-bottom:12px;">💳
+                Secure Checkout</span>
+            <h1 style="font-family:var(--font-heading);font-size:2.4rem;font-weight:800;margin-bottom:10px;">Confirm
+                Your Tour Booking</h1>
+            <p><a href="index.html" style="color:white;opacity:0.8;">Home</a> &bull; <a href="enroll.html"
+                    style="color:white;opacity:0.8;">Booking</a> &bull; <span>Checkout</span></p>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="section" style="padding:60px 0;">
+        <div class="container">
+
+            <!-- Steps -->
+            <div class="checkout-steps" style="max-width:600px;margin:0 auto 40px;">
+                <div class="step-item done">
+                    <div class="step-num">✓</div>
+                    <div class="step-label">Select Tour</div>
+                </div>
+                <div class="step-line done"></div>
+                <div class="step-item active">
+                    <div class="step-num">2</div>
+                    <div class="step-label">Advance Deposit</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item pending">
+                    <div class="step-num">3</div>
+                    <div class="step-label">Confirmed!</div>
+                </div>
+            </div>
+
+            <div class="checkout-wrap">
+                <!-- LEFT: Payment Methods -->
+                <div>
+                    <div
+                        style="background:white;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(13,71,161,0.08);border:1.5px solid #e5e7eb;">
+                        <h2 style="font-size:1.4rem;margin-bottom:8px;font-family:var(--font-heading);">Choose Payment
+                            Method</h2>
+                        <p style="font-size:0.88rem;color:#6b7280;margin-bottom:24px;">Select how you'd like to pay your
+                            tour advance reservation deposit</p>
+
+                        <!-- Payment Tabs -->
+                        <div class="pay-tabs" id="payTabs">
+                            <div class="pay-tab active" onclick="switchTab('upi')" id="tab-upi">
+                                <div class="tab-icon">📱</div>
+                                UPI
+                            </div>
+                            <div class="pay-tab" onclick="switchTab('card')" id="tab-card">
+                                <div class="tab-icon">💳</div>
+                                Card
+                            </div>
+                            <div class="pay-tab" onclick="switchTab('netbanking')" id="tab-netbanking">
+                                <div class="tab-icon">🏦</div>
+                                Net Banking
+                            </div>
+                            <div class="pay-tab" onclick="switchTab('cash')" id="tab-cash">
+                                <div class="tab-icon">🏢</div>
+                                Pay at Delhi Office
+                            </div>
+                        </div>
+
+                        <!-- UPI Panel -->
+                        <div class="pay-panel active" id="panel-upi">
+                            <p style="font-size:0.85rem;color:#6b7280;margin-bottom:16px;">Pay using your favorite UPI
+                                app</p>
+                            <div class="upi-app-grid" id="upiAppsGrid">
+                                <div class="upi-app" onclick="selectUpiApp(this,'GPay')">
+                                    <div class="upi-logo">🟢</div>GPay
+                                </div>
+                                <div class="upi-app" onclick="selectUpiApp(this,'PhonePe')">
+                                    <div class="upi-logo">🟣</div>PhonePe
+                                </div>
+                                <div class="upi-app" onclick="selectUpiApp(this,'Paytm')">
+                                    <div class="upi-logo">🔵</div>Paytm
+                                </div>
+                                <div class="upi-app" onclick="selectUpiApp(this,'BHIM')">
+                                    <div class="upi-logo">🟠</div>BHIM
+                                </div>
+                            </div>
+                            <div id="upiIdSection">
+                                <p style="font-size:0.82rem;font-weight:700;color:#374151;margin-bottom:8px;">Or enter
+                                    UPI ID manually:</p>
+                                <div class="pay-group">
+                                    <input type="text" class="pay-input" id="upiId" placeholder="yourname@upi">
+                                </div>
+                            </div>
+                            <div id="upiQrSection"
+                                style="display:none;text-align:center;padding:20px;background:#f0fdf4;border-radius:14px;border:2px dashed #22c55e;margin-bottom:16px;">
+                                <div style="font-size:3rem;margin-bottom:8px;">📱</div>
+                                <div style="font-weight:800;color:#166534;margin-bottom:4px;">UPI QR Code</div>
+                                <div id="upiQrValue"
+                                    style="font-family:monospace;font-size:0.9rem;color:#166534;font-weight:700;">
+                                    wanderlust@upi</div>
+                                <p style="font-size:0.78rem;color:#16a34a;margin-top:8px;">Scan with any UPI app to pay
+                                </p>
+                            </div>
+                            <button class="pay-btn" onclick="processPayment('UPI')" id="upiPayBtn">
+                                🔒 Pay Advance Deposit via UPI
+                            </button>
+                        </div>
+
+                        <!-- Card Panel -->
+                        <div class="pay-panel" id="panel-card">
+                            <p style="font-size:0.85rem;color:#6b7280;margin-bottom:16px;">Enter your debit or credit
+                                card details</p>
+                            <div class="pay-group">
+                                <label class="pay-label">Card Number</label>
+                                <input type="text" class="pay-input" placeholder="1234 5678 9012 3456" maxlength="19"
+                                    oninput="formatCardNum(this)">
+                            </div>
+                            <div class="pay-group">
+                                <label class="pay-label">Name on Card</label>
+                                <input type="text" class="pay-input" placeholder="Full Name as on Card">
+                            </div>
+                            <div class="card-row">
+                                <div class="pay-group">
+                                    <label class="pay-label">Expiry (MM/YY)</label>
+                                    <input type="text" class="pay-input" placeholder="MM/YY" maxlength="5"
+                                        oninput="formatExpiry(this)">
+                                </div>
+                                <div class="pay-group">
+                                    <label class="pay-label">CVV</label>
+                                    <input type="password" class="pay-input" placeholder="•••" maxlength="4">
+                                </div>
+                            </div>
+                            <div
+                                style="display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:0.8rem;color:#6b7280;">
+                                <i data-lucide="shield-check" style="width:16px;height:16px;color:#22c55e;"></i>
+                                256-bit SSL Secured • Card data is never stored
+                            </div>
+                            <button class="pay-btn" onclick="processPayment('Card')">
+                                🔒 Pay Securely with Card
+                            </button>
+                        </div>
+
+                        <!-- Net Banking Panel -->
+                        <div class="pay-panel" id="panel-netbanking">
+                            <p style="font-size:0.85rem;color:#6b7280;margin-bottom:16px;">Select your bank for net
+                                banking payment</p>
+                            <div class="pay-group">
+                                <label class="pay-label">Select Bank</label>
+                                <select class="pay-input">
+                                    <option value="">-- Choose your Bank --</option>
+                                    <option>State Bank of India (SBI)</option>
+                                    <option>HDFC Bank</option>
+                                    <option>ICICI Bank</option>
+                                    <option>Axis Bank</option>
+                                    <option>Punjab National Bank (PNB)</option>
+                                    <option>Bank of Baroda</option>
+                                    <option>Kotak Mahindra Bank</option>
+                                    <option>Other Bank</option>
+                                </select>
+                            </div>
+                            <div id="bankDetails"
+                                style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:14px;padding:16px;margin-bottom:16px;display:none;">
+                                <div style="font-weight:800;color:var(--color-primary);margin-bottom:10px;">📋 Bank
+                                    Account Details</div>
+                                <div id="bankDetailsContent" style="font-size:0.88rem;line-height:2;">
+                                    Account: Wanderlust Travels Pvt Ltd<br>
+                                    A/C No: 50200012345678<br>
+                                    IFSC: HDFC0001234<br>
+                                    Branch: Connaught Place, New Delhi
+                                </div>
+                            </div>
+                            <button class="pay-btn" onclick="processPayment('Net Banking')"
+                                style="background:linear-gradient(135deg,#1565c0,#1976d2);">
+                                🏦 Proceed to Net Banking
+                            </button>
+                        </div>
+
+                        <!-- Office Payment Panel -->
+                        <div class="pay-panel" id="panel-cash">
+                            <div
+                                style="text-align:center;padding:28px 20px;background:#fff8f0;border-radius:16px;border:2px dashed var(--color-accent);margin-bottom:20px;">
+                                <div style="font-size:3.5rem;margin-bottom:12px;">🏢</div>
+                                <h3
+                                    style="color:var(--color-primary);margin-bottom:8px;font-family:var(--font-heading);">
+                                    Pay at Our Delhi Office</h3>
+                                <p style="font-size:0.9rem;color:#6b7280;margin-bottom:16px;">Visit our travel lounge in
+                                    Connaught Place to finalize your itinerary and make your advance payment.</p>
+                                <div
+                                    style="background:white;border-radius:10px;padding:14px;font-size:0.85rem;line-height:1.9;border:1px solid #e5e7eb;">
+                                    📍 <strong>12, Travel Tower, Connaught Place, New Delhi</strong><br>
+                                    📞 <strong>+91 98765 43210</strong><br>
+                                    🕐 <strong>Mon–Sat: 9:00 AM – 8:00 PM</strong>
+                                </div>
+                            </div>
+                            <button class="pay-btn" onclick="processPayment('Pay at Office')"
+                                style="background:linear-gradient(135deg,var(--color-accent),#ffb300);color:#0f172a;">
+                                ✅ Confirm Booking (Pay at Office)
+                            </button>
+                        </div>
+
+                        <!-- Trust badges -->
+                        <div class="trust-badges" style="margin-top:20px;">
+                            <div class="trust-badge"><i data-lucide="shield"
+                                    style="width:14px;height:14px;color:#22c55e;"></i> SSL Encrypted</div>
+                            <div class="trust-badge"><i data-lucide="lock"
+                                    style="width:14px;height:14px;color:#3b82f6;"></i> IATA Verified</div>
+                            <div class="trust-badge"><i data-lucide="refresh-cw"
+                                    style="width:14px;height:14px;color:#f59e0b;"></i> Easy Cancellation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Booking Summary -->
+                <div>
+                    <div class="summary-card">
+                        <h3 style="margin-bottom:20px;font-size:1.15rem;font-family:var(--font-heading);">📋 Booking
+                            Summary</h3>
+                        <div class="summary-row">
+                            <span style="color:#6b7280;">Lead Traveler</span>
+                            <span style="font-weight:700;" id="sumName">—</span>
+                        </div>
+                        <div class="summary-row">
+                            <span style="color:#6b7280;">Contact</span>
+                            <span style="font-weight:700;" id="sumMobile">—</span>
+                        </div>
+                        <div class="summary-row">
+                            <span style="color:#6b7280;">Destination</span>
+                            <span style="font-weight:700;text-align:right;max-width:180px;" id="sumCourse">—</span>
+                        </div>
+                        <div class="summary-row">
+                            <span style="color:#6b7280;">Trip Type</span>
+                            <span id="sumMode" style="font-weight:700;"></span>
+                        </div>
+                        <div class="summary-row">
+                            <span style="color:#6b7280;">Advance Deposit</span>
+                            <span style="font-weight:700;color:var(--color-secondary);" id="sumFee">₹2,500</span>
+                        </div>
+                        <div class="summary-row"
+                            style="border-bottom:2px solid var(--color-primary-pale);padding-bottom:14px;">
+                            <span style="font-weight:800;font-size:1rem;">Total Due Today</span>
+                            <span class="summary-total" id="sumTotal">₹2,500</span>
+                        </div>
+                        <div
+                            style="margin-top:16px;padding:12px;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;">
+                            <div style="font-size:0.8rem;color:#166534;font-weight:700;">✅ Inclusions with Booking</div>
+                            <ul style="list-style:none;margin-top:8px;font-size:0.78rem;color:#166534;line-height:2;">
+                                <li>✔ Hotel &amp; Resort Reservations</li>
+                                <li>✔ Private Cab &amp; Airport Transfers</li>
+                                <li>✔ Dedicated 24/7 Trip Coordinator</li>
+                                <li>✔ Daily Breakfast &amp; Sightseeing Tours</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top:14px;text-align:center;font-size:0.78rem;color:#9ca3af;">
+                            Need help? Call <a href="tel:+919876543210"
+                                style="color:var(--color-primary);font-weight:700;">+91 98765 43210</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating
+                        unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook"
+                                style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram"
+                                style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube"
+                                style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i
+                                data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html?cat=beach">Goa Beach Holiday</a></li>
+                        <li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li>
+                        <li><a href="services.html?cat=beach">Kerala Backwaters</a></li>
+                        <li><a href="services.html?cat=adventure">Manali Snow Trek</a></li>
+                        <li><a href="services.html?cat=hills">Kashmir Paradise</a></li>
+                        <li><a href="services.html?cat=adventure">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>© 2026 Wanderlust Travels. All Rights Reserved.</p>
+                <p>IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages."
+        class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <script src="rr-bridge.js"></script>
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        const params = new URLSearchParams(window.location.search);
+        const travelerName = params.get('name') || 'Traveler';
+        const travelerMobile = params.get('mobile') || '—';
+        const travelerDestination = params.get('destination') || params.get('course') || 'Goa Beach Holiday';
+        const travelerMode = params.get('mode') || 'Family/Group';
+
+        document.getElementById('sumName').textContent = travelerName;
+        document.getElementById('sumMobile').textContent = travelerMobile;
+        document.getElementById('sumCourse').textContent = travelerDestination;
+
+        const modeBadge = document.getElementById('sumMode');
+        if (travelerMode.includes('Honeymoon') || travelerMode.includes('Couple')) {
+            modeBadge.innerHTML = '<span style="background:#fff3e0;color:var(--color-accent);padding:3px 12px;border-radius:99px;font-size:0.8rem;">💑 Couple</span>';
+        } else {
+            modeBadge.innerHTML = '<span style="background:var(--color-primary-pale);color:var(--color-primary);padding:3px 12px;border-radius:99px;font-size:0.8rem;">👨‍👩‍👦 Family/Group</span>';
+        }
+
+        const PAYMENT_KEY = 'wt_payment_settings';
+        async function loadPaymentSettings() {
+            let s = null;
+            try {
+                const res = await fetch('api.php?action=get&key=' + PAYMENT_KEY);
+                const text = await res.text();
+                if (text) {
+                    s = JSON.parse(text);
+                }
+            } catch (e) { }
+
+            if (!s) return;
+
+            try {
+                if (s.depositFee) {
+                    document.getElementById('sumFee').textContent = '₹' + s.depositFee;
+                    document.getElementById('sumTotal').textContent = '₹' + s.depositFee;
+                }
+            } catch (e) { console.warn('Payment settings error:', e); }
+        }
+
+        function switchTab(method) {
+            document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + method).classList.add('active');
+            document.getElementById('panel-' + method).classList.add('active');
+            lucide.createIcons();
+        }
+
+        function selectUpiApp(el, app) {
+            document.querySelectorAll('.upi-app').forEach(a => a.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('upiId').placeholder = app + ' UPI ID';
+        }
+
+        function formatCardNum(el) {
+            let v = el.value.replace(/\D/g, '').substring(0, 16);
+            el.value = v.replace(/(.{4})/g, '$1 ').trim();
+        }
+        function formatExpiry(el) {
+            let v = el.value.replace(/\D/g, '').substring(0, 4);
+            if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
+            el.value = v;
+        }
+
+        function processPayment(method) {
+            const fee = document.getElementById('sumTotal').textContent;
+            const bookingData = {
+                name: travelerName,
+                mobile: travelerMobile,
+                destination: travelerDestination,
+                mode: travelerMode,
+                method: method,
+                fee: fee,
+                txnId: 'WT' + Date.now().toString().slice(-8).toUpperCase(),
+                timestamp: new Date().toLocaleString('en-IN')
+            };
+            localStorage.setItem('wt_last_booking', JSON.stringify(bookingData));
+
+            let bookings = [];
+            try { bookings = JSON.parse(localStorage.getItem('wt_bookings') || '[]'); } catch (e) { }
+            bookings.unshift(bookingData);
+            localStorage.setItem('wt_bookings', JSON.stringify(bookings));
+
+            window.location.href = 'thank-you.html';
+        }
+
+        loadPaymentSettings();
+    </script>
+</body>
+
+</html>

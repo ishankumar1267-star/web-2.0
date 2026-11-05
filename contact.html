@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Wanderlust Travels</title>
+    <meta name="description" content="Contact Wanderlust Travels in New Delhi. Visit us at Travel Tower, Connaught Place or call us for tour package inquiries and holiday planning.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── Contact Solution Form Hero Section ── */
+        .contact-solution-section {
+            background: #ffffff;
+            padding: 72px 0 84px;
+            position: relative;
+        }
+        .contact-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 52px;
+            align-items: center;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .contact-solution-left {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .contact-solution-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 18px;
+            border-radius: 9999px;
+            background: var(--color-primary-pale);
+            color: var(--color-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border: 1px solid rgba(13, 71, 161, 0.15);
+        }
+        .contact-solution-badge svg {
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+        .contact-solution-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 4.2vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--color-text-dark);
+            margin: 0;
+        }
+        .contact-solution-accent {
+            display: block;
+            color: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact-solution-subheadline {
+            color: var(--color-text-mid);
+            font-size: 1.02rem;
+            line-height: 1.75;
+            max-width: 440px;
+            margin: 0;
+        }
+        .contact-solution-sep {
+            width: 64px;
+            height: 3.5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            border-radius: 4px;
+            margin: 4px 0 6px;
+        }
+        .contact-info-pills-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .contact-pill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f5f9;
+            border-radius: 18px;
+            padding: 6px 18px 6px 6px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .contact-pill-item:hover {
+            background: #e8f0fe;
+            border-color: rgba(13, 71, 161, 0.25);
+            transform: translateY(-2px);
+        }
+        .contact-pill-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+        .contact-pill-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-pill-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--color-text-light);
+            margin: 0;
+            line-height: 1.2;
+        }
+        .contact-pill-value {
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin: 2px 0 0;
+            line-height: 1.25;
+        }
+
+        /* ── Right Column: Solution Card ── */
+        .contact-solution-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 36px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+            position: relative;
+        }
+        .contact-solution-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .contact-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .contact-form-label {
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+        .contact-form-input,
+        .contact-form-select,
+        .contact-form-textarea {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 13px 16px;
+            font-size: 0.93rem;
+            color: var(--color-text-dark);
+            font-family: inherit;
+            outline: none;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        .contact-form-input:focus,
+        .contact-form-select:focus,
+        .contact-form-textarea:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.15);
+            background: #ffffff;
+        }
+        .contact-form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        .contact-form-textarea {
+            resize: none;
+            min-height: 104px;
+        }
+        .contact-submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: #ffffff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: inset 0 2px 0 0 rgba(255, 255, 255, 0.35), inset 0 -2px 0 0 rgba(0, 0, 0, 0.18), 0 8px 24px rgba(13, 71, 161, 0.28);
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+        .contact-submit-btn:hover {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: inset 0 2px 0 0 rgba(255, 255, 255, 0.4), inset 0 -2px 0 0 rgba(0, 0, 0, 0.2), 0 12px 28px rgba(13, 71, 161, 0.38);
+        }
+        .contact-submit-btn .btn-arrow-icon {
+            transition: transform 0.25s ease;
+        }
+        .contact-submit-btn:hover .btn-arrow-icon {
+            transform: translateX(4px);
+        }
+        .contact-alert-box {
+            display: none;
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-align: center;
+        }
+        .contact-alert-box.alert-success {
+            background: #ecfdf5;
+            border: 1.5px solid #a7f3d0;
+            color: #065f46;
+        }
+        .contact-alert-box.alert-error {
+            background: #fef2f2;
+            border: 1.5px solid #fecaca;
+            color: #991b1b;
+        }
+
+        /* ── Campus Location & Map Section ── */
+        .contact-campus-section {
+            background: #f8fafc;
+            padding: 72px 0 84px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .contact-campus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 40px;
+            align-items: stretch;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .campus-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 36px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .campus-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .campus-feature-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .campus-feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .campus-actions-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+        .btn-wa-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            background: #25d366;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .btn-wa-action:hover {
+            background: #1ebc59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+        }
+        .btn-call-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            background: var(--color-primary-pale);
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .btn-call-action:hover {
+            background: #dbeafe;
+            transform: translateY(-2px);
+        }
+        /* ── ViewOnMap Component (Interactive Expandable Map) ── */
+        .campus-map-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 420px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #E5E4EE;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .vom-backdrop-map {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            filter: grayscale(100%) brightness(1.1);
+            transition: opacity 0.35s ease;
+        }
+        .campus-map-wrapper:hover .vom-backdrop-map {
+            opacity: 0.45;
+        }
+
+        /* Collapsed Pill Button */
+        .vom-pill-btn {
+            position: relative;
+            z-index: 10;
+            width: 190px;
+            height: 54px;
+            border-radius: 27px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #E5E4EE;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .vom-pill-btn:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+        }
+        .vom-pill-btn:active {
+            transform: scale(0.97);
+        }
+        .vom-pill-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.22;
+            filter: brightness(1.1) grayscale(100%);
+            background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .vom-pill-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 18px;
+        }
+        .vom-map-icon {
+            width: 20px;
+            height: 20px;
+            color: #6A6973;
+            flex-shrink: 0;
+        }
+        .vom-pill-text {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #3D3C43;
+            font-family: var(--font-heading);
+            white-space: nowrap;
+        }
+
+        /* Expanded Map Box */
+        .vom-expanded-map {
+            display: none;
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            width: 100%;
+            height: 100%;
+            background: #DEDEDE;
+            overflow: hidden;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            animation: vomSpringIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes vomSpringIn {
+            from {
+                opacity: 0;
+                transform: scale(0.88);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .vom-expanded-map.active {
+            display: block;
+        }
+        .vom-filter-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            filter: brightness(1.02) contrast(1.05) grayscale(0.85) saturate(0.8) sepia(0.1);
+        }
+        .vom-filter-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+        .vom-filter-layer iframe.loaded {
+            opacity: 1;
+        }
+
+        /* Loader */
+        .vom-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E5E5E7;
+            z-index: 10;
+            transition: opacity 0.35s ease;
+        }
+        .vom-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3.5px solid #cbd5e1;
+            border-top-color: #0d47a1;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Close Button */
+        .vom-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 50;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #85848B;
+            border: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .vom-close-btn:hover {
+            background: #f8fafc;
+            color: #1e293b;
+            transform: scale(1.08) rotate(90deg);
+        }
+        .vom-close-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Bottom Details Overlay */
+        .vom-bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            inset-x: 0;
+            z-index: 30;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 65%, transparent 100%);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            color: #ffffff;
+        }
+        .vom-location-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2px;
+            display: block;
+        }
+        .vom-location-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            max-width: 320px;
+            line-height: 1.35;
+        }
+        .vom-directions-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0d47a1;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
+        }
+        .vom-directions-btn:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+        }
+
+        /* ── FAQ Section ── */
+        .contact-faq-section {
+            background: #ffffff;
+            padding: 72px 0 84px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px 28px;
+            transition: all 0.25s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 24px rgba(13,71,161,0.08);
+            border-color: #bfdbfe;
+            transform: translateY(-2px);
+        }
+        .faq-question {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin: 0 0 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .faq-q-icon {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-top: 1px;
+        }
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--color-text-mid);
+            line-height: 1.7;
+            margin: 0;
+            padding-left: 32px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-solution-grid,
+            .contact-campus-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .contact-solution-card {
+                padding: 28px 20px;
+            }
+            .contact-form-row {
+                grid-template-columns: 1fr;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-solution-card {
+                padding: 20px 14px;
+            }
+            .contact-solution-heading {
+                font-size: 1.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar"><div class="container"><div class="announcement-inner"><div class="announcement-left"><span class="announcement-badge">New!</span><span>🌍 New Tour Packages for 2026-27 | IATA Certified & Ministry of Tourism Approved Agency</span></div><div class="announcement-right"><a href="tel:+919876543210" class="announcement-link"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210</a><a href="mailto:hello@wanderlusttravels.in" class="announcement-link"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in</a></div></div></div></div>
+    <header class="header-wrapper">
+      <div class="header-top-row"><div class="container"><div class="header-top-inner">
+        <a href="index.html" class="site-logo"><div class="logo-badge"><span class="logo-badge-icon">WT</span><span class="logo-badge-sub">TRAVELS</span></div><div class="logo-text-group"><span class="logo-title">Wanderlust</span><span class="logo-subtitle">Travels & Tourism</span></div></a>
+        <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions"><a href="admin/login.html" class="btn-login-pill"><i data-lucide="user" style="width:16px;height:16px;"></i><span>Login</span></a><a href="contact.html" class="btn-enroll-pill"><i data-lucide="map-pin" style="width:16px;height:16px;"></i><span>Book Now</span></a><button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu"><i data-lucide="menu" style="width:26px;height:26px;"></i></button></div>
+      </div></div></div>
+      <div class="header-nav-row" id="stickyNav"><div class="container"><div class="nav-inner"><nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-item-link">Home</a>
+        <a href="about.html" class="nav-item-link">About Us</a>
+        <a href="courses.html" class="nav-item-link">Destinations</a>
+        <a href="services.html" class="nav-item-link">Tour Packages</a>
+        <a href="gallery.html" class="nav-item-link">Gallery</a>
+        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+        <a href="contact.html" class="nav-item-link active">Contact Us</a>
+      </nav></div></div></div>
+    </header>
+
+
+    <!-- ─── Contact Solution Form ─── -->
+    <section class="contact-solution-section">
+        <div class="container">
+            <div class="contact-solution-grid">
+                
+                <!-- Left Column: Headline, Subheadline, Separator & Info Pills -->
+                <div class="contact-solution-left">
+                    <div class="contact-solution-badge">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>Travel Inquiry</span>
+                    </div>
+
+                    <h1 class="contact-solution-heading">
+                        Plan Your <span class="contact-solution-accent">Dream Trip With Us</span>
+                    </h1>
+
+                    <p class="contact-solution-subheadline">
+                        Fill out the form and our travel experts will get back to you within 24 hours with a customized itinerary and best pricing.
+                    </p>
+
+                    <div class="contact-solution-sep"></div>
+
+                    <!-- Contact Info Pills -->
+                    <div class="contact-info-pills-row">
+                        <a href="mailto:hello@wanderlusttravels.in" class="contact-pill-item">
+                            <div class="contact-pill-icon-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-pill-text">
+                                <span class="contact-pill-label">Email Us</span>
+                                <span class="contact-pill-value">hello@wanderlusttravels.in</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+919876543210" class="contact-pill-item">
+                            <div class="contact-pill-icon-box">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-pill-text">
+                                <span class="contact-pill-label">Phone / WhatsApp</span>
+                                <span class="contact-pill-value">+91 98765 43210</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Card with Modern Form -->
+                <div class="contact-solution-card">
+                    <form id="contact-form" class="contact-solution-form">
+                        
+                        <div class="contact-form-group">
+                            <label class="contact-form-label" for="enq_name">Full Name *</label>
+                            <input id="enq_name" type="text" class="contact-form-input" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="enq_email">Email Address</label>
+                                <input id="enq_email" type="email" class="contact-form-input" placeholder="rahul@example.com">
+                            </div>
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="enq_phone">Phone Number *</label>
+                                <input id="enq_phone" type="tel" class="contact-form-input" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-group">
+                            <label class="contact-form-label" for="enq_destination">Destination of Interest</label>
+                            <select id="enq_destination" class="contact-form-select">
+                                <option value="" disabled selected>Choose a destination…</option>
+                                <option value="Goa">Goa – Beach Holiday</option>
+                                <option value="Rajasthan">Rajasthan – Heritage Tour</option>
+                                <option value="Kerala">Kerala – Backwaters &amp; Beach</option>
+                                <option value="Manali">Manali – Snow &amp; Adventure</option>
+                                <option value="Kashmir">Kashmir – Paradise on Earth</option>
+                                <option value="Spiti">Spiti Valley – Remote Himalaya</option>
+                                <option value="International">International Tour</option>
+                                <option value="Other">Other / Custom Package</option>
+                            </select>
+                        </div>
+
+                        <div class="contact-form-row">
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="enq_travel_date">Travel Date</label>
+                                <input id="enq_travel_date" type="date" class="contact-form-input">
+                            </div>
+                            <div class="contact-form-group">
+                                <label class="contact-form-label" for="enq_travelers">No. of Travelers</label>
+                                <select id="enq_travelers" class="contact-form-select">
+                                    <option value="" disabled selected>Select count…</option>
+                                    <option value="1">1 Person (Solo)</option>
+                                    <option value="2">2 Persons (Couple)</option>
+                                    <option value="3-4">3–4 Persons (Family)</option>
+                                    <option value="5-10">5–10 Persons (Group)</option>
+                                    <option value="10+">10+ Persons (Large Group)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-group">
+                            <label class="contact-form-label" for="enq_message">Message</label>
+                            <textarea id="enq_message" rows="4" class="contact-form-textarea" placeholder="Tell us about your travel preferences, budget, or any special requirements…"></textarea>
+                        </div>
+
+                        <button type="submit" id="enq_submit_btn" class="contact-submit-btn">
+                            <span>Send Inquiry</span>
+                            <svg class="btn-arrow-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+
+                        <div id="enq_success_msg" class="contact-alert-box alert-success">
+                            ✓ Thank you! Your inquiry has been sent. Our travel expert will reach out to you within 24 hours.
+                        </div>
+                        <div id="enq_error_msg" class="contact-alert-box alert-error">
+                            ⚠️ Something went wrong. Please contact us directly via Phone or WhatsApp at +91 98765 43210.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Office Location & Working Hours Section ─── -->
+    <section class="contact-campus-section">
+        <div class="container">
+            <div class="contact-campus-grid">
+                
+                <div class="campus-card">
+                    <div>
+                        <span class="contact-solution-badge" style="margin-bottom:12px;">Office Visit</span>
+                        <h2 style="font-family:var(--font-heading);font-size:1.85rem;font-weight:800;color:var(--color-text-dark);margin:0 0 10px;">Our Office Location</h2>
+                        <p style="color:var(--color-text-mid);font-size:0.95rem;line-height:1.65;margin:0 0 24px;">Visit our travel office in Connaught Place, New Delhi for personalized holiday planning, package demonstrations, and customized tour quotes.</p>
+                    </div>
+
+                    <div class="campus-features">
+                        <div class="campus-feature-item">
+                            <div class="campus-feature-icon" style="background:var(--color-primary-pale);color:var(--color-primary);">
+                                <i data-lucide="map-pin" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin:0 0 4px;font-size:0.95rem;color:var(--color-text-dark);font-weight:700;">Visit Our Office</h4>
+                                <p style="margin:0;font-size:0.88rem;color:var(--color-text-mid);line-height:1.5;">12, Travel Tower, Connaught Place, New Delhi 110001</p>
+                            </div>
+                        </div>
+
+                        <div class="campus-feature-item">
+                            <div class="campus-feature-icon" style="background:#fff8e1;color:var(--color-accent-dark);">
+                                <i data-lucide="clock" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin:0 0 4px;font-size:0.95rem;color:var(--color-text-dark);font-weight:700;">Working Hours</h4>
+                                <p style="margin:0;font-size:0.88rem;color:var(--color-text-mid);line-height:1.5;">Monday – Saturday: 9:00 AM – 8:00 PM<br><span style="color:#e11d48;font-size:0.8rem;font-weight:600;">(Sunday Closed)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="campus-feature-item">
+                            <div class="campus-feature-icon" style="background:#e8f5e9;color:var(--color-secondary);">
+                                <i data-lucide="phone" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin:0 0 4px;font-size:0.95rem;color:var(--color-text-dark);font-weight:700;">Call Us</h4>
+                                <p style="margin:0;font-size:0.88rem;color:var(--color-text-mid);line-height:1.5;">+91 98765 43210</p>
+                            </div>
+                        </div>
+
+                        <div class="campus-feature-item">
+                            <div class="campus-feature-icon" style="background:#fce7f3;color:#be185d;">
+                                <i data-lucide="mail" style="width:20px;height:20px;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin:0 0 4px;font-size:0.95rem;color:var(--color-text-dark);font-weight:700;">Email Us</h4>
+                                <p style="margin:0;font-size:0.88rem;color:var(--color-text-mid);line-height:1.5;">hello@wanderlusttravels.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="campus-actions-row">
+                        <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="btn-wa-action" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp Support
+                        </a>
+                        <a href="tel:+919876543210" class="btn-call-action">
+                            <i data-lucide="phone" style="width:16px;height:16px;"></i> Call Us Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="campus-map-wrapper" id="vomContactWrapper">
+                    <div class="vom-backdrop-map"></div>
+
+                    <!-- --- PILL BUTTON (COLLAPSED) --- -->
+                    <div class="vom-pill-btn" onclick="toggleViewOnMap('vomContactWrapper', true)">
+                        <div class="vom-pill-bg"></div>
+                        <div class="vom-pill-content">
+                            <svg class="vom-map-icon" viewBox="0 0 576 512" fill="currentColor">
+                                <path d="M384 476.1L192 421.2l0-385.3L384 90.8l0 385.3zm32-1.2l0-386.5L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3l0 334.8c0 9.8-6 18.6-15.1 22.3L416 474.9zM15.1 95.1L160 37.2l0 386.5L32.9 474.5C17.1 480.8 0 469.2 0 452.2L0 117.4c0-9.8 6-18.6 15.1-22.3z"/>
+                            </svg>
+                            <span class="vom-pill-text">View on Map</span>
+                        </div>
+                    </div>
+
+                    <!-- --- EXPANDED MAP --- -->
+                    <div class="vom-expanded-map">
+                        <button type="button" class="vom-close-btn" onclick="toggleViewOnMap('vomContactWrapper', false)" aria-label="Close Map">
+                            <i data-lucide="x" style="width:22px;height:22px;stroke-width:2.5;"></i>
+                        </button>
+                        <div class="vom-loader">
+                            <div class="vom-spinner"></div>
+                        </div>
+                        <div class="vom-filter-layer">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=Connaught%20Place%2C%20New%20Delhi%20110001&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                title="Google Map" 
+                                allowfullscreen 
+                                loading="lazy"
+                                onload="onMapLoaded(this)">
+                            </iframe>
+                        </div>
+                        <div class="vom-bottom-overlay">
+                            <div>
+                                <span class="vom-location-label">Office Location</span>
+                                <h4 class="vom-location-title">12, Travel Tower, Connaught Place, New Delhi 110001</h4>
+                            </div>
+                            <a href="https://maps.google.com/?q=Connaught+Place,+New+Delhi+110001" target="_blank" class="vom-directions-btn" rel="noopener noreferrer">
+                                <i data-lucide="navigation" style="width:14px;height:14px;"></i>
+                                <span>Get Directions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Travel FAQs Section ─── -->
+    <section class="contact-faq-section">
+        <div class="container">
+            <div style="text-align:center;max-width:640px;margin:0 auto 48px;">
+                <span style="display:inline-block;font-size:0.82rem;font-weight:700;color:var(--color-primary);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;">FAQs</span>
+                <h2 style="font-family:var(--font-heading);font-size:clamp(1.8rem,3vw,2.3rem);font-weight:800;color:#0f172a;margin:0 0 12px;letter-spacing:-0.02em;">Frequently Asked Questions</h2>
+                <p style="color:#64748b;font-size:0.98rem;line-height:1.65;margin:0;">Everything you need to know about booking your dream holiday with us.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <span class="faq-q-icon">Q</span>
+                        How do I book a tour package?
+                    </h3>
+                    <p class="faq-answer">You can book online by filling our inquiry form or visiting our office. We'll send you a customized quote within 24 hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <span class="faq-q-icon">Q</span>
+                        Do you offer customized packages?
+                    </h3>
+                    <p class="faq-answer">Yes! All our packages are fully customizable. Tell us your preferences and we'll create a perfect itinerary for you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <span class="faq-q-icon">Q</span>
+                        What is included in the packages?
+                    </h3>
+                    <p class="faq-answer">Most packages include accommodation, transport, sightseeing, and meal plans. Check individual package details for specifics.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <span class="faq-q-icon">Q</span>
+                        Do you offer international tours?
+                    </h3>
+                    <p class="faq-answer">Yes, we offer international packages to Thailand, Bali, Dubai, Singapore, and more!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer-main"><div class="container">
+      <div class="footer-columns">
+        <div><h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4><p class="footer-desc">Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.</p><div class="footer-social-links"><a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a><a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a></div></div>
+        <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links-list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="courses.html">Destinations</a></li><li><a href="services.html">Tour Packages</a></li><li><a href="gallery.html">Photo Gallery</a></li><li><a href="blog.html">Travel Blog</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+        <div><h4 class="footer-col-title">Popular Tours</h4><ul class="footer-links-list"><li><a href="services.html?cat=beach">Goa Beach Holiday</a></li><li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li><li><a href="services.html?cat=beach">Kerala Backwaters</a></li><li><a href="services.html?cat=adventure">Manali Snow Trek</a></li><li><a href="services.html?cat=hills">Kashmir Paradise</a></li><li><a href="services.html?cat=adventure">Spiti Valley</a></li></ul></div>
+        <div><h4 class="footer-col-title">Contact &amp; Location</h4><div class="footer-contact-item"><i data-lucide="map-pin"></i><span>12, Travel Tower, Connaught Place, New Delhi 110001</span></div><div class="footer-contact-item"><i data-lucide="phone"></i><span>+91 98765 43210</span></div><div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@wanderlusttravels.in</span></div><div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span></div></div>
+      </div>
+      <div class="footer-bottom-bar"><p>© 2026 Wanderlust Travels. All Rights Reserved.</p><p>IATA Certified Travel Agency | New Delhi, India</p></div>
+    </div></footer>
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support"><i data-lucide="message-circle" style="width:30px;height:30px;"></i></a>
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i data-lucide="chevron-up" style="width:24px;height:24px;"></i></div>
+
+
+    <script src="rr-bridge.js"></script><script src="rr-pages-data.js"></script><script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name        = document.getElementById('enq_name').value.trim();
+            const phone       = document.getElementById('enq_phone').value.trim();
+            const email       = document.getElementById('enq_email').value.trim();
+            const destination = document.getElementById('enq_destination').value.trim();
+            const travelDate  = document.getElementById('enq_travel_date').value.trim();
+            const travelers   = document.getElementById('enq_travelers').value.trim();
+            const message     = document.getElementById('enq_message').value.trim();
+
+            if (!name || !phone) return;
+
+            const btn = document.getElementById('enq_submit_btn');
+            const originalBtnHTML = btn.innerHTML;
+            btn.innerHTML = '<span>Sending Inquiry...</span>';
+            btn.disabled = true;
+
+            const enquiry = {
+                id: Date.now().toString(),
+                name, phone, email, destination, travelDate, travelers, message,
+                status: 'Pending',
+                date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                // Load existing enquiries
+                const res  = await fetch('./api.php?action=get&key=wt_enquiries');
+                const text = await res.text();
+                let existing = [];
+                if (text && text !== 'null') {
+                    try { existing = JSON.parse(text); } catch(e) { existing = []; }
+                }
+                existing.unshift(enquiry); // Add new enquiry to front
+
+                // Save back to API
+                await fetch('./api.php?action=set_public&key=wt_enquiries', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(existing)
+                });
+
+                document.getElementById('enq_success_msg').style.display = 'block';
+                document.getElementById('enq_error_msg').style.display   = 'none';
+                this.reset();
+            } catch(err) {
+                document.getElementById('enq_error_msg').style.display   = 'block';
+                document.getElementById('enq_success_msg').style.display = 'none';
+                console.error('Enquiry save error:', err);
+            }
+
+            btn.innerHTML = originalBtnHTML;
+            btn.disabled = false;
+        });
+
+        /* ── ViewOnMap Toggle Functions ── */
+        function toggleViewOnMap(containerId, open) {
+            var root = document.getElementById(containerId);
+            if (!root) return;
+            var pill = root.querySelector('.vom-pill-btn');
+            var mapBox = root.querySelector('.vom-expanded-map');
+            if (!pill || !mapBox) return;
+
+            if (open) {
+                pill.style.display = 'none';
+                mapBox.classList.add('active');
+                lucide.createIcons();
+            } else {
+                mapBox.classList.remove('active');
+                pill.style.display = 'inline-flex';
+            }
+        }
+
+        function onMapLoaded(iframe) {
+            iframe.classList.add('loaded');
+            var container = iframe.closest('.vom-expanded-map');
+            if (container) {
+                var loader = container.querySelector('.vom-loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(function() { loader.style.display = 'none'; }, 350);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

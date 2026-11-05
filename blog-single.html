@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Travel Blog | Wanderlust Travels</title>
+    <meta name="description" id="pageMetaDesc" content="Read destination guides, itinerary tips, and travel stories from Wanderlust Travels.">
+    <script>
+        if (window.location.pathname.indexOf('/blog/') !== -1) {
+            document.write('<base href="../">');
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gb-single-page {
+            background: #f1f5f9;
+            padding: 32px 0 60px;
+        }
+        .gb-single-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 32px;
+            align-items: start;
+        }
+        .gb-article-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 36px 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            min-width: 0;
+            overflow-x: hidden;
+        }
+        .gb-post-category-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--color-primary);
+            border: 1px solid #bfdbfe;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .gb-post-title {
+            font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.28;
+            margin-bottom: 16px;
+            letter-spacing: -0.02 em;
+            font-family: var(--font-heading);
+        }
+        .gb-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.84rem;
+            color: #64748b;
+        }
+        .gb-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .gb-article-img-wrap {
+            margin-bottom: 28px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        .gb-article-img-wrap img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            display: block;
+        }
+        .gb-article-body {
+            color: #334155;
+            font-size: 1.02rem;
+            line-height: 1.85;
+        }
+        .gb-article-body h2 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 32px 0 12px;
+            font-family: var(--font-heading);
+        }
+        .gb-article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 24px 0 10px;
+        }
+        .gb-article-body p {
+            margin-bottom: 16px;
+        }
+        .gb-article-body ul, .gb-article-body ol {
+            margin: 14px 0 20px 22px;
+        }
+        .gb-article-body li {
+            margin-bottom: 8px;
+        }
+        .gb-share-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            padding: 18px 22px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-top: 32px;
+        }
+        .gb-share-btns {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .share-wa { background: #25d366; color: white; }
+        .share-wa:hover { background: #1ebc59; }
+        .share-fb { background: #1877f2; color: white; }
+        .share-fb:hover { background: #0c63d4; }
+        .share-copy { background: #ffffff; color: #334155; border: 1px solid #cbd5e1; }
+        .share-copy:hover { background: #f1f5f9; }
+
+        .gb-author-box {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            margin-top: 28px;
+        }
+        .gb-author-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: white;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-family: var(--font-heading);
+        }
+
+        /* ── Sidebar Widgets ── */
+        .gb-single-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 90px;
+        }
+        .gb-cta-card {
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.2);
+            text-align: center;
+        }
+        .gb-cta-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .gb-cta-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+        }
+        .gb-cta-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+        .gb-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: var(--color-accent);
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .gb-cta-btn:hover {
+            background: #ffb300;
+            transform: translateY(-2px);
+        }
+        .gb-cta-phone {
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .gb-sidebar-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 22px;
+        }
+        .gb-sidebar-card-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .latest-blogs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .latest-blog-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .latest-blog-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .latest-blog-item-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.35;
+            text-decoration: none;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .latest-blog-item-title:hover {
+            color: var(--color-primary);
+        }
+        .latest-blog-item-date {
+            font-size: 0.74rem;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+        .gb-popular-courses {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gb-popular-courses li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #f8fafc;
+            color: #1e293b;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .gb-popular-courses li a:hover {
+            background: var(--color-primary-pale);
+            color: var(--color-primary);
+        }
+        .course-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            color: #475569;
+            font-weight: 700;
+        }
+
+        /* Related Posts */
+        .gb-related-section {
+            background: #ffffff;
+            padding: 56px 0 72px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .gb-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .gb-blog-card {
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+        }
+        .gb-blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.1);
+        }
+        .gb-blog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .gb-blog-card-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .gb-blog-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+        }
+        .gb-blog-card-date {
+            font-size: 0.76rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .gb-read-more-btn {
+            margin-top: auto;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 7px 18px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            align-self: flex-start;
+            transition: all 0.2s ease;
+        }
+        .gb-read-more-btn:hover {
+            background: var(--color-primary);
+        }
+
+        @media (max-width: 980px) {
+            .gb-single-layout { grid-template-columns: 1fr; }
+            .gb-article-card { padding: 24px 20px; }
+            .gb-single-sidebar { position: static; }
+            .gb-cards-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .gb-article-card { padding: 18px 14px; }
+            .gb-article-title { font-size: 1.35rem; line-height: 1.3; }
+            .gb-article-meta { flex-wrap: wrap; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar">
+        <div class="container">
+            <div class="announcement-inner">
+                <div class="announcement-left">
+                    <span class="announcement-badge">Notice</span>
+                    <span>🌍 New Tour Packages for 2026-27 | IATA Certified &amp; Ministry of Tourism Approved Agency</span>
+                </div>
+                <div class="announcement-right">
+                    <a href="tel:+919876543210" class="announcement-link">
+                        <i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210
+                    </a>
+                    <a href="mailto:hello@wanderlusttravels.in" class="announcement-link">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Main Two-Tier Header ─── -->
+    <header class="header-wrapper">
+        <div class="header-top-row">
+            <div class="container">
+                <div class="header-top-inner">
+                    <a href="index.html" class="site-logo">
+                        <div class="logo-badge">
+                            <span class="logo-badge-icon">WT</span>
+                            <span class="logo-badge-sub">TRAVELS</span>
+                        </div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">Wanderlust</span>
+                            <span class="logo-subtitle">Travels &amp; Tourism</span>
+                        </div>
+                    </a>
+
+                    <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions">
+                        <a href="admin/login.html" class="btn-login-pill">
+                            <i data-lucide="user" style="width:16px;height:16px;"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="enroll.html" class="btn-enroll-pill">
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>Book Now</span>
+                        </a>
+                        <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu">
+                            <i data-lucide="menu" style="width:26px;height:26px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav-row" id="stickyNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <nav class="main-nav" id="mainNav">
+                        <a href="index.html" class="nav-item-link">Home</a>
+                        <a href="about.html" class="nav-item-link">About Us</a>
+                        <a href="courses.html" class="nav-item-link">Destinations</a>
+                        <a href="services.html" class="nav-item-link">Tour Packages</a>
+                        <a href="gallery.html" class="nav-item-link">Gallery</a>
+                        <a href="blog.html" class="nav-item-link active">Travel Blog</a>
+                        <a href="contact.html" class="nav-item-link">Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Bar -->
+    <div style="background:#fff;border-bottom:1px solid #e2e8f0;padding:14px 0;">
+        <div class="container">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                <nav style="font-size:0.85rem;color:#64748b;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                    <a href="index.html" style="color:#64748b;text-decoration:none;">Home</a>
+                    <span>/</span>
+                    <a href="blog.html" style="color:#64748b;text-decoration:none;">Travel Blog</a>
+                    <span>/</span>
+                    <span id="breadcrumbCategory" style="color:#64748b;">Travel Guide</span>
+                    <span>/</span>
+                    <span id="breadcrumbTitle" style="color:#0f172a;font-weight:600;max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;vertical-align:bottom;">Loading…</span>
+                </nav>
+                <a href="blog.html" style="font-size:0.82rem;font-weight:700;color:var(--color-primary);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">
+                    <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> All Articles
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Single Page Body -->
+    <div class="gb-single-page">
+        <div class="container">
+
+            <!-- Loading state -->
+            <div id="postLoading" style="text-align:center;padding:80px 20px;background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;">
+                <div style="font-size:3rem;margin-bottom:14px;">⏳</div>
+                <h3 style="color:#0f172a;margin-bottom:6px;">Loading Travel Article…</h3>
+                <p style="color:#64748b;font-size:0.9rem;">Fetching content from Wanderlust Travels blog archive.</p>
+            </div>
+
+            <!-- Not found state -->
+            <div id="postNotFound" style="display:none;text-align:center;padding:80px 20px;background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;">
+                <div style="font-size:3.5rem;margin-bottom:14px;">📭</div>
+                <h3 style="color:#0f172a;margin-bottom:8px;">Article Not Found</h3>
+                <p style="color:#64748b;margin-bottom:20px;">This travel guide does not exist or may have been updated.</p>
+                <a href="blog.html" class="gb-cta-btn" style="display:inline-flex;max-width:240px;margin:0 auto;">← Browse All Articles</a>
+            </div>
+
+            <!-- Post Content -->
+            <div id="postContent" style="display:none;">
+                <div class="gb-single-layout">
+
+                    <!-- MAIN ARTICLE CARD -->
+                    <main class="gb-article-card">
+                        <div class="gb-post-category-tag" id="postCategoryBadge">Travel Guide</div>
+                        <h1 class="gb-post-title" id="postMainTitle">Loading…</h1>
+
+                        <span id="heroTitle" style="display:none;"></span>
+                        <span id="heroCategory" style="display:none;"></span>
+
+                        <div class="gb-meta-bar">
+                            <div class="gb-meta-item">
+                                <i data-lucide="calendar" style="width:15px;height:15px;color:var(--color-primary);"></i>
+                                <span id="postDate">—</span>
+                            </div>
+                            <div class="gb-meta-item">
+                                <i data-lucide="user" style="width:15px;height:15px;color:var(--color-primary);"></i>
+                                <span id="postAuthor">Wanderlust Expert</span>
+                            </div>
+                            <div class="gb-meta-item">
+                                <i data-lucide="clock" style="width:15px;height:15px;color:var(--color-primary);"></i>
+                                <span>5 min read</span>
+                            </div>
+                            <div class="gb-meta-item">
+                                <i data-lucide="check-circle" style="width:15px;height:15px;color:#16a34a;"></i>
+                                <span>Verified Guide</span>
+                            </div>
+                        </div>
+
+                        <!-- Featured Hero Image -->
+                        <div class="gb-article-img-wrap">
+                            <img id="postImage" src="" alt="" style="display:none;">
+                        </div>
+
+                        <!-- Post Body Content -->
+                        <div id="postBody" class="gb-article-body"></div>
+
+                        <!-- Share Box -->
+                        <div class="gb-share-box">
+                            <div style="font-weight:700;font-size:0.88rem;color:#0f172a;display:flex;align-items:center;gap:8px;">
+                                <i data-lucide="share-2" style="width:16px;height:16px;color:var(--color-primary);"></i>
+                                <span>Share this guide:</span>
+                            </div>
+                            <div class="gb-share-btns">
+                                <a href="#" id="shareWhatsapp" target="_blank" class="share-btn share-wa" aria-label="Share on WhatsApp">
+                                    <i data-lucide="message-circle" style="width:15px;height:15px;"></i> WhatsApp
+                                </a>
+                                <a href="#" id="shareFacebook" target="_blank" class="share-btn share-fb" aria-label="Share on Facebook">
+                                    <i data-lucide="facebook" style="width:15px;height:15px;"></i> Facebook
+                                </a>
+                                <button type="button" onclick="copyArticleLink()" class="share-btn share-copy">
+                                    <i data-lucide="link" style="width:15px;height:15px;"></i> <span id="copyLinkText">Copy Link</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Author Box -->
+                        <div class="gb-author-box">
+                            <div class="gb-author-logo">WT</div>
+                            <div>
+                                <h4 style="font-size:1rem;font-weight:800;color:#0f172a;margin-bottom:4px;font-family:var(--font-heading);">Published by Wanderlust Travels</h4>
+                                <p style="font-size:0.85rem;color:#64748b;line-height:1.5;margin-bottom:14px;">Premier IATA certified travel &amp; tourism agency offering curated domestic &amp; international tour packages across India, Southeast Asia, and Dubai.</p>
+                                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                                    <a href="services.html" class="gb-cta-btn" style="padding:7px 18px;font-size:0.82rem;width:auto;">Explore Tour Packages</a>
+                                    <a href="tel:+919876543210" style="display:inline-flex;align-items:center;gap:6px;background:#ffffff;color:#334155;border:1px solid #cbd5e1;padding:7px 16px;border-radius:9999px;font-size:0.82rem;font-weight:600;text-decoration:none;">
+                                        <i data-lucide="phone" style="width:14px;height:14px;"></i> Call Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+
+                    <!-- STICKY RIGHT SIDEBAR -->
+                    <aside class="gb-single-sidebar">
+                        <!-- Widget 1: Book Tour Banner -->
+                        <div class="gb-cta-card">
+                            <div class="gb-cta-badge">New Packages 2026-27</div>
+                            <h4 class="gb-cta-title">Discover India's Most Beautiful Destinations</h4>
+                            <p class="gb-cta-desc">IATA Certified Agency. 100% Customizable Packages &amp; Luxury Stays.</p>
+                            <a href="contact.html" class="gb-cta-btn">
+                                <span>Book Now</span>
+                                <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                            </a>
+                            <div class="gb-cta-phone">
+                                <i data-lucide="phone" style="width:14px;height:14px;"></i>
+                                <span>+91 98765 43210</span>
+                            </div>
+                        </div>
+
+                        <!-- Widget 2: Recent Articles -->
+                        <div class="gb-sidebar-card">
+                            <div class="gb-sidebar-card-title">
+                                <i data-lucide="clock" style="width:18px;height:18px;color:var(--color-primary);"></i>
+                                <span>Recent Articles</span>
+                            </div>
+                            <div id="recentPosts" class="latest-blogs-list"></div>
+                        </div>
+
+                        <!-- Widget 3: Popular Tours -->
+                        <div class="gb-sidebar-card">
+                            <div class="gb-sidebar-card-title">
+                                <i data-lucide="compass" style="width:18px;height:18px;color:var(--color-primary);"></i>
+                                <span>Popular Packages</span>
+                            </div>
+                            <ul class="gb-popular-courses">
+                                <li>
+                                    <a href="services.html?cat=beach">
+                                        <span class="course-name">Goa Beach Holiday</span>
+                                        <span class="course-badge">Beach</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="services.html?cat=heritage">
+                                        <span class="course-name">Rajasthan Royal Heritage</span>
+                                        <span class="course-badge">Heritage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="services.html?cat=beach">
+                                        <span class="course-name">Kerala Backwaters &amp; Hills</span>
+                                        <span class="course-badge">Honeymoon</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="services.html?cat=adventure">
+                                        <span class="course-name">Manali Snow Trek</span>
+                                        <span class="course-badge">Adventure</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="services.html?cat=hills">
+                                        <span class="course-name">Kashmir Paradise Explorer</span>
+                                        <span class="course-badge">Hills</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Widget 4: Free Holiday Counseling -->
+                        <div class="gb-sidebar-card" style="text-align:center;">
+                            <div style="width:48px;height:48px;background:#e0f2fe;color:#0284c7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+                                <i data-lucide="headphones" style="width:22px;height:22px;"></i>
+                            </div>
+                            <h4 style="font-size:0.92rem;font-weight:700;color:#0f172a;margin-bottom:4px;">Talk to Holiday Planner</h4>
+                            <p style="font-size:0.8rem;color:#64748b;margin-bottom:12px;">Get customized itineraries, hotel choices, and quotes.</p>
+                            <a href="tel:+919876543210" style="display:inline-flex;align-items:center;gap:6px;background:var(--color-primary);color:white;padding:9px 18px;border-radius:9999px;font-size:0.82rem;font-weight:700;text-decoration:none;">
+                                <i data-lucide="phone-call" style="width:15px;height:15px;"></i>
+                                <span>Call: +91 98765 43210</span>
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="gb-related-section" id="relatedSection" style="display:none;">
+        <div class="container">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;">
+                <div>
+                    <h3 style="font-size:1.35rem;font-weight:800;color:#0f172a;margin:0;font-family:var(--font-heading);">Related Guides</h3>
+                    <p style="font-size:0.85rem;color:#64748b;margin-top:4px;">More recommended travel stories you may find helpful</p>
+                </div>
+                <a href="blog.html" style="font-size:0.85rem;font-weight:700;color:var(--color-primary);text-decoration:none;">View All &rarr;</a>
+            </div>
+            <div class="gb-cards-grid" id="relatedPosts"></div>
+        </div>
+    </section>
+
+    <!-- ─── Footer Section ─── -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-columns">
+                <div>
+                    <h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4>
+                    <p class="footer-desc">
+                        Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                        <a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Destinations</a></li>
+                        <li><a href="services.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Popular Tours</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="services.html?cat=beach">Goa Beach Holiday</a></li>
+                        <li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li>
+                        <li><a href="services.html?cat=beach">Kerala Backwaters</a></li>
+                        <li><a href="services.html?cat=adventure">Manali Snow Trek</a></li>
+                        <li><a href="services.html?cat=hills">Kashmir Paradise</a></li>
+                        <li><a href="services.html?cat=adventure">Spiti Valley</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Contact &amp; Location</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>12, Travel Tower, Connaught Place, New Delhi 110001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>hello@wanderlusttravels.in</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock"></i>
+                        <span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <p>© 2026 Wanderlust Travels. All Rights Reserved.</p>
+                <p>IATA Certified Travel Agency | New Delhi, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support">
+        <i data-lucide="message-circle" style="width:30px;height:30px;"></i>
+    </a>
+
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i data-lucide="chevron-up" style="width:24px;height:24px;"></i>
+    </div>
+
+    <script src="rr-bridge.js"></script>
+    <script src="rr-blogs-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        var DEFAULT_POSTS = [
+            {
+                id: 'top-10-hidden-beaches-in-goa-2026',
+                title: 'Top 10 Hidden Beaches in Goa You Must Visit in 2026',
+                slug: 'top-10-hidden-beaches-in-goa-2026',
+                status: 'Published',
+                category: 'Beach',
+                author: 'Arjun Mehta',
+                date: 'Feb 15, 2026',
+                image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Goa, Beaches, Travel, Holiday',
+                seoDesc: 'Discover Goa\'s best secret beaches away from crowds: Butterfly Beach, Cola Beach, Kakolem, and Galgibaga.',
+                content: '<p>When most travelers think of Goa, crowded stretches of Baga and Calangute come to mind. But south and north Goa hide pristine, secluded coves that feel like your private slice of paradise.</p><h2>1. Butterfly Beach</h2><p>Accessible only by boat or an adventurous forest trek from Palolem, Butterfly Beach is a tranquil cove known for dolphin sightings and golden sunsets.</p><h2>2. Cola Beach</h2><p>Famous for its emerald green freshwater lagoon meeting the Arabian Sea, Cola Beach offers luxury tent stays right on the shoreline.</p><h2>3. Kakolem Beach (Tiger Beach)</h2><p>One of the wildest beaches in Goa, nestled below a cliff with a freshwater stream cascading directly onto the sands.</p>'
+            },
+            {
+                id: 'complete-rajasthan-road-trip-guide',
+                title: 'Complete Rajasthan Road Trip Guide: Cities, Food & Budget',
+                slug: 'complete-rajasthan-road-trip-guide',
+                status: 'Published',
+                category: 'Heritage',
+                author: 'Priya Sharma',
+                date: 'Jan 28, 2026',
+                image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Rajasthan, Road Trip, Heritage, Jaipur, Udaipur',
+                seoDesc: 'Plan the ultimate Rajasthan road trip across Jaipur, Jodhpur, Jaisalmer, and Udaipur with our detailed budget and route itinerary.',
+                content: '<p>Rajasthan is an emotion. Driving through the desert state takes you past colossal forts, ornate havelis, and roadside dhabas serving spicy laal maas and dal baati churma.</p><h2>The Ideal 7-Day Route</h2><p>Start in the Pink City Jaipur, explore Mehrangarh in Jodhpur, camp under starry dunes in Jaisalmer, and wrap up on the romantic lakes of Udaipur.</p>'
+            },
+            {
+                id: 'kerala-in-monsoon-travel-guide',
+                title: 'Kerala in Monsoon: Why It\'s the Best Time to Visit',
+                slug: 'kerala-in-monsoon-travel-guide',
+                status: 'Published',
+                category: 'Beach',
+                author: 'Neha Gupta',
+                date: 'Jan 12, 2026',
+                image: 'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Kerala, Monsoon, Ayurveda, Backwaters',
+                seoDesc: 'Experience lush green Munnar hills, overflowing waterfalls, and traditional Ayurvedic treatments during Kerala\'s monsoon season.',
+                content: '<p>While summer and winter draw huge crowds, true travelers know that Kerala comes alive during the monsoon. The hills of Munnar turn neon green, waterfalls roar at full capacity, and Ayurveda treatments are at their most effective.</p>'
+            },
+            {
+                id: 'manali-trek-solang-valley-guide',
+                title: 'Manali Trek: Beginner\'s Complete Guide to Solang Valley',
+                slug: 'manali-trek-solang-valley-guide',
+                status: 'Published',
+                category: 'Adventure',
+                author: 'Rahul Singh',
+                date: 'Dec 20, 2025',
+                image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Manali, Trek, Adventure, Himachal',
+                seoDesc: 'Essential tips for trekking in Solang Valley, Rohtang Pass weather, gear checklist, and riverside camping advice in Manali.',
+                content: '<p>Manali is Himachal\'s outdoor adventure capital. Whether you are doing your first snow trek or looking to fly with a paraglider above Solang Valley, here is everything you need to know before you lace up your boots.</p>'
+            },
+            {
+                id: 'kashmir-winter-snow-holiday-guide',
+                title: 'Kashmir in Winter: Planning the Perfect Snow Holiday',
+                slug: 'kashmir-winter-snow-holiday-guide',
+                status: 'Published',
+                category: 'Hill Station',
+                author: 'Sofia Lin',
+                date: 'Nov 30, 2025',
+                image: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Kashmir, Winter, Snow, Gulmarg',
+                seoDesc: 'Everything you need to know about experiencing Gulmarg snow gondola, Srinagar winter houseboats, and Pahalgam frost walks.',
+                content: '<p>Witnessing snow falling over a cedar-wood houseboat on Dal Lake while sipping hot saffron Kahwa is an experience unlike any other in the world.</p>'
+            },
+            {
+                id: 'spiti-valley-remote-expedition-guide',
+                title: 'Spiti Valley: India\'s Most Remote & Spectacular Valley',
+                slug: 'spiti-valley-remote-expedition-guide',
+                status: 'Published',
+                category: 'Adventure',
+                author: 'Erik Johansson',
+                date: 'Oct 18, 2025',
+                image: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&q=80&w=1200',
+                tags: 'Spiti Valley, Road Trip, Expedition, Himalayas',
+                seoDesc: 'Discover Spiti Valley\'s ancient monasteries, high-altitude villages, Chandratal Lake camping, and rugged road trip itinerary.',
+                content: '<p>Spiti means "The Middle Land" — the land between Tibet and India. Rugged, wind-carved canyons, thousand-year-old Buddhist monasteries, and crystal night skies make it a holy grail for road trippers.</p>'
+            }
+        ];
+
+        function getUrlParams() {
+            var params = new URLSearchParams(window.location.search);
+            var slug = (params.get('slug') || '').trim();
+            var id = (params.get('id') || '').trim();
+            if (!slug && window.location.pathname.indexOf('/blog/') !== -1) {
+                var parts = window.location.pathname.split('/blog/');
+                if (parts.length > 1 && parts[1]) {
+                    slug = decodeURIComponent(parts[1].replace(/\/$/, '')).trim();
+                }
+            }
+            return { id: id, slug: slug };
+        }
+
+        function getBlogUrl(post) {
+            if (!post) return 'blog-single.html';
+            var slug = (post.slug || post.id || '').trim();
+            var id = (post.id || '').trim();
+            var q = [];
+            if (slug) q.push('slug=' + encodeURIComponent(slug));
+            if (id && id !== slug) q.push('id=' + encodeURIComponent(id));
+            return 'blog-single.html?' + (q.length ? q.join('&') : '');
+        }
+
+        function findPost(id, slug) {
+            var apiPosts = (typeof rrBlogsSeed !== 'undefined' && rrBlogsSeed.length) ? rrBlogsSeed : (window.rr_current_blogs || []);
+            var seen = {};
+            var pool = [];
+            apiPosts.forEach(function(p) { seen[p.id] = true; pool.push(p); });
+            DEFAULT_POSTS.forEach(function(p) { if (!seen[p.id]) pool.push(p); });
+
+            // Filter out any stale computer/dca institute data
+            pool = pool.filter(function(p) {
+                return !/computer|dca|tally|programming/i.test((p.title || '') + ' ' + (p.category || ''));
+            });
+
+            if (slug) {
+                var s = slug.toLowerCase();
+                var clean = s.replace(/[^a-z0-9]/g, '');
+                var found = pool.find(function(p) {
+                    if (p.slug === slug || p.id === slug) return true;
+                    if (p.slug && p.slug.toLowerCase().replace(/[^a-z0-9]/g, '') === clean) return true;
+                    if (p.id && p.id.toLowerCase().replace(/[^a-z0-9]/g, '') === clean) return true;
+                    if (s.includes('goa') && (p.slug.includes('goa') || p.id.includes('goa'))) return true;
+                    if (s.includes('rajasthan') && (p.slug.includes('rajasthan') || p.id.includes('rajasthan'))) return true;
+                    if (s.includes('kerala') && (p.slug.includes('kerala') || p.id.includes('kerala'))) return true;
+                    if (s.includes('manali') && (p.slug.includes('manali') || p.id.includes('manali'))) return true;
+                    if (s.includes('kashmir') && (p.slug.includes('kashmir') || p.id.includes('kashmir'))) return true;
+                    if (s.includes('spiti') && (p.slug.includes('spiti') || p.id.includes('spiti'))) return true;
+                    return false;
+                });
+                if (found) return found;
+            }
+            if (id) {
+                var foundById = pool.find(function(p) { return String(p.id) === String(id) || String(p.slug) === String(id); });
+                if (foundById) return foundById;
+            }
+            return pool[0] || null;
+        }
+
+        function renderPost(post) {
+            var title = post.title || '';
+            var cat = post.category || 'Travel Guide';
+            var author = post.author || 'Wanderlust Expert';
+            var date = post.date || '';
+
+            var mainTitleEl = document.getElementById('postMainTitle');
+            if (mainTitleEl) mainTitleEl.textContent = title;
+            var bcTitleEl = document.getElementById('breadcrumbTitle');
+            if (bcTitleEl) bcTitleEl.textContent = title;
+            var bcCatEl = document.getElementById('breadcrumbCategory');
+            if (bcCatEl) bcCatEl.textContent = cat;
+            var postCatBadge = document.getElementById('postCategoryBadge');
+            if (postCatBadge) postCatBadge.textContent = cat;
+
+            document.title = title + ' | Wanderlust Travels';
+            var metaDesc = document.getElementById('pageMetaDesc');
+            if (metaDesc && post.seoDesc) metaDesc.content = post.seoDesc;
+
+            var dateEl = document.getElementById('postDate');
+            if (dateEl) dateEl.textContent = date;
+            var authorEl = document.getElementById('postAuthor');
+            if (authorEl) authorEl.textContent = author;
+
+            var imgEl = document.getElementById('postImage');
+            if (imgEl) {
+                if (post.image) {
+                    imgEl.src = post.image;
+                    imgEl.alt = title;
+                    imgEl.style.display = 'block';
+                } else {
+                    imgEl.style.display = 'none';
+                }
+            }
+
+            var bodyEl = document.getElementById('postBody');
+            if (bodyEl) {
+                bodyEl.innerHTML = post.content || '<p>No content available.</p>';
+            }
+
+            var fullUrl = window.location.href;
+            var shareWa = document.getElementById('shareWhatsapp');
+            if (shareWa) shareWa.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(title + ' ' + fullUrl);
+            var shareFb = document.getElementById('shareFacebook');
+            if (shareFb) shareFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(fullUrl);
+
+            document.getElementById('postLoading').style.display = 'none';
+            document.getElementById('postContent').style.display = 'block';
+
+            var allP = (typeof rrBlogsSeed !== 'undefined' && rrBlogsSeed.length) ? rrBlogsSeed : DEFAULT_POSTS;
+            var recent = allP.filter(function(p) { return p.id !== post.id; }).slice(0, 4);
+            var recentEl = document.getElementById('recentPosts');
+            if (recentEl && recent.length > 0) {
+                recentEl.innerHTML = recent.map(function(p) {
+                    return '<div class="latest-blog-item">'
+                        + '<a href="' + getBlogUrl(p) + '"><img src="' + (p.image || 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=120') + '" alt="' + p.title + '"></a>'
+                        + '<div><a href="' + getBlogUrl(p) + '" class="latest-blog-item-title">' + p.title + '</a>'
+                        + '<div class="latest-blog-item-date">' + (p.date || '') + '</div></div></div>';
+                }).join('');
+            }
+
+            var related = allP.filter(function(p) { return p.id !== post.id; }).slice(0, 3);
+            var relatedEl = document.getElementById('relatedPosts');
+            if (relatedEl && related.length > 0) {
+                var relatedSec = document.getElementById('relatedSection');
+                if (relatedSec) relatedSec.style.display = '';
+                relatedEl.innerHTML = related.map(function(p) {
+                    var u = getBlogUrl(p);
+                    return '<div class="gb-blog-card">'
+                        + '<a href="' + u + '"><img src="' + (p.image || 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600') + '" alt="' + p.title + '" loading="lazy"></a>'
+                        + '<div class="gb-blog-card-body">'
+                        + '<div class="gb-blog-card-title"><a href="' + u + '" style="color:inherit;text-decoration:none;">' + p.title + '</a></div>'
+                        + '<div class="gb-blog-card-date"><i data-lucide="calendar" style="width:14px;height:14px;"></i> ' + (p.date || '') + '</div>'
+                        + '<a href="' + u + '" class="gb-read-more-btn">Read More</a>'
+                        + '</div></div>';
+                }).join('');
+            }
+            lucide.createIcons();
+        }
+
+        window.copyArticleLink = function() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                var txt = document.getElementById('copyLinkText');
+                if (txt) {
+                    txt.textContent = 'Copied!';
+                    setTimeout(function() { txt.textContent = 'Copy Link'; }, 2000);
+                }
+            }).catch(function() {
+                alert('URL copied to clipboard!');
+            });
+        };
+
+        function showNotFound() {
+            document.getElementById('postLoading').style.display  = 'none';
+            document.getElementById('postNotFound').style.display = 'block';
+        }
+
+        function initSinglePost() {
+            var _urlParams = getUrlParams();
+            var post = findPost(_urlParams.id, _urlParams.slug);
+            if (post) {
+                renderPost(post);
+            } else {
+                showNotFound();
+            }
+        }
+
+        initSinglePost();
+        document.addEventListener('rr_blogs_loaded', initSinglePost);
+    </script>
+</body>
+</html>

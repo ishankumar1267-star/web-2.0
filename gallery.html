@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Wanderlust Travels</title>
+    <meta name="description" content="Explore beautiful travel destinations, stunning landscapes, and happy travelers from Wanderlust Travels. Glimpses of Goa, Rajasthan, Kashmir, Kerala, Manali, and more.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── Gyan Bharat Style Banner ── */
+        .courses-banner {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #0f172a;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.82)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&auto=format&fit=crop&q=80');
+            padding: 72px 0 66px;
+            color: #ffffff;
+            text-align: center;
+        }
+        .banner-left h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+        .gallery-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff8c5a;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+        .banner-left ul {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .banner-left ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .banner-left ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ── Gallery Main Section ── */
+        .gallery-section {
+            background: #f8fafc;
+            padding: 56px 0 80px;
+        }
+        .gallery-header-row {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 36px;
+        }
+        .gallery-eyebrow {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+        .gallery-header-row h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+        .gallery-header-row p {
+            color: #64748b;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ── Filter Tabs ── */
+        .gallery-filter-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .gallery-filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #475569;
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+        .gallery-filter-btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+        }
+        .gallery-filter-btn.active {
+            background: #0d47a1;
+            color: #ffffff;
+            border-color: #0d47a1;
+            box-shadow: 0 6px 20px rgba(13, 71, 161, 0.25);
+        }
+        .gallery-filter-btn .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.06);
+            font-size: 0.74rem;
+            font-weight: 700;
+        }
+        .gallery-filter-btn.active .filter-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* ── Gallery Cards Grid ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 28px;
+        }
+        .gallery-card {
+            position: relative;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+            border-color: #cbd5e1;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Floating Category Badge */
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.3s;
+        }
+        .gallery-card:hover .card-badge {
+            background: rgba(13, 71, 161, 0.88);
+        }
+
+        /* Floating Zoom Button */
+        .card-zoom-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 2;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .gallery-card:hover .card-zoom-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Card Overlay */
+        .gallery-card-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.42) 55%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 22px 20px;
+            opacity: 0.92;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-card:hover .gallery-card-overlay {
+            opacity: 1;
+        }
+        .gallery-card-title {
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.35;
+            margin: 0 0 4px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .gallery-card-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* ── Stats Strip ── */
+        .gallery-stats-strip {
+            background: #ffffff;
+            padding: 44px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .gallery-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .gallery-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .stat-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .stat-icon-circle svg {
+            width: 24px;
+            height: 24px;
+        }
+        .stat-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* ── Travel CTA ── */
+        .gallery-cta-section {
+            background: #f8fafc;
+            padding: 70px 0 80px;
+        }
+        .gallery-cta-card {
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 60%, #0a2f6e 100%);
+            border-radius: 28px;
+            padding: 48px 50px;
+            color: #ffffff;
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 16px 40px rgba(13, 71, 161, 0.22);
+        }
+        .gallery-cta-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffb300;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 12px;
+        }
+        .gallery-cta-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 12px;
+            line-height: 1.25;
+        }
+        .gallery-cta-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin: 0 0 24px;
+        }
+        .gallery-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-gallery-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffb300;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 13px 26px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(255, 179, 0, 0.35);
+        }
+        .btn-gallery-cta-primary:hover {
+            background: #ffc107;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255, 179, 0, 0.45);
+        }
+        .btn-gallery-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 13px 26px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(6px);
+        }
+        .btn-gallery-cta-secondary:hover {
+            background: #ffffff;
+            color: #0d47a1;
+            transform: translateY(-2px);
+        }
+
+        /* ── Lightbox Modal ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 30, 0.92);
+            backdrop-filter: blur(14px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .lightbox.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .lightbox-dialog {
+            position: relative;
+            background: #0f172a;
+            border-radius: 24px;
+            overflow: hidden;
+            max-width: 960px;
+            width: 100%;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes popIn {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-media-wrap {
+            width: 100%;
+            max-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+        }
+        .lightbox-media-wrap img {
+            max-width: 100%;
+            max-height: 72vh;
+            object-fit: contain;
+            display: block;
+        }
+        .lightbox-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 26px;
+            background: #0f172a;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .lightbox-category {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+        .lightbox-title {
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+        .lightbox-close:hover {
+            background: #ff6b35;
+            transform: rotate(90deg);
+        }
+        .lightbox-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            .gallery-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .gallery-cta-card {
+                grid-template-columns: 1fr;
+                padding: 36px 28px;
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-filter-wrap {
+                gap: 8px;
+            }
+            .gallery-filter-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Top Announcement Bar ─── -->
+    <div class="announcement-bar"><div class="container"><div class="announcement-inner"><div class="announcement-left"><span class="announcement-badge">New!</span><span>🌍 New Tour Packages for 2026-27 | IATA Certified & Ministry of Tourism Approved Agency</span></div><div class="announcement-right"><a href="tel:+919876543210" class="announcement-link"><i data-lucide="phone" style="width:14px;height:14px;"></i> +91 98765 43210</a><a href="mailto:hello@wanderlusttravels.in" class="announcement-link"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@wanderlusttravels.in</a></div></div></div></div>
+    <header class="header-wrapper">
+      <div class="header-top-row"><div class="container"><div class="header-top-inner">
+        <a href="index.html" class="site-logo"><div class="logo-badge"><span class="logo-badge-icon">WT</span><span class="logo-badge-sub">TRAVELS</span></div><div class="logo-text-group"><span class="logo-title">Wanderlust</span><span class="logo-subtitle">Travels & Tourism</span></div></a>
+        <!-- Unified Search Pill Container with shadcn/ui Item Dropdown -->
+                    <div class="search-pill-container">
+                        <div class="search-category-dropdown" id="searchCategoryDropdown">
+                            <button type="button" class="search-category-btn" id="categoryDropdownBtn" aria-expanded="false" aria-haspopup="listbox" aria-label="Select package category">
+                                <span class="selected-category-text" id="selectedCategoryLabel">All Packages</span>
+                                <i data-lucide="chevron-down" class="dropdown-chevron-icon"></i>
+                            </button>
+                            <input type="hidden" name="category" id="headerCategorySelect" value="all">
+
+                            <!-- Custom Dropdown Menu conforming to Item Primitive -->
+                            <div class="search-dropdown-menu" id="categoryDropdownMenu" role="listbox" data-slot="item-group">
+                                <div class="dropdown-menu-header">
+                                    <span>Travel Category</span>
+                                    <span class="badge-count">6 Types</span>
+                                </div>
+                                <div class="dropdown-items-scroll">
+                                    <div class="custom-item selected" data-slot="item" data-value="all" data-label="All Packages" role="option" aria-selected="true">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">All Packages</div>
+                                            <p data-slot="item-description">Explore all 120+ tours &amp; holiday packages</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">All</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="beach" data-label="Beach & Island" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Beach &amp; Island</div>
+                                            <p data-slot="item-description">Goa, Andaman, Kerala Backwaters</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill hot">Popular</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="adventure" data-label="Adventure & Trek" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Adventure &amp; Trek</div>
+                                            <p data-slot="item-description">Manali, Ladakh, Spiti Valley, Rishikesh</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Thrilling</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="heritage" data-label="Heritage & Culture" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Heritage &amp; Culture</div>
+                                            <p data-slot="item-description">Rajasthan Forts, Golden Triangle, Varanasi</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Royal</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-item" data-slot="item" data-value="hills" data-label="Hill Stations" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="trees" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">Hill Stations</div>
+                                            <p data-slot="item-description">Shimla, Ooty, Darjeeling, Kashmir</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill">Scenic</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <div data-slot="item-separator"></div>
+
+                                    <div class="custom-item" data-slot="item" data-value="international" data-label="International" role="option">
+                                        <div data-slot="item-media" data-variant="icon">
+                                            <i data-lucide="plane" style="width:16px;height:16px;"></i>
+                                        </div>
+                                        <div data-slot="item-content">
+                                            <div data-slot="item-title">International Tours</div>
+                                            <p data-slot="item-description">Dubai, Thailand, Bali, Singapore</p>
+                                        </div>
+                                        <div data-slot="item-actions">
+                                            <span class="item-tag-pill passport">Global</span>
+                                            <i data-lucide="check" class="check-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="dropdown-menu-footer" data-slot="item-footer">
+                                    <span>✨ 100% Customized Trips</span>
+                                    <a href="services.html" class="footer-link">View All ↗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="search-input" id="headerSearchInput" placeholder="Search destinations, packages, tours....">
+                        <button class="search-btn" id="headerSearchBtn" type="button">
+                            <span>Search</span>
+                            <i data-lucide="search" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="header-actions"><a href="admin/login.html" class="btn-login-pill"><i data-lucide="user" style="width:16px;height:16px;"></i><span>Login</span></a><a href="contact.html" class="btn-enroll-pill"><i data-lucide="map-pin" style="width:16px;height:16px;"></i><span>Book Now</span></a><button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-active')" aria-label="Toggle Menu"><i data-lucide="menu" style="width:26px;height:26px;"></i></button></div>
+      </div></div></div>
+      <div class="header-nav-row" id="stickyNav"><div class="container"><div class="nav-inner"><nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-item-link">Home</a>
+        <a href="about.html" class="nav-item-link">About Us</a>
+        <a href="courses.html" class="nav-item-link">Destinations</a>
+        <a href="services.html" class="nav-item-link">Tour Packages</a>
+        <a href="gallery.html" class="nav-item-link active">Gallery</a>
+        <a href="blog.html" class="nav-item-link">Travel Blog</a>
+        <a href="contact.html" class="nav-item-link">Contact Us</a>
+      </nav></div></div></div>
+    </header>
+
+    <!-- ─── Hero Banner ─── -->
+    <div class="courses-banner">
+        <div class="container">
+            <div class="banner-left">
+                <span class="gallery-hero-badge"><i data-lucide="camera" style="width:14px;height:14px;"></i> Destinations &amp; Memories</span>
+                <h1>Our Travel Gallery</h1>
+                <p style="color:rgba(255,255,255,0.8);font-size:1rem;margin:0 0 16px;">Glimpses of beautiful destinations and happy travelers</p>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>/</li>
+                    <li style="color:var(--color-accent,#ff6b35);">Photo Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Modern Gallery Section ─── -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header-row">
+                <span class="gallery-eyebrow">Explore Our Destinations</span>
+                <h2>Beautiful Places &amp; Happy Travelers</h2>
+                <p>Take a virtual journey through India's most beautiful destinations and relive the moments our travelers cherish forever.</p>
+            </div>
+
+            <!-- Pill Filter Tabs -->
+            <div class="gallery-filter-wrap">
+                <button class="gallery-filter-btn active" onclick="filterGallery('all', this)">
+                    <i data-lucide="layout-grid" style="width:16px;height:16px;"></i>
+                    <span>All Photos</span>
+                    <span class="filter-count" id="count-all">12</span>
+                </button>
+                <button class="gallery-filter-btn" onclick="filterGallery('beach', this)">
+                    <i data-lucide="umbrella" style="width:16px;height:16px;"></i>
+                    <span>Goa &amp; Beaches</span>
+                    <span class="filter-count" id="count-beach">3</span>
+                </button>
+                <button class="gallery-filter-btn" onclick="filterGallery('heritage', this)">
+                    <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                    <span>Rajasthan &amp; Heritage</span>
+                    <span class="filter-count" id="count-heritage">2</span>
+                </button>
+                <button class="gallery-filter-btn" onclick="filterGallery('hills', this)">
+                    <i data-lucide="mountain" style="width:16px;height:16px;"></i>
+                    <span>Kashmir &amp; Hills</span>
+                    <span class="filter-count" id="count-hills">3</span>
+                </button>
+                <button class="gallery-filter-btn" onclick="filterGallery('adventure', this)">
+                    <i data-lucide="compass" style="width:16px;height:16px;"></i>
+                    <span>Adventure</span>
+                    <span class="filter-count" id="count-adventure">2</span>
+                </button>
+                <button class="gallery-filter-btn" onclick="filterGallery('travelers', this)">
+                    <i data-lucide="users" style="width:16px;height:16px;"></i>
+                    <span>Travelers</span>
+                    <span class="filter-count" id="count-travelers">2</span>
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+                <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#94a3b8;">
+                    <div style="width:36px;height:36px;border:3px solid #cbd5e1;border-top-color:#0d47a1;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px;"></div>
+                    <p>Loading travel gallery...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Travel Stats Strip ─── -->
+    <section class="gallery-stats-strip">
+        <div class="container">
+            <div class="gallery-stats-grid">
+                <div class="gallery-stat-item">
+                    <div class="stat-icon-circle" style="background:rgba(13,71,161,0.1);color:#0d47a1;">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stat-text-group">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Happy Travelers</span>
+                    </div>
+                </div>
+                <div class="gallery-stat-item">
+                    <div class="stat-icon-circle" style="background:rgba(255,107,53,0.12);color:#ff6b35;">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="stat-text-group">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Destinations Covered</span>
+                    </div>
+                </div>
+                <div class="gallery-stat-item">
+                    <div class="stat-icon-circle" style="background:rgba(16,185,129,0.12);color:#10b981;">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="stat-text-group">
+                        <span class="stat-number">IATA</span>
+                        <span class="stat-label">Certified Travel Agency</span>
+                    </div>
+                </div>
+                <div class="gallery-stat-item">
+                    <div class="stat-icon-circle" style="background:rgba(168,85,247,0.12);color:#9333ea;">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <div class="stat-text-group">
+                        <span class="stat-number">12+</span>
+                        <span class="stat-label">Years of Excellence (2014)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Travel CTA Section ─── -->
+    <section class="gallery-cta-section">
+        <div class="container">
+            <div class="gallery-cta-card">
+                <div class="gallery-cta-content">
+                    <span class="gallery-cta-badge">Plan Your Dream Holiday</span>
+                    <h2>Ready to Create Your Own Travel Memories?</h2>
+                    <p>Let our expert travel consultants craft a personalized itinerary just for you. Get the best prices, hassle-free bookings, and unforgettable experiences.</p>
+                    <div class="gallery-cta-actions">
+                        <a href="contact.html" class="btn-gallery-cta-primary">
+                            <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
+                            <span>Book Your Tour Now</span>
+                        </a>
+                        <a href="services.html" class="btn-gallery-cta-secondary">
+                            <i data-lucide="package" style="width:18px;height:18px;"></i>
+                            <span>View All Packages</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="gallery-cta-image">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop&q=80" alt="Happy Travelers" style="object-fit:cover;height:240px;width:100%;border-radius:20px;box-shadow:0 14px 34px rgba(0,0,0,0.25);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer-main"><div class="container">
+      <div class="footer-columns">
+        <div><h4 class="footer-col-title" style="color:var(--color-accent);">Wanderlust Travels</h4><p class="footer-desc">Premier travel agency offering curated holiday packages across India and abroad. Creating unforgettable memories for 50,000+ travelers since 2014.</p><div class="footer-social-links"><a href="#" class="footer-social-icon" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px;"></i></a><a href="#" class="footer-social-icon" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a><a href="https://wa.me/919876543210" class="footer-social-icon" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px;"></i></a></div></div>
+        <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links-list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="courses.html">Destinations</a></li><li><a href="services.html">Tour Packages</a></li><li><a href="gallery.html">Photo Gallery</a></li><li><a href="blog.html">Travel Blog</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+        <div><h4 class="footer-col-title">Popular Tours</h4><ul class="footer-links-list"><li><a href="services.html?cat=beach">Goa Beach Holiday</a></li><li><a href="services.html?cat=heritage">Rajasthan Heritage</a></li><li><a href="services.html?cat=beach">Kerala Backwaters</a></li><li><a href="services.html?cat=adventure">Manali Snow Trek</a></li><li><a href="services.html?cat=hills">Kashmir Paradise</a></li><li><a href="services.html?cat=adventure">Spiti Valley</a></li></ul></div>
+        <div><h4 class="footer-col-title">Contact &amp; Location</h4><div class="footer-contact-item"><i data-lucide="map-pin"></i><span>12, Travel Tower, Connaught Place, New Delhi 110001</span></div><div class="footer-contact-item"><i data-lucide="phone"></i><span>+91 98765 43210</span></div><div class="footer-contact-item"><i data-lucide="mail"></i><span>hello@wanderlusttravels.in</span></div><div class="footer-contact-item"><i data-lucide="clock"></i><span>Mon - Sat: 9:00 AM – 8:00 PM (Sunday Closed)</span></div></div>
+      </div>
+      <div class="footer-bottom-bar"><p>© 2026 Wanderlust Travels. All Rights Reserved.</p><p>IATA Certified Travel Agency | New Delhi, India</p></div>
+    </div></footer>
+    <a href="https://wa.me/919876543210?text=Hello%20Wanderlust%20Travels%2C%20I%20want%20to%20know%20about%20your%20tour%20packages." class="floating-whatsapp" target="_blank" aria-label="WhatsApp Support"><i data-lucide="message-circle" style="width:30px;height:30px;"></i></a>
+    <div class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i data-lucide="chevron-up" style="width:24px;height:24px;"></i></div>
+
+    <!-- ─── Enhanced Lightbox Modal ─── -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-dialog" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightboxDirect()" aria-label="Close Preview">
+                <i data-lucide="x" style="width:22px;height:22px;"></i>
+            </button>
+            <div class="lightbox-media-wrap">
+                <img id="lightbox-img" src="" alt="Travel Photo Preview">
+            </div>
+            <div class="lightbox-footer">
+                <div class="lightbox-text">
+                    <span class="lightbox-category" id="lightbox-cat">Destination</span>
+                    <h3 class="lightbox-title" id="lightbox-title">Beautiful Travel Moment</h3>
+                </div>
+                <div class="lightbox-actions">
+                    <a id="lightbox-download-link" href="#" target="_blank" class="lightbox-btn" title="Open full resolution in new tab">
+                        <i data-lucide="external-link" style="width:16px;height:16px;"></i>
+                        <span>Full Size</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="rr-bridge.js"></script><script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        const GALLERY_API = './api.php';
+        const GALLERY_KEY = 'rr_gallery';
+
+        const CATEGORY_META = {
+            'beach':     { label: 'Goa & Beaches', icon: 'umbrella' },
+            'heritage':  { label: 'Rajasthan & Heritage', icon: 'landmark' },
+            'hills':     { label: 'Kashmir & Hills', icon: 'mountain' },
+            'adventure': { label: 'Adventure', icon: 'compass' },
+            'travelers': { label: 'Travelers', icon: 'users' },
+            'all':       { label: 'Travel', icon: 'image' }
+        };
+
+        const GALLERY_SEED = [
+            { url: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&auto=format&fit=crop&q=80', caption: 'Sun-Kissed Beaches of Goa', category: 'beach' },
+            { url: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&auto=format&fit=crop&q=80', caption: 'Royal Palaces of Rajasthan', category: 'heritage' },
+            { url: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800&auto=format&fit=crop&q=80', caption: 'Snow-Clad Paradise of Kashmir', category: 'hills' },
+            { url: 'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=800&auto=format&fit=crop&q=80', caption: 'Serene Backwaters of Kerala', category: 'beach' },
+            { url: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&auto=format&fit=crop&q=80', caption: 'Majestic Mountains of Manali', category: 'hills' },
+            { url: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=800&auto=format&fit=crop&q=80', caption: 'Remote & Dramatic Spiti Valley', category: 'adventure' },
+            { url: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&auto=format&fit=crop&q=80', caption: 'Turquoise Waters & Sandy Shores', category: 'beach' },
+            { url: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop&q=80', caption: 'Wanderlust Travels – Happy Explorers', category: 'travelers' },
+            { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&auto=format&fit=crop&q=80', caption: 'Breathtaking Himalayan Landscape', category: 'hills' },
+            { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop&q=80', caption: 'Thrilling High-Altitude Trek', category: 'adventure' },
+            { url: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&auto=format&fit=crop&q=80', caption: 'Ancient India Heritage Sites', category: 'heritage' },
+            { url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80', caption: 'Smiling Travelers Making Memories', category: 'travelers' }
+        ];
+
+        let currentCat = 'all';
+        let allPhotos  = [];
+
+        async function loadGallery() {
+            try {
+                const res  = await fetch(GALLERY_API + '?action=get&key=' + GALLERY_KEY);
+                const text = await res.text();
+                if (text && text !== 'null') {
+                    const parsed = JSON.parse(text);
+                    allPhotos = Array.isArray(parsed) && parsed.length > 0 ? parsed : GALLERY_SEED;
+                } else {
+                    allPhotos = GALLERY_SEED;
+                }
+            } catch (e) {
+                allPhotos = GALLERY_SEED;
+            }
+            updateCounts();
+            renderGallery(currentCat);
+        }
+
+        function updateCounts() {
+            const counts = { all: allPhotos.length, beach: 0, heritage: 0, hills: 0, adventure: 0, travelers: 0 };
+            allPhotos.forEach(p => {
+                if (counts[p.category] !== undefined) counts[p.category]++;
+            });
+            for (const [key, val] of Object.entries(counts)) {
+                const el = document.getElementById('count-' + key);
+                if (el) el.textContent = val;
+            }
+        }
+
+        function renderGallery(cat) {
+            currentCat = cat;
+            const grid   = document.getElementById('gallery-grid');
+            const photos = cat === 'all' ? allPhotos : allPhotos.filter(p => p.category === cat);
+
+            if (photos.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:70px 20px;color:#94a3b8;"><div style="font-size:3.5rem;margin-bottom:12px;">📷</div><h3 style="color:#1e293b;font-size:1.25rem;margin-bottom:6px;">No photos found in this category</h3><p style="font-size:0.92rem;">Try selecting a different filter above to view more destinations.</p></div>';
+                return;
+            }
+
+            grid.innerHTML = photos.map(function(p, idx) {
+                const meta = CATEGORY_META[p.category] || { label: 'Travel', icon: 'image' };
+                const safeCaption = (p.caption || 'Beautiful Travel Moment').replace(/"/g, '&quot;');
+                const safeUrl = p.url;
+                return '<div class="gallery-card" data-cat="' + (p.category || 'all') + '" data-caption="' + safeCaption + '" onclick="openLightboxCard(\'' + encodeURIComponent(safeUrl) + '\', \'' + encodeURIComponent(safeCaption) + '\', \'' + (p.category || 'beach') + '\')">' +
+                    '<span class="card-badge">' + meta.label + '</span>' +
+                    '<div class="card-zoom-btn"><i data-lucide="maximize-2" style="width:16px;height:16px;"></i></div>' +
+                    '<img src="' + safeUrl + '" alt="' + safeCaption + '" loading="lazy">' +
+                    '<div class="gallery-card-overlay">' +
+                        '<h3 class="gallery-card-title">' + safeCaption + '</h3>' +
+                        '<span class="gallery-card-hint"><i data-lucide="eye" style="width:14px;height:14px;"></i> Click to view full image</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        function filterGallery(cat, btn) {
+            document.querySelectorAll('.gallery-filter-wrap .gallery-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderGallery(cat);
+        }
+
+        function openLightboxCard(urlEncoded, captionEncoded, category) {
+            const url = decodeURIComponent(urlEncoded);
+            const caption = decodeURIComponent(captionEncoded);
+            const meta = CATEGORY_META[category] || { label: 'Travel Photo' };
+
+            document.getElementById('lightbox-img').src = url;
+            document.getElementById('lightbox-title').textContent = caption;
+            document.getElementById('lightbox-cat').textContent = meta.label;
+            document.getElementById('lightbox-download-link').href = url;
+
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeLightboxDirect() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox') {
+                closeLightboxDirect();
+            }
+        }
+
+        // Close on Escape key
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightboxDirect();
+            }
+        });
+
+        loadGallery();
+    </script>
+</body>
+</html>
